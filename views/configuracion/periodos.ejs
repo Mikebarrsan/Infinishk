@@ -1,0 +1,14 @@
+<%- include('../includes/dropdown_admin.ejs') %>
+
+<section class="section">
+    <div class="container">
+        <% for (let periodo of periodos) { %>
+        <p> <%= periodo.IDPeriodo %> </p>
+        <p> <%= periodo.fechaInicio %> </p>
+        <p> <%= periodo.fechaFin %> </p>
+        <p> <%= periodo.Nombre %> </p>
+        <p> <%= periodo.periodoActivo %> </p>
+        <br>
+        <% } %>
+    </div>
+</section>
