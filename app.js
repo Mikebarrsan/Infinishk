@@ -34,6 +34,8 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
+const rutasConfiguracion = require('./routes/configuracion.routes');
+app.use('/configuracion', rutasConfiguracion);
 
 const rutasAlumnos = require('./routes/alumnos.routes');
 app.use('/alumnos', rutasAlumnos);

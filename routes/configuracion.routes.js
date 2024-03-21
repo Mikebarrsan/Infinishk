@@ -1,6 +1,11 @@
 const express = require('express');
-
-// Ahora en vez de usar app, se usa el router de express
 const router = express.Router();
 
 const configuracionController = require('../controllers/configuracion.controller');
+
+
+router.get('/periodos', configuracionController.get_periodos);
+router.get('/', configuracionController.get_configuracion);
+
+
+module.exports = router;
