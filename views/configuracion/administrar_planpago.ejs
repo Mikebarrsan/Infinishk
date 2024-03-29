@@ -1,0 +1,27 @@
+<%- include('../includes/dropdown_admin.ejs') %>
+
+<style>
+    .card-title {
+        font-size: 1.5em; 
+        margin-bottom: 1em; 
+    }
+    .card-text {
+        font-size: 1.2em; 
+    }
+</style>
+
+<div class="container">
+    <h1>Planes de Pago</h1>
+    <div class="row">
+        <% planpago.forEach(plan => { %>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Nombre del Plan<%= plan.nombrePlan %></h5>
+                        <p class="card-text">Número de Pagos: <%= plan.numeroPagos %></p>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
