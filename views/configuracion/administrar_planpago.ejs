@@ -1,28 +1,58 @@
 <%- include('../includes/dropdown_admin.ejs') %>
-<link href="/css/mystyles.css" rel="stylesheet" type="text/css">
-<link href="/css/extrastyles.css" rel="stylesheet" type="text/css">
+    <link href="/css/mystyles.css" rel="stylesheet" type="text/css">
+    <link href="/css/extrastyles.css" rel="stylesheet" type="text/css">
 
-<div class="container" style="display: flex; justify-content: center;">
-    <div class="content" style="width: 70%; margin-top: 50px;">
-        <h1 class="title is-2 has-text-centered">Planes de Pago</h1>
-        <% planpago.forEach(plan => { %>
-            <div class="card" style="margin-bottom: 20px; border: 5px solid #910106;">
-                <div class="card-content">
-                    <div class="media">
-                        <div class="media-content">
-                            <p class="title is-3 has-text-black">Nombre del Plan:</p>
-                            <p class="subtitle is-3 has-text-grey"><%= plan.nombrePlan %></p>
-                            <p class="title is-3 has-text-black">Número de Pagos:</p>
-                            <p class="subtitle is-3 has-text-grey"><%= plan.numeroPagos %></p>
+    <% if (rol =='1' ) { %>
+        <div class="container" style="display: flex; justify-content: center;">
+            <div class="content" style="width: 70%; margin-top: 50px;">
+                <h1 class="title is-2 has-text-centered">Planes de Pago</h1>
+                <% planpago.forEach(plan=> { %>
+                    <div class="card" style="margin-bottom: 20px; border: 5px solid #910106;">
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-3 has-text-black">Nombre del Plan:</p>
+                                    <p class="subtitle is-3 has-text-grey">
+                                        <%= plan.nombrePlan %>
+                                    </p>
+                                    <p class="title is-3 has-text-black">Número de Pagos:</p>
+                                    <p class="subtitle is-3 has-text-grey">
+                                        <%= plan.numeroPagos %>
+                                    </p>
+                                    <form action="/diplomado/" method="GET">
+                                        <button type="submit" class="button is-large is-rounded is-responsive">Modificar Plan</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <% }) %>
             </div>
-        <% }) %>
-    </div>
-</div>
+        </div>
+    <% } %>
 
-
-
-
-
+    <% if (rol =='2' ) { %>
+        <div class="container" style="display: flex; justify-content: center;">
+            <div class="content" style="width: 70%; margin-top: 50px;">
+                <h1 class="title is-2 has-text-centered">Planes de Pago</h1>
+                <% planpago.forEach(plan=> { %>
+                    <div class="card" style="margin-bottom: 20px; border: 5px solid #910106;">
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-3 has-text-black">Nombre del Plan:</p>
+                                    <p class="subtitle is-3 has-text-grey">
+                                        <%= plan.nombrePlan %>
+                                    </p>
+                                    <p class="title is-3 has-text-black">Número de Pagos:</p>
+                                    <p class="subtitle is-3 has-text-grey">
+                                        <%= plan.numeroPagos %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+    <% } %>
