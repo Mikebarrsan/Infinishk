@@ -19,6 +19,12 @@
                                     <p class="subtitle is-3 has-text-grey">
                                         <%= plan.numeroPagos %>
                                     </p>
+                                    <p class="title is-3 has-text-black">Status:</p>
+                                    <% if (plan.planPagoActivo === 1) { %>
+                                        <p class="subtitle is-4 has-text-grey"> Activo</p>
+                                    <% } else { %>
+                                        <p class="subtitle is-4 has-text-grey"> No Activo </p>
+                                    <% } %>
                                     <form action="/diplomado/" method="GET">
                                         <button type="submit" class="button is-large is-rounded is-responsive">Modificar Plan</button>
                                     </form>

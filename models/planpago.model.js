@@ -8,6 +8,6 @@ module.exports = class PlanPago{
     }
 
     static fetchAll() {
-        return db.execute('Select nombrePlan,numeroPagos from planpago')
+        return db.execute('Select * from planpago')
     }
 }

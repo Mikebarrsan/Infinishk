@@ -4,4 +4,6 @@
 # Node artifact files
 node_modules/
 
+uploads/
+
 .vscode/
