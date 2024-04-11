@@ -63,7 +63,7 @@ app.use('/visualizador', rutasVisualizador);
 app.locals.contienePermiso = (permisos, casoUso) => {
 
     const contains = !!permisos.find(caso => {
-        return caso.nombreCasoUso === casoUso;
+        return caso.funcion === casoUso;
     })
 
     return contains;

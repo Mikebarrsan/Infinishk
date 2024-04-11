@@ -16,7 +16,7 @@ const can_RegistrarRol = require('../util/privileges/admin/registros/can_registr
 const can_ConsultarUsuario = require('../util/privileges/admin/consultas/can_consultar_Usuario');
 const can_RegistrarUsuario = require('../util/privileges/admin/registros/can_registrar_usuario');
 
-router.get('/administrar_planpago',configuracionController.get_administrar_planpago);
-router.get('/',isAuth,can_ConsultarPlanPago,configuracionController.get_configuracion);
+router.get('/administrar_planpago',can_ConsultarPlanPago,configuracionController.get_administrar_planpago);
+
 
 module.exports = router;
