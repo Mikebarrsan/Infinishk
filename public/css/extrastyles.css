@@ -1,114 +1,52 @@
-.navbar-menu{
-  font-size: 25px; /* Ajusta este valor a tus necesidades */
+.navbar-item {
+  font-size: 18px;
 }
 
-
-.headbar{
-  background-color: white;
-  height: 125px;
-  position: relative;
-  z-index: 30;
+.navbar {
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 1);
 }
 
-
-.headbar-start, .headbar-item{
-  color: #000000;
-  margin:20px;
-  padding:20px;
-  text-align: center;
+.navbar-start {
+  width: 100%;
 }
 
-.headbar-img{
-  width: 135px;
-  height:135px;
-}
-
-.headbar-item {
-  color: #000000; /* Ajusta este valor al color que prefieras */
-  margin:20px;
-  padding:20px;
-  text-align: center;
-} 
-
-.sidebar-menu {
-  font-size: 25px;
-  margin-top: 0;
-  margin-left: 0;
-  padding-top: 0;
-  padding-right: 0;
-  font-size: 25px;
-  color:#000000;
+@media (min-width: 1024px) {
+  .dropdown-menu {
+  top: -14px;
+  margin-left: 100%;
   }
-  /* Estilos para pantallas de tamaño grande */
-@media (min-width: 1200px) {
-  .sidebar-menu {
-    width: 300px; /* Ajusta este valor al ancho que prefieras para pantallas grandes */
+
+  .mobile {
+      display: none;
+  }
+
+  .cerrar_sesion_mobile {
+      display: none;
   }
 }
 
-/* Estilos para pantallas de tamaño mediano */
-@media (min-width: 768px) and (max-width: 1199px) {
-  .sidebar-menu {
-    width: 200px; /* Ajusta este valor al ancho que prefieras para pantallas medianas */
+@media (max-width: 1023px) {
+  .nested {
+      display: none;
   }
-}
 
-/* Estilos para pantallas de tamaño pequeño */
-@media (max-width: 767px) {
-  .sidebar-menu {
-    width: 100px; /* Ajusta este valor al ancho que prefieras para pantallas pequeñas */
-  }
-}
-
-
-.sidebar-list{
-  line-height: 2.25; 
-  background-color: #ffffff;
-  height: 100vh;
-  width: 75%; /* Esto hace que el elemento ocupe todo el ancho de su contenedor */
-  float: left;
-}
-
-.current-page {
-  background-color: black; /* Cambia el color de fondo a negro */
-  color: white !important; /* Cambia el color del texto a blanco */
-}
-
-.main-content{
-  font-size:50px;
-  text-align: center;
-}
-
-
-/* Estilos específicos para pantallas pequeñas */
-@media (min-width: 100px) and (max-width: 1200px),(orientation: landscape) {
-  .navbar-item {
-    font-size: 20px; /* Reduce el tamaño de la fuente */
-  }
-  .navbar-start {
-    background-color: white;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,1);
-    width: 100%;
-    height: auto; /* Permite que el elemento se ajuste a su contenido */
-    justify-content: flex-start;
-  }
-  .navbar-dropdown {
-    display:none; /* Asegura que el menú desplegable se expanda horizontalmente */
-  }
-  .navbar-dropdown.open{
-    display:block;
-    align-items: end;
+  .desktop {
+      display: none;
   }
 
   .navbar-end {
-    display: flex;
-    justify-content: flex-end;
+      display: none;
   }
 }
 
+
+.navbar-link:hover::after {
+  border-color: #ffffff;
+}
+
 .button {
-  width: 100%; 
-  margin: 6px auto; 
+  width: 100%;
+  margin: 6px auto;
   background-color: #910106;
   color: #ffffff;
   border: solid #95404c;
@@ -116,61 +54,90 @@
   height: auto;
 }
 
+.button:disabled,
+button[disabled] {
+  border: 1px solid #910106;
+  background-color: #95404c;
+  color: #ffffff;
+}
+
+.button:hover:disabled,
+button[disabled] {
+  background-color: #7c7f80;
+}
+
 .button:hover {
-background-color: #000000;
-color: #ffffff;
-border: solid #95404c;
+  background-color: #000000;
+  color: #ffffff;
+  border: solid #95404c;
 }
 
 .button:focus {
-box-shadow: 0 0 0 4px #95404c;
-background-color: #910106;
-color: #ffffff;
+  box-shadow: 0 0 0 4px #95404c;
+  background-color: #910106;
+  color: #ffffff;
 }
 
 .checkbox input {
-height: 0;
-width: 0;
+  height: 0;
+  width: 0;
 }
 
 .checkbox {
-display: block;
-position: relative;
-user-select: none;
+  display: block;
+  position: relative;
+  user-select: none;
 }
 
 .checkmark {
-position: absolute;
-height: 20px;
-width: 20px;
-border: 2px solid #95404c;
-background-color: #dedbdb;
-border-radius: 50%;
-} 
-
-.checkbox:hover input ~ .checkmark {
-background-color: #910106;
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  border: 2px solid #95404c;
+  background-color: #dedbdb;
+  border-radius: 50%;
 }
-.checkbox input:checked ~ .checkmark {
-background-color: #910106;
+
+.checkbox:hover input~.checkmark {
+  background-color: #910106;
+}
+
+.checkbox input:checked~.checkmark {
+  background-color: #910106;
 }
 
 .checkbox .checkmark:after {
-top: -1px;
-width: 5px;
-height: 10px;
-left: 2px;
-color: white;
+  top: -1px;
+  width: 5px;
+  height: 10px;
+  left: 2px;
+  color: white;
 }
 
-.checkbox input:checked ~ .checkmark:after {
-display: block;
-} 
+.checkbox input:checked~.checkmark:after {
+  display: block;
+}
 
 .checkmark:after {
-content:'✓';
-position: absolute;
-display: none;
-} 
+  content: '✓';
+  position: absolute;
+  display: none;
+}
+
+.Pago-de-Colegiatura {
+  background-color: #910106;
+}
+
+.Pago-de-Diplomado {
+  background-color: #5a6581;
+}
+
+.Pago-a-Registrar {
+  background-color: #ffc800;
+}
+
+.Pago-Extra {
+  background-color: #16ac37;
+}
  
  

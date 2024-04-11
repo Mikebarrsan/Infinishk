@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIAPago</title>
+    <link href="/css/mystyles.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/extrastyles.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/98026b1a47.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+</head>
+
+<style>
+    .desktop_menu {
+        color: #ffffff;
+    }
+
+    .main_menu {
+        color: #ffffff;
+    }
+</style>
+
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-img" href="/">
+                <img src="\images\logo.png" alt="Via diseño logo" width="100" height="100">
+            </a>
+            <p class="control" style="margin-left: auto; margin-top: 1.5em; padding-right: 1em;">
+                <a class="button is-rounded is-responsive cerrar_sesion_mobile"
+                    style="font-size: large;"
+                    href="/auth/logout">
+                    <span>
+                        Cerrar Sesión
+                    </span>
+                    <span class="icon is-large">
+                        <i class="fa-solid fa-arrow-right-from-bracket" style="padding-left: 1em;"></i>
+                    </span>
+                </a>
+            </p>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarViaDiseño"
+                style="margin-left: 0%;">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="navbarViaDiseño" class="navbar-menu">
+            <div class="navbar-start">
+                <% if (contienePermiso(permisos, 'Consultar Propuesta de Horario') == true) { %>
+                <a class="navbar-item main_menu" href="/">
+                    <span class="icon is-large">
+                        <i class="fa-solid fa-calendar-week"></i>
+                    </span>
+                    Horario
+                </a>
+                <hr class="navbar-divider">
+                <% } %>
+                <% if (contienePermiso(permisos, 'Registrar diplomado') == true || 
+                       contienePermiso(permisos, 'Modificar diplomado') == true || 
+                       contienePermiso(permisos, 'Consultar diplomado') == true) { %>
+                <div data-target="diplomado" class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link desktop_menu" style="padding-right: 2.1em;"
+                        onclick="click_target(this.parentElement)">
+                        <span class="icon is-large" style="margin-left: -0.5em;">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </span>
+                        Diplomado
+                    </a>
+                    <div class="navbar-dropdown" style="width: 100%;" id="diplomado">
+                        <% if (contienePermiso(permisos, 'Registrar diplomado') == true) { %>
+                        <a class="navbar-item" href="/diplomado/registrar_diplomado">
+                            <span class="icon is-large">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                            </span>
+                            Registrar
+                        </a>
+                        <hr class="navbar-divider">
+                        <% } %>
+                        <% if (contienePermiso(permisos, 'Modificar diplomado') == true) { %>
+                        <a class="navbar-item" href="/diplomado/editar_diplomado">
+                            <span class="icon is-large">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </span>
+                            Modificar
+                        </a>
+                        <hr class="navbar-divider">
+                        <% } %>
+                        <% if (contienePermiso(permisos, 'Consultar diplomado') == true) { %>
+                        <a class="navbar-item" href="/">
+                            <span class="icon is-large">
+                                <i class="fa-solid fa-clipboard"></i>
+                            </span>
+                            Consultar
+                        </a>
+                        <% } %>
+                    </div>
+                </div>
+                <hr class="navbar-divider">
+                <% } %>
+                <% if (contienePermiso(permisos, 'Realizar Pago') == true) { %>
+                <a class="navbar-item main_menu" href="/">
+                    <span class="icon is-large">
+                        <i class="fa-solid fa-dollar-sign"></i>
+                    </span>
+                    Realizar Pago
+                </a>
+                <% } %>
+
+                <% if (contienePermiso(permisos, 'Consultar estado de cuenta') == true && rol == 3) { %>
+                <a class="navbar-item main_menu" href="/" style="margin-left: -0.5em;">
+                    <span class="icon is-large">
+                        <i class="fa-solid fa-money-check-dollar"></i>
+                    </span>
+                    Estado de cuenta
+                </a>
+                <% } %>
+
+                <% if (contienePermiso(permisos, 'Consultar Alumno') == true || 
+                       contienePermiso(permisos, 'Consultar horario alumno') == true||
+                       contienePermiso(permisos, 'Consultar a alumnos atrasados en pagos') == true) { %>
+                <div data-target="alumnos" class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link desktop_menu" style="padding-right: 2.1em"
+                        onclick="click_target(this.parentElement)">
+                        <span class="icon is-large" style="margin-left: -0.5em;">
+                            <i class="fa-solid fa-users"></i>
+                        </span>
+                        Alumnos
+                    </a>
+                    <div class="navbar-dropdown" id="alumnos">
+                        <% if (contienePermiso(permisos, 'Consultar a alumnos atrasados en pagos') == true) { %>
+                        <div class="desktop">
+                            <a class="navbar-item">
+                                <span class="icon is-large" style="margin-left: -0.5em;">
+                                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                                </span>
+                                Alumnos
+                                <br>
+                                Atrasados
+                            </a>
+                        </div>
+                        <div class="mobile">
+                            <a class="navbar-item">
+                                <span class="icon is-large" style="margin-left: -0.5em;">
+                                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                                </span>
+                                Alumnos Atrasados
+                            </a>
+                        </div>
+                        </a>
+                        <hr class="navbar-divider">
+                        <% } %>
+                        <% if (contienePermiso(permisos, 'Consultar Alumno') == true) { %>
+                        <div class="desktop">
+                            <a class="navbar-item" href="/">
+                                <span class="icon is-large" style="margin-left: -0.5em;">
+                                    <i class="fa-regular fa-user"></i>
+                                </span>
+                                Consultar
+                                <br>
+                                Alumno
+                            </a>
+                        </div>
+                        <div class="mobile">
+                            <a class="navbar-item" href="/">
+                                <span class="icon is-large" style="margin-left: -0.5em;">
+                                    <i class="fa-regular fa-user"></i>
+                                </span>
+                                Consultar Alumno
+                            </a>
+                        </div>
+                        <hr class="navbar-divider">
+                        <% } %>
+                        <% if (contienePermiso(permisos, 'Modificar Ficha de Pago/Deuda') == true) { %>
+                        <div class="desktop">
+                            <a class="navbar-item" href="/">
+                                <span class="icon is-large" style="margin-left: -0.5em;">
+                                    <i class="fa-solid fa-money-check-dollar"></i>
+                                </span>
+                                Modificar
+                                <br>
+                                Ficha Pago
+                            </a>
+                        </div>
+                        <div class="mobile">
+                            <a class="navbar-item" href="/">
+                                <span class="icon is-large" style="margin-left: -0.5em;">
+                                    <i class="fa-solid fa-money-check-dollar"></i>
+                                </span>
+                                Modificar Ficha Pago
+                            </a>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+                <% } %>
+
+                <% if (contienePermiso(permisos, 'Registrar Solicitud de Pago') == true || 
+                       contienePermiso(permisos, 'Modificar Solicitud de Pago') == true ||
+                       contienePermiso(permisos, 'Registrar Pago Manual') == true ||
+                       contienePermiso(permisos, 'Registrar archivo de pagos por transferencia') == true ||
+                       contienePermiso(permisos, 'Consultar Reporte Ingresos') == true||
+                       contienePermiso(permisos, 'Consultar Reporte Metodo de Pago') == true) { %>
+                <div data-target="pagos" class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link desktop_menu" style="padding-right: 2.1em;"
+                        onclick="click_target(this.parentElement)">
+                        <span class="icon is-large" style="margin-left: -0.5em;">
+                            <i class="fa-solid fa-dollar-sign"></i>
+                        </span>
+                        Pagos
+                    </a>
+                    <div class="navbar-dropdown" id="pagos">
+                        <% if (contienePermiso(permisos, 'Registrar Pago Manual') == true && 
+                            contienePermiso(permisos, 'Registrar archivo de pagos por transferencia') == true) { %>
+                        <div class="nested dropdown has-dropdown is-hoverable">
+                            <a class="navbar-item" style="padding-right: 1.3em;">
+                                <span class="icon is-large">
+                                    <i class="fa-solid fa-file-invoice"></i>
+                                </span>
+                                Registros
+                                <span class="icon is-large ">
+                                    <i class="fas fa-angle-right"></i>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="navbar-dropdown">
+                                    <a class="navbar-item">
+                                        <span class="icon is-large">
+                                            <i class="fa-solid fa-cash-register"></i>
+                                        </span>
+                                        Pago Manual
+                                    </a>
+                                    <hr class="navbar-divider">
+                                    <a class="navbar-item" href="/pagos/registroTransferencia">
+                                        <span class="icon is-large">
+                                            <i class="fa-solid fa-file-csv"></i>
+                                        </span>
+                                        Archivo
+                                        <br>
+                                        transferencia
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="navbar-divider">
+                        <div class="mobile">
+                            <div data-target="registros" class="navbar-item has-dropdown">
+                                <a class="navbar-link" onclick="click_target(this.parentElement)">
+                                    <span class="icon is-large">
+                                        <i class="fa-solid fa-file-invoice"></i>
+                                    </span>
+                                    Registros
+                                </a>
+                                <div class="navbar-dropdown" id="registros">
+                                    <a class="navbar-item">
+                                        <span class="icon is-large">
+                                            <i class="fa-solid fa-cash-register"></i>
+                                        </span>
+                                        Pago Manual
+                                    </a>
+                                    <hr class="navbar-divider">
+                                    <a class="navbar-item" href="/pagos/registroTransferencia">
+                                        <span class="icon is-large">
+                                            <i class="fa-solid fa-file-csv"></i>
+                                        </span>
+                                        Archivo
+                                        transferencia
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                        <% if (contienePermiso(permisos, 'Consultar Reporte Ingresos') == true && 
+                            contienePermiso(permisos, 'Consultar Reporte Metodo de Pago') == true) { %>
+                        <div class="nested dropdown has-dropdown is-hoverable">
+                            <a class="navbar-item" style="padding-right: 1.5em;">
+                                <span class="icon is-large">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                </span>
+                                Reportes
+                                <span class="icon is-large ">
+                                    <i class="fas fa-angle-right"></i>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="navbar-dropdown">
+                                    <a class="navbar-item">
+                                        <span class="icon is-large">
+                                            <i class="fa-solid fa-magnifying-glass-chart"></i>
+                                        </span>
+                                        Ingresos
+                                    </a>
+                                    <hr class="navbar-divider">
+                                    <a class="navbar-item">
+                                        <span class="icon is-large">
+                                            <i class="fa-solid fa-chart-column"></i>
+                                        </span>
+                                        Método
+                                        <br>
+                                        de Pagos
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="navbar-divider">
+                        <div class="mobile">
+                            <div data-target="reportes" class="navbar-item has-dropdown">
+                                <a class="navbar-link" onclick="click_target(this.parentElement)">
+                                    <span class="icon is-large">
+                                        <i class="fa-solid fa-chart-line"></i>
+                                    </span>
+                                    Reportes
+                                </a>
+                                <div class="navbar-dropdown" id="reportes">
+                                    <a class="navbar-item">
+                                        <span class="icon is-large">
+                                            <i class="fa-solid fa-magnifying-glass-chart"></i>
+                                        </span>
+                                        Ingresos
+                                    </a>
+                                    <hr class="navbar-divider">
+                                    <a class="navbar-item">
+                                        <span class="icon is-large">
+                                            <i class="fa-solid fa-chart-column"></i>
+                                        </span>
+                                        Método de Pagos
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                        <% if (contienePermiso(permisos, 'Registrar Solicitud de Pago') == true && contienePermiso(permisos, 'Modificar Solicitud de Pago') == true && rol == 1) { %>
+                        <div class="desktop">
+                            <a class="navbar-item" href="/pagos/solicitudes">
+                                <span class="icon is-large">
+                                    <i class="fa-solid fa-clipboard-question"></i>
+                                </span>
+                                Solicitudes
+                                <br>
+                                De Pago
+                            </a>
+                            <hr class="navbar-divider">
+                        </div>
+                        <div class="mobile">
+                            <a class="navbar-item" href="/pagos/solicitudes">
+                                <span class="icon is-large">
+                                    <i class="fa-solid fa-clipboard-question"></i>
+                                </span>
+                                Solicitudes De Pago
+                            </a>
+                        </div>
+                        <% } else if (contienePermiso(permisos, 'Registrar Solicitud de Pago') == true && contienePermiso(permisos, 'Modificar Solicitud de Pago') == true) { %>
+                        <a class="navbar-item">
+                            <span class="icon is-large">
+                                <i class="fa-solid fa-bell"></i>
+                            </span>
+                            Registrar
+                            <br>
+                            Solicitud
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item">
+                            <span class="icon is-large">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </span>
+                            Solicitudes
+                            <br>
+                            Pendientes
+                        </a>
+                        <% } %>
+                        <% if (contienePermiso(permisos, 'Registrar Pago Extra') == true && 
+                            contienePermiso(permisos, 'Modificar Pago Extra') == true  && 
+                            contienePermiso(permisos, 'Eliminar Pago Extra') == true) { %>
+                        <a class="navbar-item" style="padding-right: 2.8em;" href="/pagos/pagos_extra">
+                            <span class="icon is-large">
+                                <i class="fa-solid fa-money-bill-wave"></i>
+                            </span>
+                            Otros Pagos
+                        </a>
+                        <% } %>
+                    </div>
+                </div>
+                <% } %>
+
+                <% if (contienePermiso(permisos, 'Consultar Costo Credito') == true || 
+                       contienePermiso(permisos, 'Consultar plan de pago') == true ||
+                       contienePermiso(permisos, 'Registrar Costo Credito') == true ||
+                       contienePermiso(permisos, 'Registrar Plan de Pago') == true ||
+                       contienePermiso(permisos, 'Registrar usuario') == true ||
+                       contienePermiso(permisos, 'Consultar Usuario') == true ||
+                       contienePermiso(permisos, 'Registrar Rol') == true) { %>
+
+                <div data-target="configuracion" class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link desktop_menu" style="padding-right: 2.1em"
+                        onclick="click_target(this.parentElement)">
+                        <span class="icon is-large" style="margin-left: -0.5em;">
+                            <i class="fa-solid fa-gear"></i>
+                        </span>
+                        Configuracion
+                    </a>
+                    <div class="navbar-dropdown" id="configuracion" style="width: 115%">
+                        <% if (contienePermiso(permisos, 'Consultar Costo Credito') == true) { %>
+                        <a class="navbar-item">
+                            <span class="icon is-large">
+                                <i class="fa-solid fa-money-bills"></i>
+                            </span>
+                            Precio Crédito
+                        </a>
+                        <hr class="navbar-divider">
+                        <% } %>
+                        <% if (contienePermiso(permisos, 'Consultar plan de pago') == true) { %>
+                        <a class="navbar-item" href="/configuracion/administrar_planpago">
+                            <span class="icon is-large">
+                                <i class="fa-solid fa-calendar-week"></i>
+                            </span>
+                            Plan de Pago
+                        </a>
+                        <% } %>
+                        <% if (contienePermiso(permisos, 'Registrar usuario') == true &&
+                       contienePermiso(permisos, 'Consultar Usuario') == true) { %>
+                        <hr class="navbar-divider">
+                        <div class="nested dropdown has-dropdown is-hoverable">
+                            <a class="navbar-item">
+                                <span class="icon is-large">
+                                    <i class="fa-solid fa-users-gear"></i>
+                                </span>
+                                Usuarios
+                                <span class="icon is-large ">
+                                    <i class="fas fa-angle-right"></i>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="navbar-dropdown">
+                                    <a class="navbar-item">
+                                        <span class="icon is-large">
+                                            <i class="fa-solid fa-user-tag"></i>
+                                        </span>
+                                        Consultar
+                                    </a>
+                                    <hr class="navbar-divider">
+                                    <a class="navbar-item">
+                                        <span class="icon is-large">
+                                            <i class="fa-solid fa-user-plus"></i>
+                                        </span>
+                                        Registrar
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mobile">
+                            <div data-target="usuarios" class="navbar-item has-dropdown">
+                                <a class="navbar-link" onclick="click_target(this.parentElement)">
+                                    <span class="icon is-large">
+                                        <i class="fa-solid fa-users-gear"></i>
+                                    </span>
+                                    Usuarios
+                                </a>
+                                <div class="navbar-dropdown" id="usuarios">
+                                    <a class="navbar-item">
+                                        <span class="icon is-large">
+                                            <i class="fa-solid fa-user-tag"></i>
+                                        </span>
+                                        Consultar
+                                    </a>
+                                    <hr class="navbar-divider">
+                                    <a class="navbar-item">
+                                        <span class="icon is-large">
+                                            <i class="fa-solid fa-user-plus"></i>
+                                        </span>
+                                        Registrar
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="navbar-divider">
+                        <% } %>
+                        <% if (contienePermiso(permisos, 'Registrar Rol') == true) { %>
+                        <a class="navbar-item">
+                            <span class="icon is-large">
+                                <i class="fa-solid fa-user-gear"></i>
+                            </span>
+                            Registrar Rol
+                        </a>
+                        <% } %>
+                    </div>
+                </div>
+                <% } %>
+                <div class="navbar-end">
+                    <p class="control" style="margin-top: 1.5em; padding-right: 1em;">
+                        <a class="button is-rounded is-responsive" style="font-size: large;"
+                            href="/auth/logout">
+                            <span>
+                                Cerrar Sesión
+                            </span>
+                            <span class="icon is-large">
+                                <i class="fa-solid fa-arrow-right-from-bracket" style="padding-left: 1em;"></i>
+                            </span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <script>
+        $(document).ready(function () {
+
+            // Check for click events on the navbar burger icon
+            $(".navbar-burger").click(function () {
+
+                // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                $(".navbar-burger").toggleClass("is-active");
+                $(".navbar-menu").toggleClass("is-active");
+
+            });
+        });
+
+        const click_target = (element) => {
+            if (window.innerWidth < 1024) {
+                // Get the target from the "data-target" attribute
+                const target = element.dataset.target;
+                const $target = document.getElementById(target);
+
+                if ($target.style.display === "block") {
+                    $target.style.display = "none";
+                } else {
+                    $target.style.display = "block";
+                }
+            }
+        }
+
+        function navbar_movil() {
+            const $navDropdowns = document.querySelectorAll(".navbar-item.has-dropdown");
+            if ($navDropdowns.length > 0) {
+                $navDropdowns.forEach((el) => {
+                    // Agarrar al hijo para solo sea cuando dan click ahi
+                    const navbar_link = el.firstElementChild;
+                    const target = el.dataset.target;
+                    const $target = document.getElementById(target);
+                    $target.style.display = "none";
+                });
+            }
+
+            const $navbaritem = document.querySelectorAll(".navbar-item");
+            if ($navbaritem.length > 0) {
+                $navbaritem.forEach((el) => {
+                    el.classList.add('main_menu');
+                });
+            }
+
+            const $navbarlink = document.querySelectorAll(".navbar-link");
+            if ($navbarlink.length > 0) {
+                $navbarlink.forEach((el) => {
+                    el.classList.add('main_menu');
+                });
+            }
+        }
+
+        // Regresas las variables a como estaban antes
+        function navbar_desktop() {
+            const $navDropdowns = document.querySelectorAll(".navbar-item.has-dropdown");
+            if ($navDropdowns.length > 0) {
+                $navDropdowns.forEach((el) => {
+                    // Agarrar al hijo para solo sea cuando dan click ahi
+                    const navbar_link = el.firstElementChild;
+                    const target = el.dataset.target;
+                    const $target = document.getElementById(target);
+                    $target.style.display = "";
+                });
+
+            }
+
+            const $navbaritem = document.querySelectorAll(".navbar-item");
+            if ($navbaritem.length > 0) {
+                $navbaritem.forEach((el) => {
+                    el.classList.remove('main_menu');
+                });
+            }
+
+            const $navbarlink = document.querySelectorAll(".navbar-link");
+            if ($navbarlink.length > 0) {
+                $navbarlink.forEach((el) => {
+                    el.classList.remove('main_menu');
+                });
+            }
+        }
+
+        if (window.matchMedia("(max-width: 1023px)").matches) {
+            navbar_movil();
+        };
+
+        window.addEventListener('resize', () => {
+            const configuracion = document.getElementById('configuracion');
+            if (window.innerWidth >= 1024) {
+                configuracion.style.width = '115%';
+                navbar_desktop();
+            } else {
+                configuracion.style.width = '100%';
+                navbar_movil();
+            }
+        });
+    </script>
+</body>

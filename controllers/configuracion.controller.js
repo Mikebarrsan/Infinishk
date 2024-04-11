@@ -10,6 +10,7 @@ exports.get_administrar_planpago = (request, response, next) => {
         .then(([planpagos]) => {
            response.render('configuracion/administrar_planpago',{
                 planpago: planpagos,
+                csrfToken: request.csrfToken(),
                 permisos: request.session.permisos || [],
                 rol: request.session.rol || "",
            });

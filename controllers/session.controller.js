@@ -1,7 +1,3 @@
-const {
-    request,
-    response
-} = require('express');
 const Usuario = require('../models/usuario.model');
 const bcrypt = require('bcryptjs');
 
@@ -14,6 +10,7 @@ exports.get_login = (request, response, next) => {
         error: error,
         csrfToken: request.csrfToken(),
         permisos: request.session.permisos || [],
+        rol: request.session.rol || "",
     });
 };
 
@@ -28,15 +25,26 @@ exports.post_login = (request, response, next) => {
                     .then(doMatch => {
                         // Si la promesa es verdadero, entonces inicias sesion en la pagina
                         if (doMatch) {
-                            Usuario.getRol(user.IDUsuario)
+                            Usuario.getPermisos(user.IDUsuario)
                                 .then(([permisos, fieldData]) => {
-                                    request.session.isLoggedIn = true;
-                                    request.session.permisos = permisos;
-                                    request.session.rol = request.session.permisos[0].IDRol;
-                                    request.session.username = user.username;
-                                    return request.session.save(err => {
-                                        response.redirect('/S1');
-                                    })
+                                    Usuario.getRol(user.IDUsuario)
+                                        .then(([rol, fieldData]) => {
+                                            request.session.isLoggedIn = true;
+                                            request.session.permisos = permisos;
+                                            request.session.rol = rol[0].IDRol;
+                                            request.session.username = user.IDUsuario;
+                                            return request.session.save(err => {
+                                                response.render('home', {
+                                                    username: request.session.username || '',
+                                                    csrfToken: request.csrfToken(),
+                                                    permisos: request.session.permisos || [],
+                                                    rol: request.session.rol || "",
+                                                })
+                                            })
+                                        })
+                                        .catch((error) => {
+                                            console.log(error);
+                                        })
                                 })
                                 .catch((error) => {
                                     console.log(error)
@@ -77,6 +85,7 @@ exports.get_signup = (request, response, next) => {
         error: error,
         csrfToken: request.csrfToken(),
         permisos: request.session.permisos || [],
+        rol: request.session.rol || "",
     });
 };
 
