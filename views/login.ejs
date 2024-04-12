@@ -23,6 +23,26 @@
     .main_menu {
         color: #ffffff;
     }
+
+    .switch-label {
+        margin-top: 10px; 
+    }
+
+    .link-reseteo {
+  
+        display: inline-block;
+        color: #3273dc; 
+        text-decoration: underline; 
+    }
+
+    .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    }
+
 </style>
 
 <header>
@@ -49,7 +69,7 @@
         <div class="field">
           <label class="label" for="IDUsuario">Nombre de usuario</label>
           <div class="control has-icons-left">
-            <input class="input" type="text" name="IDUsuario" id="IDUsuario" placeholder="Nombre de usuario" />
+            <input class="input" type="text" name="IDUsuario" id="IDUsuario" placeholder="" />
             <span class="icon is-small is-left">
               <i class="fas fa-user"></i>
             </span>
@@ -59,20 +79,26 @@
         <div class="field">
           <label class="label" for="password">Contraseña</label>
           <div class="control has-icons-left">
-            <input class="input" type="password" name="password" id="password" placeholder="Contraseña" />
+            <input class="input" type="password" name="password" id="password" placeholder="" />
             <span class="icon is-small is-left">
               <i class="fas fa-lock"></i>
             </span>
             <label class="switch">
               <input type="checkbox" onclick="togglePassword('password')">
-              Mostrar contraseña
+              <span class="switch-label">Mostrar contraseña</span>
             </label>
           </div>
         </div>
+            <div class="is-clearfix">
+            <a href="falta" class="link-reseteo">Restablecer contraseña</a> 
+            <!-- FALTA AGREGAR GET RESTABLECER CONTRA -->
+            </div>
+
+            
 
         <div class="field">
           <div class="control">
-            <input type="submit" class="button is-primary" value="<% if (registrar) { %>Registrarse <% } else { %>Log in <% } %>"/>
+            <input type="submit" class="button is-primary" value="<% if (registrar) { %>Registrarse <% } else { %>Iniciar Sesión <% } %>"/>
           </div>
         </div>
       </form>
