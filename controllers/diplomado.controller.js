@@ -41,15 +41,15 @@ exports.get_registrar_diplomado = (request, response, next) => {
 
 exports.get_autocomplete = (request, response, next) => {
     const consulta = request.query.q;
-
     // Realiza ambas búsquedas simultáneamente y combina los resultados
     Promise.all([
         Diplomado.buscar(consulta), // Búsqueda de diplomados activos
-        Diplomado.buscar_noactivo(consulta), // Búsqueda de diplomados no activos
+        Diplomado.buscar_noactivo(consulta),//Búsqueda de diplomados no activos
         Diplomado.buscar_en_curso(consulta)
     ]).then(results => {
         // Combina los resultados de ambas búsquedas
-        const diplomados = [...results[0][0], ...results[1][0], ...results[2][0]];
+        const diplomados = [
+            ...results[0][0], ...results[1][0], ...results[2][0]];
         response.json(diplomados);
     }).catch((error) => {
         console.log(error);
@@ -89,7 +89,8 @@ exports.post_fetch_diplomado = (request, response, next) => {
                 response.render('diplomado/editar_diplomado', {
                     editar: false,
                     fetch: true,
-                    error: 'Ese diplomado no existe, por favor ingresa uno valido',
+                    error: 
+                    'Ese diplomado no existe, por favor ingresa uno valido',
                     csrfToken: request.csrfToken(),
                     permisos: request.session.permisos || [],
                     rol: request.session.rol || "",
@@ -154,7 +155,7 @@ exports.post_modificar_diplomado = (request, response, next) => {
         .catch((error) => {
             console.log(error)
         });
-}
+};
 
 exports.post_registrar_diplomado = (request, response, next) => {
     const precio = request.body.precioDiplomado;
@@ -180,4 +181,4 @@ exports.post_registrar_diplomado = (request, response, next) => {
         .catch((error) => {
             console.log(error)
         });
-}
+};
