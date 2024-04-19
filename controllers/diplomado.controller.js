@@ -47,12 +47,14 @@ exports.get_autocomplete = (request, response, next) => {
         Diplomado.buscar_en_curso(consulta)
     ]).then(results => {
         // Combina los resultados de ambas búsquedas
-        let diplomados = [...results[0][0], ...results[1][0], ...results[2][0]];
+        let diplomados = [
+            ...results[0][0], ...results[1][0], ...results[2][0]];
 
         // Eliminar duplicados
         diplomados = diplomados.filter((diplomado, index) => {
-            const firstIndex = diplomados.findIndex(d => d.nombreDiplomado === diplomado.nombreDiplomado);
-            return firstIndex === index; // Mantener solo la primera aparición del nombre
+            const firstIndex = diplomados.findIndex(
+                d => d.nombreDiplomado === diplomado.nombreDiplomado);
+            return firstIndex === index; //Solo la primera aparición del nombre
         });
 
         response.json(diplomados);
