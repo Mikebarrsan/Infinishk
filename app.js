@@ -4,7 +4,7 @@ const express = require('express');
 // Inicia la app usuando a express
 const app = express();
 
-// Configuras a EJS como motor de templates con express
+// Configuramos a EJS como motor de templates con express
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
@@ -45,11 +45,13 @@ const fileStorage = multer.diskStorage({
     filename: (request, file, callback) => {
         //aquí configuramos el nombre que queremos que tenga el archivo en el servidor, 
         //para que no haya problema si se suben 2 archivos con el mismo nombre concatenamos el timestamp
-        callback(null,Number(new Date()).toString() + file.originalname);
+        callback(null, Number(new Date()).toString() + file.originalname);
     },
 });
 
-app.use(multer({ storage: fileStorage }).single('archivo')); 
+app.use(multer({
+    storage: fileStorage
+}).single('archivo'));
 
 // Para proteger del Cross-Site Request Forgery
 const csrf = require('csurf');
@@ -63,8 +65,7 @@ const helmet = require("helmet");
 app.use(helmet({
     contentSecurityPolicy: {
         directives: {
-            "script-src": ["'self'",'code.jquery.com', 'ajax.googleapis.com'
-            ],
+            "script-src": ["'self'", 'code.jquery.com', 'ajax.googleapis.com', 'cdn.jsdelivr.net'],
             "script-src-attr": ["'unsafe-inline'"]
         },
     },
@@ -77,6 +78,8 @@ app.use(compression());
 const rutasSession = require('./routes/session.routes');
 app.use('/auth', rutasSession);
 
+app.use(bodyParser.json());
+
 const rutasDiplomado = require('./routes/diplomado.routes');
 app.use('/diplomado', rutasDiplomado);
 
@@ -85,6 +88,9 @@ app.use('/configuracion', rutasConfiguracion);
 
 const rutasPago = require('./routes/pagos.routes');
 app.use('/pagos', rutasPago);
+
+const rutasAlumnos = require('./routes/alumnos.routes');
+app.use('/alumnos', rutasAlumnos);
 
 // Agregar funcion para iterar la lista del ejs, y que el codigo se vea limpio
 app.locals.contienePermiso = (permisos, casoUso) => {
@@ -96,11 +102,15 @@ app.locals.contienePermiso = (permisos, casoUso) => {
     return contains;
 };
 
-
 //Para error 404
-app.use((request, response) => {
-    response.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+app.use((request, response, next) => {
+    response.status(404);
+    response.render('404', {
+        username: request.session.username || '',
+        permisos: request.session.permisos || [],
+        rol: request.session.rol || "",
+    });
 });
 
 // Para que el servidor este activo
-app.listen(4000);
+app.listen(process.env.PORT || 4000);

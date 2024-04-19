@@ -38,7 +38,6 @@ exports.get_registrar_diplomado = (request, response, next) => {
     });
 };
 
-
 exports.get_autocomplete = (request, response, next) => {
     const consulta = request.query.q;
     // Realiza ambas búsquedas simultáneamente y combina los resultados
@@ -48,14 +47,20 @@ exports.get_autocomplete = (request, response, next) => {
         Diplomado.buscar_en_curso(consulta)
     ]).then(results => {
         // Combina los resultados de ambas búsquedas
-        const diplomados = [
-            ...results[0][0], ...results[1][0], ...results[2][0]];
+        let diplomados = [...results[0][0], ...results[1][0], ...results[2][0]];
+
+        // Eliminar duplicados
+        diplomados = diplomados.filter((diplomado, index) => {
+            const firstIndex = diplomados.findIndex(d => d.nombreDiplomado === diplomado.nombreDiplomado);
+            return firstIndex === index; // Mantener solo la primera aparición del nombre
+        });
+
         response.json(diplomados);
     }).catch((error) => {
         console.log(error);
+        response.status(500).json({ error: 'Error en el servidor' });
     });
 };
-
 
 exports.get_check_diplomado = (request, response, next) => {
     const nombre = request.query.nombre;
@@ -161,9 +166,6 @@ exports.post_registrar_diplomado = (request, response, next) => {
     const precio = request.body.precioDiplomado;
     const duracion = request.body.Duracion;
     const nombre = request.body.nombreDiplomado;
-    console.log(precio);
-    console.log(duracion);
-    console.log(nombre);
     Diplomado.save(duracion, precio, nombre)
         .then(() => {
             return Diplomado.fetchOne(nombre)

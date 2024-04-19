@@ -70,10 +70,9 @@ $(function () {
         .css('background-color', '#ffcccc')
         .addClass('is-light');
 
-    // Verificar si el nombre ingresado es válido al salir del campo de texto
     $("#nombre").on("blur", function () {
         var mensaje = '';
-        if (this.value === '') {
+        if (!this.value.trim()) {
             mensaje = 'Por favor ingresa un nombre';
         } else if (!nombresValidos.includes(this.value)) {
             mensaje = 'Por favor ingresa un nombre válido';
@@ -84,9 +83,8 @@ $(function () {
             .css('background-color', esValido ? '#910106' : '#ffcccc')
             .toggleClass('is-light', !esValido); // Agrega o quita la clase 'is-light' según la validez
     });
+
 });
-
-
 
 document.getElementById('statusDiplomado').addEventListener('change', function () {
     var hiddenInput = document.getElementById('statusDiplomadoHidden');
