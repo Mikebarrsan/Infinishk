@@ -23,6 +23,7 @@ exports.get_pago = (request, response, next) => {
 exports.get_registro_transferencias = (request, response, next) => {
     response.render('pago/registro_transferencia', {
         subir: true,
+        error:false,
         revisar: false,
         csrfToken: request.csrfToken(),
         permisos: request.session.permisos || [],
@@ -69,13 +70,16 @@ exports.post_subir_archivo = (request, response, next) => {
 
             if (fila.inicioRef === '1' || fila.inicioRef === '8') {
                 const nombreCompleto = await Alumno.fetchNombre(fila.Matricula);
-                if (nombreCompleto !== undefined) {
+                if (nombreCompleto && nombreCompleto[0] && nombreCompleto[0][0] && nombreCompleto[0][0].Nombre !== undefined) {
                     nombre = String(nombreCompleto[0][0].Nombre);
                     apellidos = String(nombreCompleto[0][0].Apellidos);
-                } else {
+
+                } 
+                else {
                     // Manejo de error si no se encuentra el nombre
                     return response.render('pago/registro_transferencia', {
                         subir: true,
+                        error:true,
                         revisar: false,
                         csrfToken: request.csrfToken(),
                         permisos: request.session.permisos || [],
@@ -167,7 +171,7 @@ exports.post_subir_archivo = (request, response, next) => {
                         tipoPago = 'Pago de Diplomado'; // Si el importe no coincide con el monto a pagar
                     }
                 }
-            } else if (fila.inicioRef === 'A') {
+            } else {
                 tipoPago = 'Pago a Ignorar';
             }
 
@@ -177,6 +181,7 @@ exports.post_subir_archivo = (request, response, next) => {
         // Renderizar la vista con los resultados
         response.render('pago/registro_transferencia', {
             subir: false,
+            error:false,
             revisar: true,
             datos: resultados,
             csrfToken: request.csrfToken(),

@@ -99,7 +99,15 @@
                         <p>Por favor ingresa un archivo csv del banco para registrar las transferencias recibidas a la
                             base de
                             datos.</p>
+                            
+                            <% if (error) { %>
+                                <div id="errorNotification" class="notification is-danger">
+                                    <button id="closeNotification" class="delete" type="button"></button>
+                                    Por favor verifica los datos en tu archivo.
+                                </div>
+                            <% } %>
                     </div>
+
                 </div>
                 <form action="/pagos/registroTransferencia" method="POST" enctype="multipart/form-data"
                     onsubmit="return validateFile()">

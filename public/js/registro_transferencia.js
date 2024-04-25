@@ -53,7 +53,6 @@ function csvContentIsValid(csvContent) {
 }
 
 
-
 // Inicialmente ocultar la tabla de Pagos No Completos
 document.getElementById('tablaNoCompleta').style.display = 'none';
 
@@ -153,12 +152,14 @@ document.querySelectorAll('.form-enviar-datos select[name="tipoPago"]').forEach(
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    const closeBtn = document.getElementById('closeNotification');
-    const errorNotification = document.getElementById('errorNotification');
+    const closeNotificationButton = document.getElementById('closeNotification');
 
-    if (closeBtn){
-        closeBtn.addEventListener('click', () => {
-            errorNotification.style.display = 'none';
+    if (closeNotificationButton) {
+        closeNotificationButton.addEventListener('click', () => {
+            const notification = document.getElementById('errorNotification');
+            if (notification) {
+                notification.style.display = 'none';
+            }
         });
     }
 });
