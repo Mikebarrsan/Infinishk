@@ -13,7 +13,7 @@ module.exports = class Deuda {
     }
 
     static fetchDeuda(matricula){
-        return db.execute('SELECT (montoAPagar-Descuento-montoPagado) AS "montoAPagar" FROM deuda WHERE Matricula = ? AND Pagado = 0',
+        return db.execute('SELECT (montoAPagar-Descuento-montoPagado) AS "montoAPagar" FROM deuda WHERE Matricula = ? AND Pagado = 0 AND Now() < fechaLimitePago',
         [matricula]);
     }
 

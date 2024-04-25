@@ -32,19 +32,26 @@ function validateFile() {
 }
 
 function csvContentIsValid(csvContent) {
+    console.log('CSV Content:', csvContent); 
     // Implementa la lógica para validar el contenido del CSV aquí
     // Esta es solo una estructura básica, necesitarás adaptarla a tus necesidades
     var lines = csvContent.split('\n');
     if (lines.length > 1) {
-        var headers = lines[0].split(',');
-        // Verifica que las cabeceras necesarias estén presentes
-        if (headers.indexOf('Fecha') > -1 && headers.indexOf('Hora') > -1) {
+        var headers = lines[0].split(',').map(header => header.trim()); // Eliminar espacios en blanco alrededor de las cabeceras
+        // Verifica que todas las cabeceras necesarias estén presentes
+        if (
+            headers.includes('Fecha') &&
+            headers.includes('Hora') &&
+            headers.includes('Concepto') &&
+            headers.includes('Importe')
+        ) {
             // Añade más validaciones según sea necesario
             return true;
         }
     }
     return false;
 }
+
 
 
 // Inicialmente ocultar la tabla de Pagos No Completos
@@ -95,13 +102,11 @@ document.querySelectorAll('.form-enviar-datos').forEach((form, index) => {
         })
             .then(response => response.json()) // Convertir la respuesta a JSON
             .then(data => {
+                let mensajeAlerta = '';
                 if (!data.success) {
-                    // Manejar el caso en que success no es true
-                    console.error('La operación no fue exitosa:', data);
-                    // Aquí puedes agregar código para mostrar un mensaje de error al usuario
-                    alert('Por favor verifica tu tipo de pago');
+                    mensajeAlerta = data.message || 'Por favor verifica tu tipo de pago';
+                    alert(mensajeAlerta);
                 } else {
-                    // Si la respuesta fue exitosa, eliminar la fila de la tabla
                     const filaId = form.parentElement.parentElement.id;
                     const fila = document.getElementById(filaId);
                     if (fila) {
@@ -113,8 +118,9 @@ document.querySelectorAll('.form-enviar-datos').forEach((form, index) => {
             })
             .catch(error => {
                 console.error('Error en la petición fetch:', error);
-                alert('Por favor verifica tu tipo de pago.');
+                alert('Hubo un error al procesar la solicitud. Por favor inténtalo de nuevo más tarde.');
             });
+            
     });
 });
 
@@ -144,6 +150,17 @@ document.querySelectorAll('.form-enviar-datos select[name="tipoPago"]').forEach(
             console.error('No se encontró la fila correspondiente al select.');
         }
     });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const closeBtn = document.getElementById('closeNotification');
+    const errorNotification = document.getElementById('errorNotification');
+
+    if (closeBtn){
+        closeBtn.addEventListener('click', () => {
+            errorNotification.style.display = 'none';
+        });
+    }
 });
 
 
