@@ -17,7 +17,6 @@ const can_ConsultarUsuario = require('../util/privileges/admin/consultas/can_con
 const can_RegistrarUsuario = require('../util/privileges/admin/registros/can_registrar_usuario');
 const can_registrar_PlanPago = require('../util/privileges/admin/registros/can_registrar_PlanPago');
 
-router.get('/administrar_planpago',isAuth,can_ConsultarPlanPago,configuracionController.get_administrar_planpago);
 router.get('/precio_credito', isAuth, can_ConsultarCostoCredito, configuracionController.get_precio_credito);
 router.post('/precio_credito', isAuth, can_ConsultarCostoCredito, configuracionController.post_precio_credito);
 router.get('/registrar_precio_credito', isAuth, can_RegistrarCostoCredito, configuracionController.get_registrar_precio_credito);
@@ -33,5 +32,7 @@ router.post('/registrar_planpago',isAuth,can_ModificarPlanPago,configuracionCont
 router.get('/registrar_planpago',isAuth,can_registrar_PlanPago,configuracionController.get_registrar_planpago);
 
 router.get('/check_planpago', configuracionController.get_check_plan);
+
+router.get('/registrar_rol',isAuth,can_RegistrarRol,configuracionController.get_registrar_rol);
 
 module.exports = router;

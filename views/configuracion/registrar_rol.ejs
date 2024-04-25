@@ -1,0 +1,26 @@
+<%- include('../includes/head.ejs') %>
+
+<body>
+        <h1>Registrar Rol</h1>
+        <form action="/configuracion/registrar_rol" method="post">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div>
+                <label for="nombreRol">Nombre del Rol:</label>
+                <input type="text" id="nombreRol" name="nombreRol" required>
+            </div>
+            <div>
+                <label for="casosUso">Casos de Uso:</label>
+                <select name="casosUso" id="casosUso" multiple>
+                    <% casouso.forEach(function(caso) { %>
+                        <option value="<%= caso.funcion %>"><%= caso.funcion %></option>
+                    <% }) %>
+                </select>
+                <small>Mantén presionado "Ctrl" o "Cmd" para seleccionar múltiples opciones.</small>
+            </div>
+            <div>
+                <button type="submit">Registrar Rol</button>
+            </div>
+        </form>
+    </section>
+
+</body>

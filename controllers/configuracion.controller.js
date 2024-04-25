@@ -1,21 +1,25 @@
 const PlanPago = require('../models/planpago.model');
 const PrecioCredito = require('../models/precio_credito.model');
 const Usuario = require('../models/usuario.model')
+const Rol = require('../models/rol.model');
+const CasoUso = require('../models/casouso.model');
+const Contiene = require('../models/contiene.model');
 
 exports.get_configuracion = (request, response, next) => {
     response.render('configuracion/configuracion');
 };
 
-exports.get_administrar_planpago = (request, response, next) => {
-    PlanPago.fetchAll()
-        .then(([planpagos]) => {
-            response.render('configuracion/administrar_planpago', {
-                planpago: planpagos,
+
+exports.get_registrar_rol = (request, response, next) => {
+    CasoUso.fetchAll()
+        .then(([casosuso, fieldData]) => {
+            console.log(casosuso); 
+            response.render('configuracion/registrar_rol', {
+                casouso: casosuso,
                 csrfToken: request.csrfToken(),
                 username: request.session.username || '',
                 permisos: request.session.permisos || [],
-                rol: request.session.rol || "",
-           });
+            });
         })
         .catch((error) => {
             response.status(500).render('500', {
@@ -26,6 +30,19 @@ exports.get_administrar_planpago = (request, response, next) => {
             console.log(error);
         });
 };
+
+exports.post_registrar_rol = (request, response, next) => {
+    const nombreRol = request.body.nombreRol;
+    const casosUso = request.body.casosUso; // Array de nombres
+
+    Rol.create(nombreRol)
+        .catch(error => {
+            console.log(error);
+            response.status(500).send("Error registrando el rol");
+        });
+};
+
+
 
 exports.post_modificar_planpago = (request, response, next) => {
     const nombre = request.body.nombrePlan;
@@ -50,10 +67,7 @@ exports.get_registrar_planpago = (request, response, next) => {
                 csrfToken: request.csrfToken(),
                 username: request.session.username || '',
                 permisos: request.session.permisos || [],
-                rol: request.session.rol || "",
-                csrfToken: request.csrfToken(),
-                permisos: request.session.permisos || [],
-                rol: request.session.rol || "",
+                rol: request.session.rol || ""
             });
         })
         .catch((error) => {
