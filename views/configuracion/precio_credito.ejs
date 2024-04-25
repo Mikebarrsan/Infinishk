@@ -21,23 +21,8 @@
             <div class="column is-4">
                 <h3 class="title is-3">Precio Crédito</h3>
             </div>
-            <div class="column is-3">
-                <div class="columns is-vcentered" style="text-align: center;">
-                    <div class="column is-3">
-                        <label class="label is-size-5" for="anio">Año:</label>
-                    </div>
-                    <div class="column is-7">
-                        <div class="select is-fullwidth">
-                            <select class="anio" name="anio" id="anio">
-                                <% anios.forEach(anio => { %>
-                                <option value="<%= anio['year(fechaModificacion)'] %>"
-                                    selected><%= anio['year(fechaModificacion)'] %></option>
-                                <% }); %>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            <div class="column is-3"></div>
             <% if (contienePermiso(permisos, 'Registrar Costo Credito') == true) { %>
             <div class="column is-5">
                 <p class="control">
@@ -85,6 +70,29 @@
                     </tbody>
                 </table>
 
+            <br>
+            <div class="columns is-vcentered">
+                <div class="column is-4">
+                    <h3 class="title is-3">Precios Crédito Pasados</h3>
+                </div>
+                <div class="column is-3">
+                    <div class="columns is-vcentered" style="text-align: center;">
+                        <div class="column is-3">
+                            <label class="label is-size-5" for="anio">Año:</label>
+                        </div>
+                        <div class="column is-7">
+                            <div class="select is-fullwidth">
+                                <select class="anio" name="anio" id="anio">
+                                    <% anios.forEach(anio => { %>
+                                    <option value="<%= anio['year(fechaModificacion)'] %>"
+                                        selected><%= anio['year(fechaModificacion)'] %></option>
+                                    <% }); %>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
                 <table id="precioCreditoContainer" style="display: none;" class="table is-bordered is-hoverable is-fullwidth">
                     <thead>
                         <tr>
