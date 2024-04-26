@@ -23,7 +23,7 @@ exports.get_pago = (request, response, next) => {
 exports.get_registro_transferencias = (request, response, next) => {
     response.render('pago/registro_transferencia', {
         subir: true,
-        error:false,
+        error: false,
         revisar: false,
         csrfToken: request.csrfToken(),
         permisos: request.session.permisos || [],
@@ -67,24 +67,16 @@ exports.post_subir_archivo = (request, response, next) => {
             let apellidos = '';
             let deudaEstudiante = 0;
             let tipoPago = '';
+            let montoAPagar = 0;
 
             if (fila.inicioRef === '1' || fila.inicioRef === '8') {
                 const nombreCompleto = await Alumno.fetchNombre(fila.Matricula);
                 if (nombreCompleto && nombreCompleto[0] && nombreCompleto[0][0] && nombreCompleto[0][0].Nombre !== undefined) {
                     nombre = String(nombreCompleto[0][0].Nombre);
                     apellidos = String(nombreCompleto[0][0].Apellidos);
-
-                } 
+                }
                 else {
-                    // Manejo de error si no se encuentra el nombre
-                    return response.render('pago/registro_transferencia', {
-                        subir: true,
-                        error:true,
-                        revisar: false,
-                        csrfToken: request.csrfToken(),
-                        permisos: request.session.permisos || [],
-                        rol: request.session.rol || '',
-                    });
+                    tipoPago = "Pago no Reconocido"
                 }
             }
 
@@ -94,9 +86,15 @@ exports.post_subir_archivo = (request, response, next) => {
                 const idLiquida = await Liquida.fetchIDPagado(fila.Matricula, fila.fechaFormato);
                 const pagoCompleto = await Pago.fetch_fecha_pago(fila.fechaFormato);
 
-                let montoAPagar = deuda && deuda[0] && deuda[0][0] && deuda[0][0].montoAPagar !== undefined ?
-                    Number(deuda[0][0].montoAPagar.toFixed(2)) :
-                    Number(deudaPagada[0][0].montoAPagar.toFixed(2));
+                if (deuda && deuda[0] && deuda[0].length === 0) {
+                    tipoPago = "Pago no Reconocido"
+                }
+
+                else {
+                    montoAPagar = deuda && deuda[0] && deuda[0][0] && deuda[0][0].montoAPagar !== undefined ?
+                        Number(deuda[0][0].montoAPagar.toFixed(2)) :
+                        Number(deudaPagada[0][0].montoAPagar.toFixed(2));
+                }
 
                 if (pagoCompleto && pagoCompleto[0] && pagoCompleto[0][0] && pagoCompleto[0][0].fechaPago !== undefined) {
                     const fechaParseada = new Date(pagoCompleto[0][0].fechaPago);
@@ -128,7 +126,11 @@ exports.post_subir_archivo = (request, response, next) => {
                     if (tipoPago === 'Pago Completo') {
                         tipoPago = 'Pago Completo';
                         deudaEstudiante = 0;
-                    } else {
+                    }
+                    if (tipoPago === 'Pago no Reconocido') {
+                        tipoPago = 'Pago no Reconocido';
+                    }
+                    else {
                         tipoPago = 'Pago a Registrar'; // Si el importe no coincide con el monto a pagar
                         deudaEstudiante = montoAPagar;
                     }
@@ -167,6 +169,9 @@ exports.post_subir_archivo = (request, response, next) => {
                     if (tipoPago === 'Pago Completo') {
                         tipoPago = 'Pago Completo';
                         deudaEstudiante = 'N/A';
+                    }
+                    if (tipoPago === 'Pago no Reconocido') {
+                        tipoPago = 'Pago no Reconocido';
                     } else {
                         tipoPago = 'Pago de Diplomado'; // Si el importe no coincide con el monto a pagar
                     }
@@ -181,7 +186,7 @@ exports.post_subir_archivo = (request, response, next) => {
         // Renderizar la vista con los resultados
         response.render('pago/registro_transferencia', {
             subir: false,
-            error:false,
+            error: false,
             revisar: true,
             datos: resultados,
             csrfToken: request.csrfToken(),
@@ -202,7 +207,7 @@ exports.post_registrar_transferencia = async (request, response, next) => {
     const tipoPago = request.body.tipoPago;
     const fecha = request.body.fecha;
     const nota = request.body.nota;
-    
+
     if (tipoPago === 'Pago de Colegiatura') {
         let diferencia = 0;
         let montoAPagar = 0;
@@ -213,13 +218,13 @@ exports.post_registrar_transferencia = async (request, response, next) => {
         if (deuda[0] && deuda[0][0] && typeof deuda[0][0].montoAPagar !== 'undefined') {
             montoAPagar = Number(deuda[0][0].montoAPagar.toFixed(2));
         }
-        
-        else{
+
+        else {
             success = false;
-            response.json({ success: success, message:'No existe deuda actual para ese pago' });
+            response.json({ success: success, message: 'No existe deuda actual para ese pago' });
             return;
         }
-        
+
         const colegiatura = await Deuda.fetchColegiatura(idDeuda[0][0].IDDeuda);
         const idColegiatura = colegiatura[0][0].IDColegiatura;
 

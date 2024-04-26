@@ -36,6 +36,12 @@
             /* Menos intenso con opacidad del 70% */
         }
 
+        .Pago-no-Reconocido {
+            color: white;
+            background-color: rgba(215, 92, 9, 0.7);
+            /* Menos intenso con opacidad del 70% */
+        }
+
 
         table {
             width: 100%;
@@ -231,7 +237,7 @@
 
                                             <tbody>
                                                 <% datos.forEach((fila,index)=> { %>
-                                                    <% if (fila.tipoPago==='Pago de Colegiatura' || fila.tipoPago==='Pago a Registrar' || fila.tipoPago==='Pago de Diplomado' ) { %>
+                                                    <% if (fila.tipoPago==='Pago de Colegiatura' || fila.tipoPago==='Pago a Registrar' || fila.tipoPago==='Pago de Diplomado' || fila.tipoPago === 'Pago no Reconocido' ) { %>
                                                         <tr id="fila<%= index %>"
                                                             class="<%= fila.tipoPago.replace(/\s/g, '-') %>">
                                                             <td>
@@ -266,6 +272,14 @@
                                                                                     id="_csrf" value="<%= csrfToken %>">
                                                                                 <select name="tipoPago">
                                                                                     <% if(fila.Matricula.charAt(0)==='1'){ %>
+                                                                                        <% if ( fila.tipoPago === 'Pago no Reconocido' ){ %>
+                                                                                            <option
+                                                                                                value="Pago no Reconocido"
+                                                                                                <%=fila.tipoPago==='Pago no Reconocido'
+                                                                                                ? 'selected' : '' %>>Pago no
+                                                                                                Reconocido
+                                                                                            </option>
+                                                                                            <% } else { %>
                                                                                         <option
                                                                                             value="Pago de Colegiatura"
                                                                                             <%=fila.tipoPago==='Pago de Colegiatura'
@@ -283,8 +297,17 @@
                                                                                             Extra
                                                                                         </option>
                                                                                         <% } %>
+                                                                                        <% } %>
 
                                                                                             <% if (fila.Matricula.charAt(0)==='8'){ %>
+                                                                                                <% if ( fila.tipoPago === 'Pago no Reconocido' ){ %>
+                                                                                                    <option
+                                                                                                        value="Pago no Reconocido"
+                                                                                                        <%=fila.tipoPago==='Pago no Reconocido'
+                                                                                                        ? 'selected' : '' %>>Pago no
+                                                                                                        Reconocido
+                                                                                                    </option>
+                                                                                                    <% } else { %>
                                                                                                 <option
                                                                                                     value="Pago a Registrar"
                                                                                                     <%=fila.tipoPago==='Pago a Registrar'
@@ -304,6 +327,7 @@
                                                                                                     >Pago
                                                                                                     Extra
                                                                                                 </option>
+                                                                                                <% } %>
                                                                                                 <% } %>
                                                                                 </select>
                                                                         </td>
@@ -333,6 +357,9 @@
                                                                                             style="color: #ffffff;"></i>
                                                                                     </span>
                                                                                 </button>
+                                                                            
+                                                                                <% } else if (fila.tipoPago==='Pago no Reconocido' ) { %>
+                                                                                        Ignora este pago y revisa tu base de datos
                                                                                 <% } else { %>
                                                                                     <button type="submit"
                                                                                         class="button my-button is-medium is-rounded is-responsive">
