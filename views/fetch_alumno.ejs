@@ -13,16 +13,18 @@
                 <h3 class="title is-3">Registrar Solicitud de Pago</h3>
                 <% } else if (pago_manual == true) { %>
                 <h3 class="title is-3">Registrar Pago Manual</h3>
+                <% } else if (fichas_pago == true) { %>
+                    <h3 class="title is-3">Modificar Fichas de Pago</h3>
                 <% } %>
             </div>
         </div>
-        <form action="/pagos/fetch_registrar_<% if (solicitud_pago) { %>solicitud <% } else { %>pago_manual <% } %>"
-            method="POST">
+        <% if (fichas_pago != true) { %>
+        <form action="/pagos/fetch_registrar_<% if (solicitud_pago) { %>solicitud <% } else { %>pago_manual <% } %>" method="POST">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <div class="columns">
                 <div class="column is-3"></div>
                 <div class="column is-6">
-                    <label class="label is-medium" for="buscar">Busca a un alumno:</label>
+                    <label class="label is-medium" for="buscar"> Busca a un alumno:</label>
                     <p class="help is-hidden has-text-danger-dark" id="ayuda_buscar"
                         style="padding: 0.5em; margin-top: -1em;">Por favor
                         ingresa a un alumno.</p>
@@ -61,5 +63,49 @@
             </div>
         </form>
     </div>
+    <%  } else if (solicitud_pago != true && pago_manual != true) { %> %>
+    <form action="/alumnos/<% if (fichas_pago) { %>fichas <% } %>" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <div class="columns">
+            <div class="column is-3"></div>
+            <div class="column is-6">
+                <label class="label is-medium" for="buscar">Busca a un alumno:</label>
+                <p class="help is-hidden has-text-danger-dark" id="ayuda_buscar"
+                    style="padding: 0.5em; margin-top: -1em;">Por favor
+                    ingresa a un alumno.</p>
+                <p class="help is-hidden has-text-danger-dark" id="ayuda_alumno"
+                    style="padding: 0.5em; margin-top: -1em;">Por favor selecciona a un alumno de la lista.</p>
+                <p class="help is-hidden has-text-danger-dark" id="ayuda_vacio"
+                    style="padding: 0.5em; margin-top: -1em;">No existe un alumno con ese nombre o matrícula. Favor
+                    de intentar de nuevo.</p>
+                <div class="field">
+                    <p class="control has-icons-left">
+                        <input name="buscar" class="input is-medium" type="text" id="buscar"
+                            placeholder="Nombre o Matrícula del Alumno" />
+                        <span class="icon is-small is-left">
+                            <i class="fa-solid fa-magnifying-glass" style="color: #95404c;"></i>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column is-3"></div>
+            <div class="column is-6">
+                <button class="button is-rounded is-medium is-responsive" type="submit"
+                    style="font-size: large; margin: 8px 2px;" id="Boton_buscar" disabled>
+                    <% if (fichas_pago == true) { %>
+                    <span>Modificar Fichas de Pago</span>
+                    <% } %>
+                    <span class="icon is-large">
+                        <i class="fa-solid fa-circle-chevron-right" style="color: #ffffff;"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="column is-3"></div>
+        </div>
+    </form>
+</div>
+<% } %>
 </section>
 <script type="text/javascript" src="/js/fetch_alumno.js"></script>

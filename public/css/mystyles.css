@@ -15797,1710 +15797,1487 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   overflow-y: auto;
 }
 
-/* Bulma Switch Control */
-.switch[type=checkbox] {
-  outline: 0;
-  user-select: none;
-  display: inline-block;
-  position: absolute;
-  opacity: 0;
-}
-.switch[type=checkbox]:focus + label::before, .switch[type=checkbox]:focus + label:before, .switch[type=checkbox]:focus + label::after, .switch[type=checkbox]:focus + label:after {
-  outline: none;
-}
-.switch[type=checkbox][disabled] {
-  cursor: not-allowed;
-}
-.switch[type=checkbox][disabled] + label {
-  opacity: 0.5;
-}
-.switch[type=checkbox][disabled] + label::before, .switch[type=checkbox][disabled] + label:before {
-  opacity: 0.5;
-}
-.switch[type=checkbox][disabled] + label::after, .switch[type=checkbox][disabled] + label:after {
-  opacity: 0.5;
-}
-.switch[type=checkbox][disabled] + label:hover {
-  cursor: not-allowed;
-}
-.switch[type=checkbox] + label {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: 1rem;
-  height: 2.5em;
-  line-height: 1.5;
-  padding-left: 3.5rem;
-  padding-top: 0.2rem;
-  cursor: pointer;
-}
-.switch[type=checkbox] + label::before, .switch[type=checkbox] + label:before {
-  position: absolute;
-  display: block;
-  top: calc(50% - 1.5rem * 0.5);
-  left: 0;
-  width: 3rem;
-  height: 1.5rem;
-  border: 0.1rem solid transparent;
+.input, .textarea, .select select {
+  background-color: white;
+  border-color: transparent;
   border-radius: 4px;
-  background: #cdcccf;
-  content: "";
-}
-.switch[type=checkbox] + label::after, .switch[type=checkbox] + label:after {
-  display: block;
-  position: absolute;
-  top: calc(50% - 1rem * 0.5);
-  left: 0.25rem;
-  width: 1rem;
-  height: 1rem;
-  transform: translate3d(0, 0, 0);
-  border-radius: 4px;
-  background: hsl(0, 0%, 100%);
-  transition: all 0.25s ease-out;
-  content: "";
-}
-.switch[type=checkbox] + label .switch-active, .switch[type=checkbox] + label .switch-inactive {
-  font-size: 0.9rem;
-  z-index: 1;
-  margin-top: -4px;
-}
-.switch[type=checkbox] + label.has-text-inside .switch-inactive {
-  margin-left: -1.925rem;
-}
-.switch[type=checkbox] + label.has-text-inside .switch-active {
-  margin-left: -3.25rem;
-}
-.switch[type=checkbox].is-rtl + label {
-  padding-left: 0;
-  padding-right: 3.5rem;
-}
-.switch[type=checkbox].is-rtl + label::before, .switch[type=checkbox].is-rtl + label:before {
-  left: auto;
-  right: 0;
-}
-.switch[type=checkbox].is-rtl + label::after, .switch[type=checkbox].is-rtl + label:after {
-  left: auto;
-  right: 1.625rem;
-}
-.switch[type=checkbox]:checked + label::before, .switch[type=checkbox]:checked + label:before {
-  background: #95404c;
-}
-.switch[type=checkbox]:checked + label::after {
-  left: 1.625rem;
-}
-.switch[type=checkbox]:checked.is-rtl + label::after, .switch[type=checkbox]:checked.is-rtl + label:after {
-  left: auto;
-  right: 0.25rem;
-}
-.switch[type=checkbox].is-outlined + label::before, .switch[type=checkbox].is-outlined + label:before {
-  background-color: transparent;
-  border-color: #cdcccf;
-}
-.switch[type=checkbox].is-outlined + label::after, .switch[type=checkbox].is-outlined + label:after {
-  background: #cdcccf;
-}
-.switch[type=checkbox].is-outlined:checked + label::before, .switch[type=checkbox].is-outlined:checked + label:before {
-  background-color: transparent;
-  border-color: #95404c;
-}
-.switch[type=checkbox].is-outlined:checked + label::after, .switch[type=checkbox].is-outlined:checked + label:after {
-  background: #95404c;
-}
-.switch[type=checkbox].is-thin + label::before, .switch[type=checkbox].is-thin + label:before {
-  top: 0.5454545456rem;
-  height: 0.375rem;
-}
-.switch[type=checkbox].is-thin + label::after, .switch[type=checkbox].is-thin + label:after {
-  box-shadow: 0px 0px 3px hsl(0, 0%, 48%);
-}
-.switch[type=checkbox].is-rounded + label::before, .switch[type=checkbox].is-rounded + label:before {
-  border-radius: 24px;
-}
-.switch[type=checkbox].is-rounded + label::after, .switch[type=checkbox].is-rounded + label:after {
-  border-radius: 50%;
-}
-.switch[type=checkbox].is-small + label {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: 0.75rem;
-  height: 2.5em;
-  line-height: 1.5;
-  padding-left: 2.75rem;
-  padding-top: 0.2rem;
-  cursor: pointer;
-}
-.switch[type=checkbox].is-small + label::before, .switch[type=checkbox].is-small + label:before {
-  position: absolute;
-  display: block;
-  top: calc(50% - 1.125rem * 0.5);
-  left: 0;
-  width: 2.25rem;
-  height: 1.125rem;
-  border: 0.1rem solid transparent;
-  border-radius: 4px;
-  background: #cdcccf;
-  content: "";
-}
-.switch[type=checkbox].is-small + label::after, .switch[type=checkbox].is-small + label:after {
-  display: block;
-  position: absolute;
-  top: calc(50% - 0.625rem * 0.5);
-  left: 0.25rem;
-  width: 0.625rem;
-  height: 0.625rem;
-  transform: translate3d(0, 0, 0);
-  border-radius: 4px;
-  background: hsl(0, 0%, 100%);
-  transition: all 0.25s ease-out;
-  content: "";
-}
-.switch[type=checkbox].is-small + label .switch-active, .switch[type=checkbox].is-small + label .switch-inactive {
-  font-size: 0.65rem;
-  z-index: 1;
-  margin-top: -4px;
-}
-.switch[type=checkbox].is-small + label.has-text-inside .switch-inactive {
-  margin-left: -1.55rem;
-}
-.switch[type=checkbox].is-small + label.has-text-inside .switch-active {
-  margin-left: -2.5rem;
-}
-.switch[type=checkbox].is-small.is-rtl + label {
-  padding-left: 0;
-  padding-right: 2.75rem;
-}
-.switch[type=checkbox].is-small.is-rtl + label::before, .switch[type=checkbox].is-small.is-rtl + label:before {
-  left: auto;
-  right: 0;
-}
-.switch[type=checkbox].is-small.is-rtl + label::after, .switch[type=checkbox].is-small.is-rtl + label:after {
-  left: auto;
-  right: 1.25rem;
-}
-.switch[type=checkbox].is-small:checked + label::before, .switch[type=checkbox].is-small:checked + label:before {
-  background: #95404c;
-}
-.switch[type=checkbox].is-small:checked + label::after {
-  left: 1.25rem;
-}
-.switch[type=checkbox].is-small:checked.is-rtl + label::after, .switch[type=checkbox].is-small:checked.is-rtl + label:after {
-  left: auto;
-  right: 0.25rem;
-}
-.switch[type=checkbox].is-small.is-outlined + label::before, .switch[type=checkbox].is-small.is-outlined + label:before {
-  background-color: transparent;
-  border-color: #cdcccf;
-}
-.switch[type=checkbox].is-small.is-outlined + label::after, .switch[type=checkbox].is-small.is-outlined + label:after {
-  background: #cdcccf;
-}
-.switch[type=checkbox].is-small.is-outlined:checked + label::before, .switch[type=checkbox].is-small.is-outlined:checked + label:before {
-  background-color: transparent;
-  border-color: #95404c;
-}
-.switch[type=checkbox].is-small.is-outlined:checked + label::after, .switch[type=checkbox].is-small.is-outlined:checked + label:after {
-  background: #95404c;
-}
-.switch[type=checkbox].is-small.is-thin + label::before, .switch[type=checkbox].is-small.is-thin + label:before {
-  top: 0.4090909093rem;
-  height: 0.28125rem;
-}
-.switch[type=checkbox].is-small.is-thin + label::after, .switch[type=checkbox].is-small.is-thin + label:after {
-  box-shadow: 0px 0px 3px hsl(0, 0%, 48%);
-}
-.switch[type=checkbox].is-small.is-rounded + label::before, .switch[type=checkbox].is-small.is-rounded + label:before {
-  border-radius: 24px;
-}
-.switch[type=checkbox].is-small.is-rounded + label::after, .switch[type=checkbox].is-small.is-rounded + label:after {
-  border-radius: 50%;
-}
-.switch[type=checkbox].is-medium + label {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: 1.25rem;
-  height: 2.5em;
-  line-height: 1.5;
-  padding-left: 4.25rem;
-  padding-top: 0.2rem;
-  cursor: pointer;
-}
-.switch[type=checkbox].is-medium + label::before, .switch[type=checkbox].is-medium + label:before {
-  position: absolute;
-  display: block;
-  top: calc(50% - 1.875rem * 0.5);
-  left: 0;
-  width: 3.75rem;
-  height: 1.875rem;
-  border: 0.1rem solid transparent;
-  border-radius: 4px;
-  background: #cdcccf;
-  content: "";
-}
-.switch[type=checkbox].is-medium + label::after, .switch[type=checkbox].is-medium + label:after {
-  display: block;
-  position: absolute;
-  top: calc(50% - 1.375rem * 0.5);
-  left: 0.25rem;
-  width: 1.375rem;
-  height: 1.375rem;
-  transform: translate3d(0, 0, 0);
-  border-radius: 4px;
-  background: hsl(0, 0%, 100%);
-  transition: all 0.25s ease-out;
-  content: "";
-}
-.switch[type=checkbox].is-medium + label .switch-active, .switch[type=checkbox].is-medium + label .switch-inactive {
-  font-size: 1.15rem;
-  z-index: 1;
-  margin-top: -4px;
-}
-.switch[type=checkbox].is-medium + label.has-text-inside .switch-inactive {
-  margin-left: -2.3rem;
-}
-.switch[type=checkbox].is-medium + label.has-text-inside .switch-active {
-  margin-left: -4rem;
-}
-.switch[type=checkbox].is-medium.is-rtl + label {
-  padding-left: 0;
-  padding-right: 4.25rem;
-}
-.switch[type=checkbox].is-medium.is-rtl + label::before, .switch[type=checkbox].is-medium.is-rtl + label:before {
-  left: auto;
-  right: 0;
-}
-.switch[type=checkbox].is-medium.is-rtl + label::after, .switch[type=checkbox].is-medium.is-rtl + label:after {
-  left: auto;
-  right: 2rem;
-}
-.switch[type=checkbox].is-medium:checked + label::before, .switch[type=checkbox].is-medium:checked + label:before {
-  background: #95404c;
-}
-.switch[type=checkbox].is-medium:checked + label::after {
-  left: 2rem;
-}
-.switch[type=checkbox].is-medium:checked.is-rtl + label::after, .switch[type=checkbox].is-medium:checked.is-rtl + label:after {
-  left: auto;
-  right: 0.25rem;
-}
-.switch[type=checkbox].is-medium.is-outlined + label::before, .switch[type=checkbox].is-medium.is-outlined + label:before {
-  background-color: transparent;
-  border-color: #cdcccf;
-}
-.switch[type=checkbox].is-medium.is-outlined + label::after, .switch[type=checkbox].is-medium.is-outlined + label:after {
-  background: #cdcccf;
-}
-.switch[type=checkbox].is-medium.is-outlined:checked + label::before, .switch[type=checkbox].is-medium.is-outlined:checked + label:before {
-  background-color: transparent;
-  border-color: #95404c;
-}
-.switch[type=checkbox].is-medium.is-outlined:checked + label::after, .switch[type=checkbox].is-medium.is-outlined:checked + label:after {
-  background: #95404c;
-}
-.switch[type=checkbox].is-medium.is-thin + label::before, .switch[type=checkbox].is-medium.is-thin + label:before {
-  top: 0.6818181819rem;
-  height: 0.46875rem;
-}
-.switch[type=checkbox].is-medium.is-thin + label::after, .switch[type=checkbox].is-medium.is-thin + label:after {
-  box-shadow: 0px 0px 3px hsl(0, 0%, 48%);
-}
-.switch[type=checkbox].is-medium.is-rounded + label::before, .switch[type=checkbox].is-medium.is-rounded + label:before {
-  border-radius: 24px;
-}
-.switch[type=checkbox].is-medium.is-rounded + label::after, .switch[type=checkbox].is-medium.is-rounded + label:after {
-  border-radius: 50%;
-}
-.switch[type=checkbox].is-large + label {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: 1.5rem;
-  height: 2.5em;
-  line-height: 1.5;
-  padding-left: 5rem;
-  padding-top: 0.2rem;
-  cursor: pointer;
-}
-.switch[type=checkbox].is-large + label::before, .switch[type=checkbox].is-large + label:before {
-  position: absolute;
-  display: block;
-  top: calc(50% - 2.25rem * 0.5);
-  left: 0;
-  width: 4.5rem;
-  height: 2.25rem;
-  border: 0.1rem solid transparent;
-  border-radius: 4px;
-  background: #cdcccf;
-  content: "";
-}
-.switch[type=checkbox].is-large + label::after, .switch[type=checkbox].is-large + label:after {
-  display: block;
-  position: absolute;
-  top: calc(50% - 1.75rem * 0.5);
-  left: 0.25rem;
-  width: 1.75rem;
-  height: 1.75rem;
-  transform: translate3d(0, 0, 0);
-  border-radius: 4px;
-  background: hsl(0, 0%, 100%);
-  transition: all 0.25s ease-out;
-  content: "";
-}
-.switch[type=checkbox].is-large + label .switch-active, .switch[type=checkbox].is-large + label .switch-inactive {
-  font-size: 1.4rem;
-  z-index: 1;
-  margin-top: -4px;
-}
-.switch[type=checkbox].is-large + label.has-text-inside .switch-inactive {
-  margin-left: -2.675rem;
-}
-.switch[type=checkbox].is-large + label.has-text-inside .switch-active {
-  margin-left: -4.75rem;
-}
-.switch[type=checkbox].is-large.is-rtl + label {
-  padding-left: 0;
-  padding-right: 5rem;
-}
-.switch[type=checkbox].is-large.is-rtl + label::before, .switch[type=checkbox].is-large.is-rtl + label:before {
-  left: auto;
-  right: 0;
-}
-.switch[type=checkbox].is-large.is-rtl + label::after, .switch[type=checkbox].is-large.is-rtl + label:after {
-  left: auto;
-  right: 2.375rem;
-}
-.switch[type=checkbox].is-large:checked + label::before, .switch[type=checkbox].is-large:checked + label:before {
-  background: #95404c;
-}
-.switch[type=checkbox].is-large:checked + label::after {
-  left: 2.375rem;
-}
-.switch[type=checkbox].is-large:checked.is-rtl + label::after, .switch[type=checkbox].is-large:checked.is-rtl + label:after {
-  left: auto;
-  right: 0.25rem;
-}
-.switch[type=checkbox].is-large.is-outlined + label::before, .switch[type=checkbox].is-large.is-outlined + label:before {
-  background-color: transparent;
-  border-color: #cdcccf;
-}
-.switch[type=checkbox].is-large.is-outlined + label::after, .switch[type=checkbox].is-large.is-outlined + label:after {
-  background: #cdcccf;
-}
-.switch[type=checkbox].is-large.is-outlined:checked + label::before, .switch[type=checkbox].is-large.is-outlined:checked + label:before {
-  background-color: transparent;
-  border-color: #95404c;
-}
-.switch[type=checkbox].is-large.is-outlined:checked + label::after, .switch[type=checkbox].is-large.is-outlined:checked + label:after {
-  background: #95404c;
-}
-.switch[type=checkbox].is-large.is-thin + label::before, .switch[type=checkbox].is-large.is-thin + label:before {
-  top: 0.8181818183rem;
-  height: 0.5625rem;
-}
-.switch[type=checkbox].is-large.is-thin + label::after, .switch[type=checkbox].is-large.is-thin + label:after {
-  box-shadow: 0px 0px 3px hsl(0, 0%, 48%);
-}
-.switch[type=checkbox].is-large.is-rounded + label::before, .switch[type=checkbox].is-large.is-rounded + label:before {
-  border-radius: 24px;
-}
-.switch[type=checkbox].is-large.is-rounded + label::after, .switch[type=checkbox].is-large.is-rounded + label:after {
-  border-radius: 50%;
-}
-.switch[type=checkbox].is-white + label .switch-active {
-  display: none;
-}
-.switch[type=checkbox].is-white + label .switch-inactive {
-  display: inline-block;
-}
-.switch[type=checkbox].is-white:checked + label::before, .switch[type=checkbox].is-white:checked + label:before {
-  background: hsl(0, 0%, 100%);
-}
-.switch[type=checkbox].is-white:checked + label .switch-active {
-  display: inline-block;
-}
-.switch[type=checkbox].is-white:checked + label .switch-inactive {
-  display: none;
-}
-.switch[type=checkbox].is-white.is-outlined:checked + label::before, .switch[type=checkbox].is-white.is-outlined:checked + label:before {
-  background-color: transparent;
-  border-color: hsl(0, 0%, 100%) !important;
-}
-.switch[type=checkbox].is-white.is-outlined:checked + label::after, .switch[type=checkbox].is-white.is-outlined:checked + label:after {
-  background: hsl(0, 0%, 100%);
-}
-.switch[type=checkbox].is-white.is-thin.is-outlined + label::after, .switch[type=checkbox].is-white.is-thin.is-outlined + label:after {
-  box-shadow: none;
-}
-.switch[type=checkbox].is-unchecked-white + label::before, .switch[type=checkbox].is-unchecked-white + label:before {
-  background: hsl(0, 0%, 100%);
-}
-.switch[type=checkbox].is-unchecked-white.is-outlined + label::before, .switch[type=checkbox].is-unchecked-white.is-outlined + label:before {
-  background-color: transparent;
-  border-color: hsl(0, 0%, 100%) !important;
-}
-.switch[type=checkbox].is-unchecked-white.is-outlined + label::after, .switch[type=checkbox].is-unchecked-white.is-outlined + label:after {
-  background: hsl(0, 0%, 100%);
-}
-.switch[type=checkbox].is-black + label .switch-active {
-  display: none;
-}
-.switch[type=checkbox].is-black + label .switch-inactive {
-  display: inline-block;
-}
-.switch[type=checkbox].is-black:checked + label::before, .switch[type=checkbox].is-black:checked + label:before {
-  background: hsl(0, 0%, 4%);
-}
-.switch[type=checkbox].is-black:checked + label .switch-active {
-  display: inline-block;
-}
-.switch[type=checkbox].is-black:checked + label .switch-inactive {
-  display: none;
-}
-.switch[type=checkbox].is-black.is-outlined:checked + label::before, .switch[type=checkbox].is-black.is-outlined:checked + label:before {
-  background-color: transparent;
-  border-color: hsl(0, 0%, 4%) !important;
-}
-.switch[type=checkbox].is-black.is-outlined:checked + label::after, .switch[type=checkbox].is-black.is-outlined:checked + label:after {
-  background: hsl(0, 0%, 4%);
-}
-.switch[type=checkbox].is-black.is-thin.is-outlined + label::after, .switch[type=checkbox].is-black.is-thin.is-outlined + label:after {
-  box-shadow: none;
-}
-.switch[type=checkbox].is-unchecked-black + label::before, .switch[type=checkbox].is-unchecked-black + label:before {
-  background: hsl(0, 0%, 4%);
-}
-.switch[type=checkbox].is-unchecked-black.is-outlined + label::before, .switch[type=checkbox].is-unchecked-black.is-outlined + label:before {
-  background-color: transparent;
-  border-color: hsl(0, 0%, 4%) !important;
-}
-.switch[type=checkbox].is-unchecked-black.is-outlined + label::after, .switch[type=checkbox].is-unchecked-black.is-outlined + label:after {
-  background: hsl(0, 0%, 4%);
-}
-.switch[type=checkbox].is-light + label .switch-active {
-  display: none;
-}
-.switch[type=checkbox].is-light + label .switch-inactive {
-  display: inline-block;
-}
-.switch[type=checkbox].is-light:checked + label::before, .switch[type=checkbox].is-light:checked + label:before {
-  background: hsl(0, 0%, 96%);
-}
-.switch[type=checkbox].is-light:checked + label .switch-active {
-  display: inline-block;
-}
-.switch[type=checkbox].is-light:checked + label .switch-inactive {
-  display: none;
-}
-.switch[type=checkbox].is-light.is-outlined:checked + label::before, .switch[type=checkbox].is-light.is-outlined:checked + label:before {
-  background-color: transparent;
-  border-color: hsl(0, 0%, 96%) !important;
-}
-.switch[type=checkbox].is-light.is-outlined:checked + label::after, .switch[type=checkbox].is-light.is-outlined:checked + label:after {
-  background: hsl(0, 0%, 96%);
-}
-.switch[type=checkbox].is-light.is-thin.is-outlined + label::after, .switch[type=checkbox].is-light.is-thin.is-outlined + label:after {
-  box-shadow: none;
-}
-.switch[type=checkbox].is-unchecked-light + label::before, .switch[type=checkbox].is-unchecked-light + label:before {
-  background: hsl(0, 0%, 96%);
-}
-.switch[type=checkbox].is-unchecked-light.is-outlined + label::before, .switch[type=checkbox].is-unchecked-light.is-outlined + label:before {
-  background-color: transparent;
-  border-color: hsl(0, 0%, 96%) !important;
-}
-.switch[type=checkbox].is-unchecked-light.is-outlined + label::after, .switch[type=checkbox].is-unchecked-light.is-outlined + label:after {
-  background: hsl(0, 0%, 96%);
-}
-.switch[type=checkbox].is-dark + label .switch-active {
-  display: none;
-}
-.switch[type=checkbox].is-dark + label .switch-inactive {
-  display: inline-block;
-}
-.switch[type=checkbox].is-dark:checked + label::before, .switch[type=checkbox].is-dark:checked + label:before {
-  background: hsl(0, 0%, 21%);
-}
-.switch[type=checkbox].is-dark:checked + label .switch-active {
-  display: inline-block;
-}
-.switch[type=checkbox].is-dark:checked + label .switch-inactive {
-  display: none;
-}
-.switch[type=checkbox].is-dark.is-outlined:checked + label::before, .switch[type=checkbox].is-dark.is-outlined:checked + label:before {
-  background-color: transparent;
-  border-color: hsl(0, 0%, 21%) !important;
-}
-.switch[type=checkbox].is-dark.is-outlined:checked + label::after, .switch[type=checkbox].is-dark.is-outlined:checked + label:after {
-  background: hsl(0, 0%, 21%);
-}
-.switch[type=checkbox].is-dark.is-thin.is-outlined + label::after, .switch[type=checkbox].is-dark.is-thin.is-outlined + label:after {
-  box-shadow: none;
-}
-.switch[type=checkbox].is-unchecked-dark + label::before, .switch[type=checkbox].is-unchecked-dark + label:before {
-  background: hsl(0, 0%, 21%);
-}
-.switch[type=checkbox].is-unchecked-dark.is-outlined + label::before, .switch[type=checkbox].is-unchecked-dark.is-outlined + label:before {
-  background-color: transparent;
-  border-color: hsl(0, 0%, 21%) !important;
-}
-.switch[type=checkbox].is-unchecked-dark.is-outlined + label::after, .switch[type=checkbox].is-unchecked-dark.is-outlined + label:after {
-  background: hsl(0, 0%, 21%);
-}
-.switch[type=checkbox].is-primary + label .switch-active {
-  display: none;
-}
-.switch[type=checkbox].is-primary + label .switch-inactive {
-  display: inline-block;
-}
-.switch[type=checkbox].is-primary:checked + label::before, .switch[type=checkbox].is-primary:checked + label:before {
-  background: #95404c;
-}
-.switch[type=checkbox].is-primary:checked + label .switch-active {
-  display: inline-block;
-}
-.switch[type=checkbox].is-primary:checked + label .switch-inactive {
-  display: none;
-}
-.switch[type=checkbox].is-primary.is-outlined:checked + label::before, .switch[type=checkbox].is-primary.is-outlined:checked + label:before {
-  background-color: transparent;
-  border-color: #95404c !important;
-}
-.switch[type=checkbox].is-primary.is-outlined:checked + label::after, .switch[type=checkbox].is-primary.is-outlined:checked + label:after {
-  background: #95404c;
-}
-.switch[type=checkbox].is-primary.is-thin.is-outlined + label::after, .switch[type=checkbox].is-primary.is-thin.is-outlined + label:after {
-  box-shadow: none;
-}
-.switch[type=checkbox].is-unchecked-primary + label::before, .switch[type=checkbox].is-unchecked-primary + label:before {
-  background: #95404c;
-}
-.switch[type=checkbox].is-unchecked-primary.is-outlined + label::before, .switch[type=checkbox].is-unchecked-primary.is-outlined + label:before {
-  background-color: transparent;
-  border-color: #95404c !important;
-}
-.switch[type=checkbox].is-unchecked-primary.is-outlined + label::after, .switch[type=checkbox].is-unchecked-primary.is-outlined + label:after {
-  background: #95404c;
-}
-.switch[type=checkbox].is-link + label .switch-active {
-  display: none;
-}
-.switch[type=checkbox].is-link + label .switch-inactive {
-  display: inline-block;
-}
-.switch[type=checkbox].is-link:checked + label::before, .switch[type=checkbox].is-link:checked + label:before {
-  background: #910106;
-}
-.switch[type=checkbox].is-link:checked + label .switch-active {
-  display: inline-block;
-}
-.switch[type=checkbox].is-link:checked + label .switch-inactive {
-  display: none;
-}
-.switch[type=checkbox].is-link.is-outlined:checked + label::before, .switch[type=checkbox].is-link.is-outlined:checked + label:before {
-  background-color: transparent;
-  border-color: #910106 !important;
-}
-.switch[type=checkbox].is-link.is-outlined:checked + label::after, .switch[type=checkbox].is-link.is-outlined:checked + label:after {
-  background: #910106;
-}
-.switch[type=checkbox].is-link.is-thin.is-outlined + label::after, .switch[type=checkbox].is-link.is-thin.is-outlined + label:after {
-  box-shadow: none;
-}
-.switch[type=checkbox].is-unchecked-link + label::before, .switch[type=checkbox].is-unchecked-link + label:before {
-  background: #910106;
-}
-.switch[type=checkbox].is-unchecked-link.is-outlined + label::before, .switch[type=checkbox].is-unchecked-link.is-outlined + label:before {
-  background-color: transparent;
-  border-color: #910106 !important;
-}
-.switch[type=checkbox].is-unchecked-link.is-outlined + label::after, .switch[type=checkbox].is-unchecked-link.is-outlined + label:after {
-  background: #910106;
-}
-.switch[type=checkbox].is-info + label .switch-active {
-  display: none;
-}
-.switch[type=checkbox].is-info + label .switch-inactive {
-  display: inline-block;
-}
-.switch[type=checkbox].is-info:checked + label::before, .switch[type=checkbox].is-info:checked + label:before {
-  background: #5a6581;
-}
-.switch[type=checkbox].is-info:checked + label .switch-active {
-  display: inline-block;
-}
-.switch[type=checkbox].is-info:checked + label .switch-inactive {
-  display: none;
-}
-.switch[type=checkbox].is-info.is-outlined:checked + label::before, .switch[type=checkbox].is-info.is-outlined:checked + label:before {
-  background-color: transparent;
-  border-color: #5a6581 !important;
-}
-.switch[type=checkbox].is-info.is-outlined:checked + label::after, .switch[type=checkbox].is-info.is-outlined:checked + label:after {
-  background: #5a6581;
-}
-.switch[type=checkbox].is-info.is-thin.is-outlined + label::after, .switch[type=checkbox].is-info.is-thin.is-outlined + label:after {
-  box-shadow: none;
-}
-.switch[type=checkbox].is-unchecked-info + label::before, .switch[type=checkbox].is-unchecked-info + label:before {
-  background: #5a6581;
-}
-.switch[type=checkbox].is-unchecked-info.is-outlined + label::before, .switch[type=checkbox].is-unchecked-info.is-outlined + label:before {
-  background-color: transparent;
-  border-color: #5a6581 !important;
-}
-.switch[type=checkbox].is-unchecked-info.is-outlined + label::after, .switch[type=checkbox].is-unchecked-info.is-outlined + label:after {
-  background: #5a6581;
-}
-.switch[type=checkbox].is-success + label .switch-active {
-  display: none;
-}
-.switch[type=checkbox].is-success + label .switch-inactive {
-  display: inline-block;
-}
-.switch[type=checkbox].is-success:checked + label::before, .switch[type=checkbox].is-success:checked + label:before {
-  background: hsl(153, 53%, 53%);
-}
-.switch[type=checkbox].is-success:checked + label .switch-active {
-  display: inline-block;
-}
-.switch[type=checkbox].is-success:checked + label .switch-inactive {
-  display: none;
-}
-.switch[type=checkbox].is-success.is-outlined:checked + label::before, .switch[type=checkbox].is-success.is-outlined:checked + label:before {
-  background-color: transparent;
-  border-color: hsl(153, 53%, 53%) !important;
-}
-.switch[type=checkbox].is-success.is-outlined:checked + label::after, .switch[type=checkbox].is-success.is-outlined:checked + label:after {
-  background: hsl(153, 53%, 53%);
-}
-.switch[type=checkbox].is-success.is-thin.is-outlined + label::after, .switch[type=checkbox].is-success.is-thin.is-outlined + label:after {
-  box-shadow: none;
-}
-.switch[type=checkbox].is-unchecked-success + label::before, .switch[type=checkbox].is-unchecked-success + label:before {
-  background: hsl(153, 53%, 53%);
-}
-.switch[type=checkbox].is-unchecked-success.is-outlined + label::before, .switch[type=checkbox].is-unchecked-success.is-outlined + label:before {
-  background-color: transparent;
-  border-color: hsl(153, 53%, 53%) !important;
-}
-.switch[type=checkbox].is-unchecked-success.is-outlined + label::after, .switch[type=checkbox].is-unchecked-success.is-outlined + label:after {
-  background: hsl(153, 53%, 53%);
-}
-.switch[type=checkbox].is-warning + label .switch-active {
-  display: none;
-}
-.switch[type=checkbox].is-warning + label .switch-inactive {
-  display: inline-block;
-}
-.switch[type=checkbox].is-warning:checked + label::before, .switch[type=checkbox].is-warning:checked + label:before {
-  background: hsl(44, 100%, 77%);
-}
-.switch[type=checkbox].is-warning:checked + label .switch-active {
-  display: inline-block;
-}
-.switch[type=checkbox].is-warning:checked + label .switch-inactive {
-  display: none;
-}
-.switch[type=checkbox].is-warning.is-outlined:checked + label::before, .switch[type=checkbox].is-warning.is-outlined:checked + label:before {
-  background-color: transparent;
-  border-color: hsl(44, 100%, 77%) !important;
-}
-.switch[type=checkbox].is-warning.is-outlined:checked + label::after, .switch[type=checkbox].is-warning.is-outlined:checked + label:after {
-  background: hsl(44, 100%, 77%);
-}
-.switch[type=checkbox].is-warning.is-thin.is-outlined + label::after, .switch[type=checkbox].is-warning.is-thin.is-outlined + label:after {
-  box-shadow: none;
-}
-.switch[type=checkbox].is-unchecked-warning + label::before, .switch[type=checkbox].is-unchecked-warning + label:before {
-  background: hsl(44, 100%, 77%);
-}
-.switch[type=checkbox].is-unchecked-warning.is-outlined + label::before, .switch[type=checkbox].is-unchecked-warning.is-outlined + label:before {
-  background-color: transparent;
-  border-color: hsl(44, 100%, 77%) !important;
-}
-.switch[type=checkbox].is-unchecked-warning.is-outlined + label::after, .switch[type=checkbox].is-unchecked-warning.is-outlined + label:after {
-  background: hsl(44, 100%, 77%);
-}
-.switch[type=checkbox].is-danger + label .switch-active {
-  display: none;
-}
-.switch[type=checkbox].is-danger + label .switch-inactive {
-  display: inline-block;
-}
-.switch[type=checkbox].is-danger:checked + label::before, .switch[type=checkbox].is-danger:checked + label:before {
-  background: #95404c;
-}
-.switch[type=checkbox].is-danger:checked + label .switch-active {
-  display: inline-block;
-}
-.switch[type=checkbox].is-danger:checked + label .switch-inactive {
-  display: none;
-}
-.switch[type=checkbox].is-danger.is-outlined:checked + label::before, .switch[type=checkbox].is-danger.is-outlined:checked + label:before {
-  background-color: transparent;
-  border-color: #95404c !important;
-}
-.switch[type=checkbox].is-danger.is-outlined:checked + label::after, .switch[type=checkbox].is-danger.is-outlined:checked + label:after {
-  background: #95404c;
-}
-.switch[type=checkbox].is-danger.is-thin.is-outlined + label::after, .switch[type=checkbox].is-danger.is-thin.is-outlined + label:after {
-  box-shadow: none;
-}
-.switch[type=checkbox].is-unchecked-danger + label::before, .switch[type=checkbox].is-unchecked-danger + label:before {
-  background: #95404c;
-}
-.switch[type=checkbox].is-unchecked-danger.is-outlined + label::before, .switch[type=checkbox].is-unchecked-danger.is-outlined + label:before {
-  background-color: transparent;
-  border-color: #95404c !important;
-}
-.switch[type=checkbox].is-unchecked-danger.is-outlined + label::after, .switch[type=checkbox].is-unchecked-danger.is-outlined + label:after {
-  background: #95404c;
-}
+  color: #363636; }
+  .input::-moz-placeholder, .textarea::-moz-placeholder, .select select::-moz-placeholder {
+    color: rgba(54, 54, 54, 0.3); }
+  .input::-webkit-input-placeholder, .textarea::-webkit-input-placeholder, .select select::-webkit-input-placeholder {
+    color: rgba(54, 54, 54, 0.3); }
+  .input:-moz-placeholder, .textarea:-moz-placeholder, .select select:-moz-placeholder {
+    color: rgba(54, 54, 54, 0.3); }
+  .input:-ms-input-placeholder, .textarea:-ms-input-placeholder, .select select:-ms-input-placeholder {
+    color: rgba(54, 54, 54, 0.3); }
+  .input:hover, .textarea:hover, .select select:hover, .is-hovered.input, .is-hovered.textarea, .select select.is-hovered {
+    border-color: #cdcccf; }
+  .input:focus, .textarea:focus, .select select:focus, .is-focused.input, .is-focused.textarea, .select select.is-focused, .input:active, .textarea:active, .select select:active, .is-active.input, .is-active.textarea, .select select.is-active {
+    border-color: #910106;
+    box-shadow: 0 0 0 0.125em rgba(145, 1, 6, 0.25); }
+  .input[disabled], .textarea[disabled], .select select[disabled],
+  fieldset[disabled] .input,
+  fieldset[disabled] .textarea,
+  fieldset[disabled] .select select,
+  .select fieldset[disabled] select {
+    background-color: whitesmoke;
+    border-color: whitesmoke;
+    box-shadow: none;
+    color: #7a7a7a; }
+    .input[disabled]::-moz-placeholder, .textarea[disabled]::-moz-placeholder, .select select[disabled]::-moz-placeholder,
+    fieldset[disabled] .input::-moz-placeholder,
+    fieldset[disabled] .textarea::-moz-placeholder,
+    fieldset[disabled] .select select::-moz-placeholder,
+    .select fieldset[disabled] select::-moz-placeholder {
+      color: rgba(122, 122, 122, 0.3); }
+    .input[disabled]::-webkit-input-placeholder, .textarea[disabled]::-webkit-input-placeholder, .select select[disabled]::-webkit-input-placeholder,
+    fieldset[disabled] .input::-webkit-input-placeholder,
+    fieldset[disabled] .textarea::-webkit-input-placeholder,
+    fieldset[disabled] .select select::-webkit-input-placeholder,
+    .select fieldset[disabled] select::-webkit-input-placeholder {
+      color: rgba(122, 122, 122, 0.3); }
+    .input[disabled]:-moz-placeholder, .textarea[disabled]:-moz-placeholder, .select select[disabled]:-moz-placeholder,
+    fieldset[disabled] .input:-moz-placeholder,
+    fieldset[disabled] .textarea:-moz-placeholder,
+    fieldset[disabled] .select select:-moz-placeholder,
+    .select fieldset[disabled] select:-moz-placeholder {
+      color: rgba(122, 122, 122, 0.3); }
+    .input[disabled]:-ms-input-placeholder, .textarea[disabled]:-ms-input-placeholder, .select select[disabled]:-ms-input-placeholder,
+    fieldset[disabled] .input:-ms-input-placeholder,
+    fieldset[disabled] .textarea:-ms-input-placeholder,
+    fieldset[disabled] .select select:-ms-input-placeholder,
+    .select fieldset[disabled] select:-ms-input-placeholder {
+      color: rgba(122, 122, 122, 0.3); }
 
-.field-body .switch[type=checkbox] + label {
-  margin-top: 0.375em;
-}
+/* Bulma Calendar */
+@keyframes decrement-prev {
+  from {
+    opacity: 1;
+    transform: translateY(0); } }
 
-.is-checkradio[type=radio],
-.is-checkradio[type=checkbox] {
-  outline: 0;
-  user-select: none;
+@keyframes decrement-next {
+  from {
+    opacity: 0;
+    transform: translateY(-50px); } }
+
+@keyframes increment-prev {
+  from {
+    opacity: 1;
+    transform: translateY(0); } }
+
+@keyframes increment-next {
+  from {
+    opacity: 0;
+    transform: translateY(50px); } }
+
+.datetimepicker {
+  transition: width 0.8s cubic-bezier(1, -0.55, 0.2, 1.37), opacity 0.2s ease, visibility 0.2s ease, margin 0.2s ease;
   display: none;
-  position: absolute;
-  opacity: 0;
-}
-.is-checkradio[type=radio] + label,
-.is-checkradio[type=checkbox] + label {
+  background: white;
+  border-radius: 2px;
+  max-width: 320px;
+  z-index: 1;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1); }
+  .datetimepicker.is-active {
+    display: block; }
+  .datetimepicker .datetimepicker-header {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    text-align: left;
+    position: relative;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    box-shadow: 0 0.2rem 0.2rem -0.2rem rgba(10, 10, 10, 0.1); }
+    .datetimepicker .datetimepicker-header.is-date-only {
+      flex-direction: row; }
+      .datetimepicker .datetimepicker-header.is-date-only .datetimepicker-selection-end .datetimepicker-selection-wrapper {
+        justify-content: flex-end !important; }
+    .datetimepicker .datetimepicker-header .datetimepicker-selection-details {
+      flex: 1; }
+    .datetimepicker .datetimepicker-header .datetimepicker-selection-from,
+    .datetimepicker .datetimepicker-header .datetimepicker-selection-to {
+      font-size: .65rem;
+      color: #cdcccf;
+      text-transform: uppercase;
+      padding: 0; }
+    .datetimepicker .datetimepicker-header .datetimepicker-selection-start,
+    .datetimepicker .datetimepicker-header .datetimepicker-selection-end {
+      padding: 0;
+      display: flex;
+      flex: 1;
+      flex-direction: row; }
+      .datetimepicker .datetimepicker-header .datetimepicker-selection-start .datetimepicker-selection-wrapper,
+      .datetimepicker .datetimepicker-header .datetimepicker-selection-end .datetimepicker-selection-wrapper {
+        flex-direction: row;
+        display: flex;
+        min-height: 2.5rem;
+        flex: 1 1 2rem; }
+      .datetimepicker .datetimepicker-header .datetimepicker-selection-start .datetimepicker-selection-day,
+      .datetimepicker .datetimepicker-header .datetimepicker-selection-end .datetimepicker-selection-day {
+        flex: 0;
+        text-transform: capitalize;
+        font-size: 2rem;
+        line-height: 2.5rem;
+        margin-right: .5rem;
+        color: #95404c;
+        font-weight: 100; }
+      .datetimepicker .datetimepicker-header .datetimepicker-selection-start .datetimepicker-selection-date,
+      .datetimepicker .datetimepicker-header .datetimepicker-selection-end .datetimepicker-selection-date {
+        font-size: .85rem;
+        line-height: .85rem;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        font-weight: 300; }
+      .datetimepicker .datetimepicker-header .datetimepicker-selection-start .datetimepicker-selection-month,
+      .datetimepicker .datetimepicker-header .datetimepicker-selection-end .datetimepicker-selection-month {
+        color: #7c7f80;
+        text-transform: capitalize; }
+      .datetimepicker .datetimepicker-header .datetimepicker-selection-start .datetimepicker-selection-weekday,
+      .datetimepicker .datetimepicker-header .datetimepicker-selection-end .datetimepicker-selection-weekday {
+        font-size: .75em;
+        color: #b6b4b6;
+        text-transform: capitalize;
+        text-align: left; }
+      .datetimepicker .datetimepicker-header .datetimepicker-selection-start .datetimepicker-selection-hour,
+      .datetimepicker .datetimepicker-header .datetimepicker-selection-end .datetimepicker-selection-hour {
+        font-size: 1.5rem;
+        font-weight: 100;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        text-align: center; }
+        .datetimepicker .datetimepicker-header .datetimepicker-selection-start .datetimepicker-selection-hour.editable,
+        .datetimepicker .datetimepicker-header .datetimepicker-selection-end .datetimepicker-selection-hour.editable {
+          border: 1px solid #dcdcdc; }
+          .datetimepicker .datetimepicker-header .datetimepicker-selection-start .datetimepicker-selection-hour.editable .datetimepicker-selection-input-hours,
+          .datetimepicker .datetimepicker-header .datetimepicker-selection-end .datetimepicker-selection-hour.editable .datetimepicker-selection-input-hours {
+            width: 31px;
+            font-size: 1.5rem;
+            font-weight: 100;
+            color: #4a4a4a;
+            border: 0;
+            text-align: right; }
+          .datetimepicker .datetimepicker-header .datetimepicker-selection-start .datetimepicker-selection-hour.editable .datetimepicker-selection-input-minutes,
+          .datetimepicker .datetimepicker-header .datetimepicker-selection-end .datetimepicker-selection-hour.editable .datetimepicker-selection-input-minutes {
+            width: 31px;
+            font-size: 1.5rem;
+            font-weight: 100;
+            color: #4a4a4a;
+            border: 0;
+            margin-left: -5px; }
+    .datetimepicker .datetimepicker-header .datetimepicker-selection-start,
+    .datetimepicker .datetimepicker-header .datetimepicker-selection-end {
+      align-items: center; }
+      .datetimepicker .datetimepicker-header .datetimepicker-selection-start.is-centered .datetimepicker-selection-wrapper,
+      .datetimepicker .datetimepicker-header .datetimepicker-selection-end.is-centered .datetimepicker-selection-wrapper {
+        justify-content: center;
+        align-items: center; }
+    .datetimepicker .datetimepicker-header .datetimepicker-selection-time {
+      flex: 1;
+      display: flex; }
+      .datetimepicker .datetimepicker-header .datetimepicker-selection-time .datetimepicker-selection-time-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 1rem;
+        color: #cdcccf; }
+  .datetimepicker .datepicker-nav {
+    background: #95404c;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5em;
+    flex-direction: row; }
+    .datetimepicker .datepicker-nav .datepicker-nav-month-year {
+      flex-direction: row;
+      display: flex; }
+    .datetimepicker .datepicker-nav .datepicker-nav-month,
+    .datetimepicker .datepicker-nav .datepicker-nav-year {
+      text-decoration: none;
+      font-size: 1rem;
+      color: #fff; }
+      .datetimepicker .datepicker-nav .datepicker-nav-month:hover,
+      .datetimepicker .datepicker-nav .datepicker-nav-year:hover {
+        cursor: pointer; }
+    .datetimepicker .datepicker-nav .datepicker-nav-month {
+      text-transform: capitalize; }
+    .datetimepicker .datepicker-nav .datepicker-nav-year {
+      font-weight: 700; }
+    .datetimepicker .datepicker-nav .datepicker-nav-previous, .datetimepicker .datepicker-nav .datepicker-nav-next {
+      width: 5em;
+      text-decoration: none;
+      color: white; }
+      .datetimepicker .datepicker-nav .datepicker-nav-previous:hover, .datetimepicker .datepicker-nav .datepicker-nav-next:hover {
+        background-color: #5a6581;
+        border: solid #910106; }
+        .datetimepicker .datepicker-nav .datepicker-nav-previous:hover svg, .datetimepicker .datepicker-nav .datepicker-nav-next:hover svg {
+          stroke-width: 1em; }
+      .datetimepicker .datepicker-nav .datepicker-nav-previous:focus, .datetimepicker .datepicker-nav .datepicker-nav-next:focus {
+        background-color: #5a6581;
+        border: solid #910106; }
+        .datetimepicker .datepicker-nav .datepicker-nav-previous:focus svg, .datetimepicker .datepicker-nav .datepicker-nav-next:focus svg {
+          stroke-width: 1em; }
+      .datetimepicker .datepicker-nav .datepicker-nav-previous svg, .datetimepicker .datepicker-nav .datepicker-nav-next svg {
+        stroke: currentColor;
+        width: 11.25px;
+        height: .75rem; }
+  .datetimepicker .datepicker-body {
+    overflow: hidden; }
+    .datetimepicker .datepicker-body .datepicker-dates {
+      display: none; }
+      .datetimepicker .datepicker-body .datepicker-dates.is-active {
+        display: flex;
+        flex-direction: column; }
+    .datetimepicker .datepicker-body .datepicker-months,
+    .datetimepicker .datepicker-body .datepicker-years {
+      display: none; }
+      .datetimepicker .datepicker-body .datepicker-months.is-active,
+      .datetimepicker .datepicker-body .datepicker-years.is-active {
+        display: flex;
+        flex-direction: row; }
+    .datetimepicker .datepicker-body .datepicker-weekdays {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 0.3rem 0;
+      background: transparent;
+      color: #fff;
+      font-size: 0.75rem; }
+      .datetimepicker .datepicker-body .datepicker-weekdays .datepicker-date {
+        background: transparent !important;
+        color: #cdcccf;
+        padding: .3rem; }
+    .datetimepicker .datepicker-body .datepicker-dates .datepicker-days {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 0;
+      color: #7a7a7a; }
+      .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date {
+        background: #f5f5f5;
+        display: flex;
+        justify-content: center;
+        flex: 14.28571%;
+        margin: .1rem 0;
+        align-items: center; }
+        .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item {
+          margin: 0 auto;
+          appearance: none;
+          background: transparent;
+          border: none;
+          border-radius: 25091983px;
+          color: #7c7f80;
+          cursor: pointer;
+          height: 2.2rem;
+          outline: none;
+          padding: 0;
+          position: relative;
+          text-align: center;
+          text-decoration: none;
+          transition: all .2s ease;
+          vertical-align: middle;
+          white-space: nowrap;
+          width: 2.2rem;
+          animation: bounce-button-in 0.45s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+          .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-today {
+            background: transparent;
+            border: 0.1rem solid #95404c;
+            color: #95404c; }
+          .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item:focus {
+            background: white;
+            border-color: white;
+            color: rgba(0, 0, 0, 0.7);
+            text-decoration: none; }
+          .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-active {
+            background: #95404c;
+            border-color: #95404c;
+            border-radius: 25091983px;
+            color: #fff; }
+            .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-active.is-today {
+              border-color: #fff !important;
+              color: #fff !important; }
+          .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-highlighted {
+            border: 0.1rem solid #95404c; }
+          .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item:hover {
+            background: white;
+            border: 0.1rem solid #95404c;
+            color: rgba(0, 0, 0, 0.7);
+            text-decoration: none; }
+        .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.is-current-month {
+          background: transparent; }
+        .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.is-disabled, .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date[disabled] {
+          background-color: whitesmoke;
+          background-image: url(data:image/gif;base64,R0lGODlhBQAFAOMAAP/14////93uHt3uHt3uHt3uHv///////////wAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAAAALAAAAAAFAAUAAAQL0ACAzpG0YnonNxEAOw==) !important; }
+          .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.is-disabled .date-item,
+          .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.is-disabled .calendar-event, .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date[disabled] .date-item,
+          .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date[disabled] .calendar-event {
+            cursor: default;
+            opacity: .25;
+            pointer-events: none; }
+        .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range {
+          position: relative;
+          background: #95404c;
+          z-index: 1; }
+          .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-start .date-item, .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-end .date-item {
+            background: #fff;
+            border: 0.1rem solid #95404c;
+            color: #95404c;
+            box-shadow: 0 0.2rem 0.2rem rgba(10, 10, 10, 0.1); }
+          .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-start {
+            border-top-left-radius: 25091983px;
+            border-bottom-left-radius: 25091983px; }
+          .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-end {
+            border-top-right-radius: 25091983px;
+            border-bottom-right-radius: 25091983px; }
+          .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item {
+            background-color: #95404c;
+            color: #fff; }
+            .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item.is-today {
+              border-color: #fff !important;
+              color: #fff !important; }
+        .datetimepicker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range-start.datepicker-range-end .date-item.is-today {
+          color: #95404c !important; }
+    .datetimepicker .datepicker-body .datepicker-months,
+    .datetimepicker .datepicker-body .datepicker-years {
+      display: none;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: .5rem;
+      max-height: 17rem;
+      overflow-y: auto; }
+      .datetimepicker .datepicker-body .datepicker-months.is-active,
+      .datetimepicker .datepicker-body .datepicker-years.is-active {
+        display: flex; }
+      .datetimepicker .datepicker-body .datepicker-months .datepicker-month,
+      .datetimepicker .datepicker-body .datepicker-months .datepicker-year,
+      .datetimepicker .datepicker-body .datepicker-years .datepicker-month,
+      .datetimepicker .datepicker-body .datepicker-years .datepicker-year {
+        padding: .5rem;
+        margin: .5rem;
+        font-size: 0.75rem;
+        text-align: center;
+        flex: 1 25%;
+        text-transform: capitalize;
+        border-radius: 25091983px;
+        border: .1rem solid transparent; }
+        .datetimepicker .datepicker-body .datepicker-months .datepicker-month.is-active,
+        .datetimepicker .datepicker-body .datepicker-months .datepicker-year.is-active,
+        .datetimepicker .datepicker-body .datepicker-years .datepicker-month.is-active,
+        .datetimepicker .datepicker-body .datepicker-years .datepicker-year.is-active {
+          background: #95404c;
+          border-color: #95404c;
+          color: #fff; }
+        .datetimepicker .datepicker-body .datepicker-months .datepicker-month:hover,
+        .datetimepicker .datepicker-body .datepicker-months .datepicker-year:hover,
+        .datetimepicker .datepicker-body .datepicker-years .datepicker-month:hover,
+        .datetimepicker .datepicker-body .datepicker-years .datepicker-year:hover {
+          cursor: pointer;
+          background: white;
+          border: 0.1rem solid #95404c;
+          color: rgba(0, 0, 0, 0.7); }
+  .datetimepicker .datetimepicker-footer {
+    display: flex;
+    flex: 1;
+    justify-content: space-evenly;
+    margin: 0; }
+    .datetimepicker .datetimepicker-footer > * {
+      text-decoration: none !important; }
+  .datetimepicker.is-datetimepicker-default .datetimepicker-container {
+    display: flex;
+    flex-direction: column; }
+    .datetimepicker.is-datetimepicker-default .datetimepicker-container:after, .datetimepicker.is-datetimepicker-default .datetimepicker-container:before {
+      bottom: 100%;
+      left: 15%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none; }
+    .datetimepicker.is-datetimepicker-default .datetimepicker-container:after {
+      border-color: rgba(255, 255, 255, 0);
+      border-bottom-color: #ffffff;
+      border-width: .75rem;
+      margin-left: -.75rem; }
+    .datetimepicker.is-datetimepicker-default .datetimepicker-container:before {
+      border-color: rgba(74, 74, 74, 0);
+      border-bottom-color: #4a4a4a;
+      border-width: .75rem;
+      margin-left: -.75rem; }
+    .datetimepicker.is-datetimepicker-default .datetimepicker-container.has-header-bottom {
+      flex-direction: column-reverse; }
+  .datetimepicker.is-large {
+    max-width: 100%; }
+    .datetimepicker.is-large .datepicker-body .datepicker-date {
+      border-bottom: 0.1rem solid whitesmoke;
+      border-right: 0.1rem solid whitesmoke;
+      display: flex;
+      flex-direction: column;
+      height: 11rem;
+      padding: 0; }
+      .datetimepicker.is-large .datepicker-body .datepicker-date:nth-child(7n) {
+        border-right: 0; }
+      .datetimepicker.is-large .datepicker-body .datepicker-date:nth-last-child(-n+7) {
+        border-bottom: 0; }
+    .datetimepicker.is-large .date-item {
+      align-self: flex-end;
+      height: 2.2rem;
+      margin-right: .5rem;
+      margin-top: .5rem; }
+    .datetimepicker.is-large .datepicker-range:before, .datetimepicker.is-large .datepicker-range::before {
+      top: 1.9rem; }
+    .datetimepicker.is-large .datepicker-range.datepicker-range-start::before {
+      left: auto;
+      width: 1.9rem; }
+    .datetimepicker.is-large .datepicker-range.datepicker-range-end::before {
+      right: 1.9rem; }
+    .datetimepicker.is-large .datepicker-events {
+      flex-grow: 1;
+      line-height: 1;
+      overflow-y: auto;
+      padding: .5rem; }
+    .datetimepicker.is-large .datepicker-event {
+      background-color: #7a7a7a;
+      border-radius: 2px;
+      color: white;
+      display: block;
+      font-size: 1rem;
+      margin: .2rem auto;
+      overflow: hidden;
+      padding: .3rem .4rem;
+      text-align: left;
+      text-overflow: ellipsis;
+      vertical-align: baseline;
+      white-space: nowrap; }
+      .datetimepicker.is-large .datepicker-event.is-white {
+        background-color: white;
+        color: #0a0a0a; }
+      .datetimepicker.is-large .datepicker-event.is-black {
+        background-color: #0a0a0a;
+        color: white; }
+      .datetimepicker.is-large .datepicker-event.is-light {
+        background-color: whitesmoke;
+        color: rgba(0, 0, 0, 0.7); }
+      .datetimepicker.is-large .datepicker-event.is-dark {
+        background-color: #363636;
+        color: #fff; }
+      .datetimepicker.is-large .datepicker-event.is-primary {
+        background-color: #95404c;
+        color: #fff; }
+      .datetimepicker.is-large .datepicker-event.is-link {
+        background-color: #910106;
+        color: #fff; }
+      .datetimepicker.is-large .datepicker-event.is-info {
+        background-color: #3e8ed0;
+        color: #fff; }
+      .datetimepicker.is-large .datepicker-event.is-success {
+        background-color: #48c78e;
+        color: #fff; }
+      .datetimepicker.is-large .datepicker-event.is-warning {
+        background-color: #ffe08a;
+        color: rgba(0, 0, 0, 0.7); }
+      .datetimepicker.is-large .datepicker-event.is-danger {
+        background-color: #95404c;
+        color: #fff; }
+  .datetimepicker .timepicker {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto; }
+    .datetimepicker .timepicker .timepicker-start,
+    .datetimepicker .timepicker .timepicker-end {
+      display: flex;
+      flex-direction: row;
+      flex: 1 50%;
+      justify-content: center;
+      position: relative; }
+      .datetimepicker .timepicker .timepicker-start .timepicker-hours,
+      .datetimepicker .timepicker .timepicker-start .timepicker-minutes,
+      .datetimepicker .timepicker .timepicker-end .timepicker-hours,
+      .datetimepicker .timepicker .timepicker-end .timepicker-minutes {
+        display: flex;
+        flex-direction: column;
+        align-items: center; }
+        .datetimepicker .timepicker .timepicker-start .timepicker-hours .timepicker-input,
+        .datetimepicker .timepicker .timepicker-start .timepicker-minutes .timepicker-input,
+        .datetimepicker .timepicker .timepicker-end .timepicker-hours .timepicker-input,
+        .datetimepicker .timepicker .timepicker-end .timepicker-minutes .timepicker-input {
+          position: relative;
+          color: #95404c;
+          text-align: center;
+          overflow: hidden;
+          font-size: 2rem;
+          font-weight: 400; }
+          .datetimepicker .timepicker .timepicker-start .timepicker-hours .timepicker-input.is-input .timepicker-input-number,
+          .datetimepicker .timepicker .timepicker-start .timepicker-minutes .timepicker-input.is-input .timepicker-input-number,
+          .datetimepicker .timepicker .timepicker-end .timepicker-hours .timepicker-input.is-input .timepicker-input-number,
+          .datetimepicker .timepicker .timepicker-end .timepicker-minutes .timepicker-input.is-input .timepicker-input-number {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 100ms ease-in; }
+          .datetimepicker .timepicker .timepicker-start .timepicker-hours .timepicker-input.is-input input,
+          .datetimepicker .timepicker .timepicker-start .timepicker-minutes .timepicker-input.is-input input,
+          .datetimepicker .timepicker .timepicker-end .timepicker-hours .timepicker-input.is-input input,
+          .datetimepicker .timepicker .timepicker-end .timepicker-minutes .timepicker-input.is-input input {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 100ms ease-in; }
+          .datetimepicker .timepicker .timepicker-start .timepicker-hours .timepicker-input input,
+          .datetimepicker .timepicker .timepicker-start .timepicker-minutes .timepicker-input input,
+          .datetimepicker .timepicker .timepicker-end .timepicker-hours .timepicker-input input,
+          .datetimepicker .timepicker .timepicker-end .timepicker-minutes .timepicker-input input {
+            width: 4rem;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            z-index: 2;
+            box-shadow: none;
+            outline: none;
+            border: none;
+            opacity: 0;
+            transition: opacity 100ms ease-in; }
+      .datetimepicker .timepicker .timepicker-start .timepicker-input-number,
+      .datetimepicker .timepicker .timepicker-end .timepicker-input-number {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 1000ms ease-in;
+        font-weight: 300; }
+        .datetimepicker .timepicker .timepicker-start .timepicker-input-number.is-increment-hide,
+        .datetimepicker .timepicker .timepicker-end .timepicker-input-number.is-increment-hide {
+          opacity: 0;
+          transform: translateY(-50px);
+          animation: increment-prev 100ms ease-in; }
+        .datetimepicker .timepicker .timepicker-start .timepicker-input-number.is-increment-visible,
+        .datetimepicker .timepicker .timepicker-end .timepicker-input-number.is-increment-visible {
+          opacity: 1;
+          transform: translateY(0);
+          animation: increment-next 100ms ease-out; }
+        .datetimepicker .timepicker .timepicker-start .timepicker-input-number.is-decrement-hide,
+        .datetimepicker .timepicker .timepicker-end .timepicker-input-number.is-decrement-hide {
+          opacity: 0;
+          transform: translateY(50px);
+          animation: decrement-prev 100ms ease-in; }
+        .datetimepicker .timepicker .timepicker-start .timepicker-input-number.is-decrement-visible,
+        .datetimepicker .timepicker .timepicker-end .timepicker-input-number.is-decrement-visible {
+          opacity: 1;
+          transform: translateY(0);
+          animation: decrement-next 100ms ease-out; }
+    .datetimepicker .timepicker .timepicker-end {
+      margin-left: 1rem;
+      padding-left: 1rem; }
+      .datetimepicker .timepicker .timepicker-end:before, .datetimepicker .timepicker .timepicker-end::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        height: 50%;
+        width: .1rem;
+        background-color: whitesmoke; }
+    .datetimepicker .timepicker .timepicker-previous,
+    .datetimepicker .timepicker .timepicker-next {
+      font-size: 1rem;
+      line-height: 1rem;
+      display: block;
+      color: #ADBCDA;
+      text-align: center;
+      margin: 1rem 0 0;
+      font-size: 1rem;
+      padding: .5rem;
+      width: 100%;
+      user-select: none; }
+      .datetimepicker .timepicker .timepicker-previous:hover,
+      .datetimepicker .timepicker .timepicker-next:hover {
+        cursor: pointer;
+        background-color: whitesmoke; }
+    .datetimepicker .timepicker .timepicker-previous {
+      margin: 0 0 1rem; }
+    .datetimepicker .timepicker .timepicker-time-divider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      color: #95404c; }
+  .datetimepicker.is-white .timepicker-input,
+  .datetimepicker.is-white .timepicker-input-number,
+  .datetimepicker.is-white .timepicker-time-divider {
+    color: white !important; }
+  .datetimepicker.is-black .timepicker-input,
+  .datetimepicker.is-black .timepicker-input-number,
+  .datetimepicker.is-black .timepicker-time-divider {
+    color: #0a0a0a !important; }
+  .datetimepicker.is-light .timepicker-input,
+  .datetimepicker.is-light .timepicker-input-number,
+  .datetimepicker.is-light .timepicker-time-divider {
+    color: whitesmoke !important; }
+  .datetimepicker.is-dark .timepicker-input,
+  .datetimepicker.is-dark .timepicker-input-number,
+  .datetimepicker.is-dark .timepicker-time-divider {
+    color: #363636 !important; }
+  .datetimepicker.is-primary .timepicker-input,
+  .datetimepicker.is-primary .timepicker-input-number,
+  .datetimepicker.is-primary .timepicker-time-divider {
+    color: #95404c !important; }
+  .datetimepicker.is-link .timepicker-input,
+  .datetimepicker.is-link .timepicker-input-number,
+  .datetimepicker.is-link .timepicker-time-divider {
+    color: #910106 !important; }
+  .datetimepicker.is-info .timepicker-input,
+  .datetimepicker.is-info .timepicker-input-number,
+  .datetimepicker.is-info .timepicker-time-divider {
+    color: #3e8ed0 !important; }
+  .datetimepicker.is-success .timepicker-input,
+  .datetimepicker.is-success .timepicker-input-number,
+  .datetimepicker.is-success .timepicker-time-divider {
+    color: #48c78e !important; }
+  .datetimepicker.is-warning .timepicker-input,
+  .datetimepicker.is-warning .timepicker-input-number,
+  .datetimepicker.is-warning .timepicker-time-divider {
+    color: #ffe08a !important; }
+  .datetimepicker.is-danger .timepicker-input,
+  .datetimepicker.is-danger .timepicker-input-number,
+  .datetimepicker.is-danger .timepicker-time-divider {
+    color: #95404c !important; }
+  .datetimepicker.is-black-bis .timepicker-input,
+  .datetimepicker.is-black-bis .timepicker-input-number,
+  .datetimepicker.is-black-bis .timepicker-time-divider {
+    color: #121212 !important; }
+  .datetimepicker.is-black-ter .timepicker-input,
+  .datetimepicker.is-black-ter .timepicker-input-number,
+  .datetimepicker.is-black-ter .timepicker-time-divider {
+    color: #242424 !important; }
+  .datetimepicker.is-grey-darker .timepicker-input,
+  .datetimepicker.is-grey-darker .timepicker-input-number,
+  .datetimepicker.is-grey-darker .timepicker-time-divider {
+    color: #363636 !important; }
+  .datetimepicker.is-grey-dark .timepicker-input,
+  .datetimepicker.is-grey-dark .timepicker-input-number,
+  .datetimepicker.is-grey-dark .timepicker-time-divider {
+    color: #7c7f80 !important; }
+  .datetimepicker.is-grey .timepicker-input,
+  .datetimepicker.is-grey .timepicker-input-number,
+  .datetimepicker.is-grey .timepicker-time-divider {
+    color: #7a7a7a !important; }
+  .datetimepicker.is-grey-light .timepicker-input,
+  .datetimepicker.is-grey-light .timepicker-input-number,
+  .datetimepicker.is-grey-light .timepicker-time-divider {
+    color: #cdcccf !important; }
+  .datetimepicker.is-grey-lighter .timepicker-input,
+  .datetimepicker.is-grey-lighter .timepicker-input-number,
+  .datetimepicker.is-grey-lighter .timepicker-time-divider {
+    color: #dbdbdb !important; }
+  .datetimepicker.is-white-ter .timepicker-input,
+  .datetimepicker.is-white-ter .timepicker-input-number,
+  .datetimepicker.is-white-ter .timepicker-time-divider {
+    color: whitesmoke !important; }
+  .datetimepicker.is-white-bis .timepicker-input,
+  .datetimepicker.is-white-bis .timepicker-input-number,
+  .datetimepicker.is-white-bis .timepicker-time-divider {
+    color: #fafafa !important; }
+  .datetimepicker.is-white .datetimepicker-header .datetimepicker-selection-day {
+    color: white; }
+  .datetimepicker.is-white .datepicker-nav {
+    background: white;
+    color: #0a0a0a; }
+  .datetimepicker.is-white .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-active {
+    background: white;
+    border-color: white; }
+  .datetimepicker.is-white .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-today {
+    border-color: white;
+    color: white; }
+  .datetimepicker.is-white .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item:hover {
+    border-color: white; }
+  .datetimepicker.is-white .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range {
+    background: white; }
+    .datetimepicker.is-white .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range:before, .datetimepicker.is-white .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range::before {
+      background: white; }
+    .datetimepicker.is-white .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item {
+      background-color: white;
+      color: #0a0a0a; }
+      .datetimepicker.is-white .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item.is-today {
+        border-color: #0a0a0a !important;
+        color: #0a0a0a !important; }
+    .datetimepicker.is-white .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-start .date-item, .datetimepicker.is-white .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-end .date-item {
+      background: #0a0a0a;
+      border-color: white;
+      color: white; }
+  .datetimepicker.is-black .datetimepicker-header .datetimepicker-selection-day {
+    color: #0a0a0a; }
+  .datetimepicker.is-black .datepicker-nav {
+    background: #0a0a0a;
+    color: white; }
+  .datetimepicker.is-black .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-active {
+    background: #0a0a0a;
+    border-color: #0a0a0a; }
+  .datetimepicker.is-black .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-today {
+    border-color: #0a0a0a;
+    color: #0a0a0a; }
+  .datetimepicker.is-black .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item:hover {
+    border-color: #0a0a0a; }
+  .datetimepicker.is-black .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range {
+    background: #0a0a0a; }
+    .datetimepicker.is-black .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range:before, .datetimepicker.is-black .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range::before {
+      background: #0a0a0a; }
+    .datetimepicker.is-black .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item {
+      background-color: #0a0a0a;
+      color: white; }
+      .datetimepicker.is-black .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item.is-today {
+        border-color: white !important;
+        color: white !important; }
+    .datetimepicker.is-black .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-start .date-item, .datetimepicker.is-black .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-end .date-item {
+      background: white;
+      border-color: #0a0a0a;
+      color: #0a0a0a; }
+  .datetimepicker.is-light .datetimepicker-header .datetimepicker-selection-day {
+    color: whitesmoke; }
+  .datetimepicker.is-light .datepicker-nav {
+    background: whitesmoke;
+    color: rgba(0, 0, 0, 0.7); }
+  .datetimepicker.is-light .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-active {
+    background: whitesmoke;
+    border-color: whitesmoke; }
+  .datetimepicker.is-light .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-today {
+    border-color: whitesmoke;
+    color: whitesmoke; }
+  .datetimepicker.is-light .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item:hover {
+    border-color: whitesmoke; }
+  .datetimepicker.is-light .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range {
+    background: whitesmoke; }
+    .datetimepicker.is-light .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range:before, .datetimepicker.is-light .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range::before {
+      background: whitesmoke; }
+    .datetimepicker.is-light .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item {
+      background-color: whitesmoke;
+      color: rgba(0, 0, 0, 0.7); }
+      .datetimepicker.is-light .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item.is-today {
+        border-color: rgba(0, 0, 0, 0.7) !important;
+        color: rgba(0, 0, 0, 0.7) !important; }
+    .datetimepicker.is-light .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-start .date-item, .datetimepicker.is-light .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-end .date-item {
+      background: rgba(0, 0, 0, 0.7);
+      border-color: whitesmoke;
+      color: whitesmoke; }
+  .datetimepicker.is-dark .datetimepicker-header .datetimepicker-selection-day {
+    color: #363636; }
+  .datetimepicker.is-dark .datepicker-nav {
+    background: #363636;
+    color: #fff; }
+  .datetimepicker.is-dark .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-active {
+    background: #363636;
+    border-color: #363636; }
+  .datetimepicker.is-dark .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-today {
+    border-color: #363636;
+    color: #363636; }
+  .datetimepicker.is-dark .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item:hover {
+    border-color: #363636; }
+  .datetimepicker.is-dark .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range {
+    background: #363636; }
+    .datetimepicker.is-dark .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range:before, .datetimepicker.is-dark .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range::before {
+      background: #363636; }
+    .datetimepicker.is-dark .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item {
+      background-color: #363636;
+      color: #fff; }
+      .datetimepicker.is-dark .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item.is-today {
+        border-color: #fff !important;
+        color: #fff !important; }
+    .datetimepicker.is-dark .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-start .date-item, .datetimepicker.is-dark .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-end .date-item {
+      background: #fff;
+      border-color: #363636;
+      color: #363636; }
+  .datetimepicker.is-primary .datetimepicker-header .datetimepicker-selection-day {
+    color: #95404c; }
+  .datetimepicker.is-primary .datepicker-nav {
+    background: #95404c;
+    color: #fff; }
+  .datetimepicker.is-primary .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-active {
+    background: #95404c;
+    border-color: #95404c; }
+  .datetimepicker.is-primary .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-today {
+    border-color: #95404c;
+    color: #95404c; }
+  .datetimepicker.is-primary .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item:hover {
+    border-color: #95404c; }
+  .datetimepicker.is-primary .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range {
+    background: #95404c; }
+    .datetimepicker.is-primary .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range:before, .datetimepicker.is-primary .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range::before {
+      background: #95404c; }
+    .datetimepicker.is-primary .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item {
+      background-color: #95404c;
+      color: #fff; }
+      .datetimepicker.is-primary .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item.is-today {
+        border-color: #fff !important;
+        color: #fff !important; }
+    .datetimepicker.is-primary .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-start .date-item, .datetimepicker.is-primary .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-end .date-item {
+      background: #fff;
+      border-color: #95404c;
+      color: #95404c; }
+  .datetimepicker.is-link .datetimepicker-header .datetimepicker-selection-day {
+    color: #910106; }
+  .datetimepicker.is-link .datepicker-nav {
+    background: #910106;
+    color: #fff; }
+  .datetimepicker.is-link .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-active {
+    background: #910106;
+    border-color: #910106; }
+  .datetimepicker.is-link .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-today {
+    border-color: #910106;
+    color: #910106; }
+  .datetimepicker.is-link .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item:hover {
+    border-color: #910106; }
+  .datetimepicker.is-link .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range {
+    background: #910106; }
+    .datetimepicker.is-link .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range:before, .datetimepicker.is-link .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range::before {
+      background: #910106; }
+    .datetimepicker.is-link .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item {
+      background-color: #910106;
+      color: #fff; }
+      .datetimepicker.is-link .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item.is-today {
+        border-color: #fff !important;
+        color: #fff !important; }
+    .datetimepicker.is-link .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-start .date-item, .datetimepicker.is-link .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-end .date-item {
+      background: #fff;
+      border-color: #910106;
+      color: #910106; }
+  .datetimepicker.is-info .datetimepicker-header .datetimepicker-selection-day {
+    color: #3e8ed0; }
+  .datetimepicker.is-info .datepicker-nav {
+    background: #3e8ed0;
+    color: #fff; }
+  .datetimepicker.is-info .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-active {
+    background: #3e8ed0;
+    border-color: #3e8ed0; }
+  .datetimepicker.is-info .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-today {
+    border-color: #3e8ed0;
+    color: #3e8ed0; }
+  .datetimepicker.is-info .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item:hover {
+    border-color: #3e8ed0; }
+  .datetimepicker.is-info .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range {
+    background: #3e8ed0; }
+    .datetimepicker.is-info .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range:before, .datetimepicker.is-info .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range::before {
+      background: #3e8ed0; }
+    .datetimepicker.is-info .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item {
+      background-color: #3e8ed0;
+      color: #fff; }
+      .datetimepicker.is-info .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item.is-today {
+        border-color: #fff !important;
+        color: #fff !important; }
+    .datetimepicker.is-info .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-start .date-item, .datetimepicker.is-info .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-end .date-item {
+      background: #fff;
+      border-color: #3e8ed0;
+      color: #3e8ed0; }
+  .datetimepicker.is-success .datetimepicker-header .datetimepicker-selection-day {
+    color: #48c78e; }
+  .datetimepicker.is-success .datepicker-nav {
+    background: #48c78e;
+    color: #fff; }
+  .datetimepicker.is-success .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-active {
+    background: #48c78e;
+    border-color: #48c78e; }
+  .datetimepicker.is-success .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-today {
+    border-color: #48c78e;
+    color: #48c78e; }
+  .datetimepicker.is-success .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item:hover {
+    border-color: #48c78e; }
+  .datetimepicker.is-success .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range {
+    background: #48c78e; }
+    .datetimepicker.is-success .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range:before, .datetimepicker.is-success .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range::before {
+      background: #48c78e; }
+    .datetimepicker.is-success .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item {
+      background-color: #48c78e;
+      color: #fff; }
+      .datetimepicker.is-success .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item.is-today {
+        border-color: #fff !important;
+        color: #fff !important; }
+    .datetimepicker.is-success .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-start .date-item, .datetimepicker.is-success .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-end .date-item {
+      background: #fff;
+      border-color: #48c78e;
+      color: #48c78e; }
+  .datetimepicker.is-warning .datetimepicker-header .datetimepicker-selection-day {
+    color: #ffe08a; }
+  .datetimepicker.is-warning .datepicker-nav {
+    background: #ffe08a;
+    color: rgba(0, 0, 0, 0.7); }
+  .datetimepicker.is-warning .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-active {
+    background: #ffe08a;
+    border-color: #ffe08a; }
+  .datetimepicker.is-warning .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-today {
+    border-color: #ffe08a;
+    color: #ffe08a; }
+  .datetimepicker.is-warning .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item:hover {
+    border-color: #ffe08a; }
+  .datetimepicker.is-warning .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range {
+    background: #ffe08a; }
+    .datetimepicker.is-warning .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range:before, .datetimepicker.is-warning .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range::before {
+      background: #ffe08a; }
+    .datetimepicker.is-warning .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item {
+      background-color: #ffe08a;
+      color: rgba(0, 0, 0, 0.7); }
+      .datetimepicker.is-warning .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item.is-today {
+        border-color: rgba(0, 0, 0, 0.7) !important;
+        color: rgba(0, 0, 0, 0.7) !important; }
+    .datetimepicker.is-warning .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-start .date-item, .datetimepicker.is-warning .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-end .date-item {
+      background: rgba(0, 0, 0, 0.7);
+      border-color: #ffe08a;
+      color: #ffe08a; }
+  .datetimepicker.is-danger .datetimepicker-header .datetimepicker-selection-day {
+    color: #95404c; }
+  .datetimepicker.is-danger .datepicker-nav {
+    background: #95404c;
+    color: #fff; }
+  .datetimepicker.is-danger .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-active {
+    background: #95404c;
+    border-color: #95404c; }
+  .datetimepicker.is-danger .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-today {
+    border-color: #95404c;
+    color: #95404c; }
+  .datetimepicker.is-danger .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item:hover {
+    border-color: #95404c; }
+  .datetimepicker.is-danger .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range {
+    background: #95404c; }
+    .datetimepicker.is-danger .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range:before, .datetimepicker.is-danger .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range::before {
+      background: #95404c; }
+    .datetimepicker.is-danger .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item {
+      background-color: #95404c;
+      color: #fff; }
+      .datetimepicker.is-danger .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item.is-today {
+        border-color: #fff !important;
+        color: #fff !important; }
+    .datetimepicker.is-danger .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-start .date-item, .datetimepicker.is-danger .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-end .date-item {
+      background: #fff;
+      border-color: #95404c;
+      color: #95404c; }
+  .datetimepicker.is-black-bis .datetimepicker-header .datetimepicker-selection-day {
+    color: #121212; }
+  .datetimepicker.is-black-bis .datepicker-nav {
+    background: #121212;
+    color: #fff; }
+  .datetimepicker.is-black-bis .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-active {
+    background: #121212;
+    border-color: #121212; }
+  .datetimepicker.is-black-bis .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-today {
+    border-color: #121212;
+    color: #121212; }
+  .datetimepicker.is-black-bis .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item:hover {
+    border-color: #121212; }
+  .datetimepicker.is-black-bis .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range {
+    background: #121212; }
+    .datetimepicker.is-black-bis .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range:before, .datetimepicker.is-black-bis .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range::before {
+      background: #121212; }
+    .datetimepicker.is-black-bis .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item {
+      background-color: #121212;
+      color: #fff; }
+      .datetimepicker.is-black-bis .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item.is-today {
+        border-color: #fff !important;
+        color: #fff !important; }
+    .datetimepicker.is-black-bis .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-start .date-item, .datetimepicker.is-black-bis .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-end .date-item {
+      background: #fff;
+      border-color: #121212;
+      color: #121212; }
+  .datetimepicker.is-black-ter .datetimepicker-header .datetimepicker-selection-day {
+    color: #242424; }
+  .datetimepicker.is-black-ter .datepicker-nav {
+    background: #242424;
+    color: #fff; }
+  .datetimepicker.is-black-ter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-active {
+    background: #242424;
+    border-color: #242424; }
+  .datetimepicker.is-black-ter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-today {
+    border-color: #242424;
+    color: #242424; }
+  .datetimepicker.is-black-ter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item:hover {
+    border-color: #242424; }
+  .datetimepicker.is-black-ter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range {
+    background: #242424; }
+    .datetimepicker.is-black-ter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range:before, .datetimepicker.is-black-ter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range::before {
+      background: #242424; }
+    .datetimepicker.is-black-ter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item {
+      background-color: #242424;
+      color: #fff; }
+      .datetimepicker.is-black-ter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item.is-today {
+        border-color: #fff !important;
+        color: #fff !important; }
+    .datetimepicker.is-black-ter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-start .date-item, .datetimepicker.is-black-ter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-end .date-item {
+      background: #fff;
+      border-color: #242424;
+      color: #242424; }
+  .datetimepicker.is-grey-darker .datetimepicker-header .datetimepicker-selection-day {
+    color: #363636; }
+  .datetimepicker.is-grey-darker .datepicker-nav {
+    background: #363636;
+    color: #fff; }
+  .datetimepicker.is-grey-darker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-active {
+    background: #363636;
+    border-color: #363636; }
+  .datetimepicker.is-grey-darker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-today {
+    border-color: #363636;
+    color: #363636; }
+  .datetimepicker.is-grey-darker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item:hover {
+    border-color: #363636; }
+  .datetimepicker.is-grey-darker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range {
+    background: #363636; }
+    .datetimepicker.is-grey-darker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range:before, .datetimepicker.is-grey-darker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range::before {
+      background: #363636; }
+    .datetimepicker.is-grey-darker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item {
+      background-color: #363636;
+      color: #fff; }
+      .datetimepicker.is-grey-darker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item.is-today {
+        border-color: #fff !important;
+        color: #fff !important; }
+    .datetimepicker.is-grey-darker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-start .date-item, .datetimepicker.is-grey-darker .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-end .date-item {
+      background: #fff;
+      border-color: #363636;
+      color: #363636; }
+  .datetimepicker.is-grey-dark .datetimepicker-header .datetimepicker-selection-day {
+    color: #7c7f80; }
+  .datetimepicker.is-grey-dark .datepicker-nav {
+    background: #7c7f80;
+    color: #fff; }
+  .datetimepicker.is-grey-dark .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-active {
+    background: #7c7f80;
+    border-color: #7c7f80; }
+  .datetimepicker.is-grey-dark .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-today {
+    border-color: #7c7f80;
+    color: #7c7f80; }
+  .datetimepicker.is-grey-dark .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item:hover {
+    border-color: #7c7f80; }
+  .datetimepicker.is-grey-dark .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range {
+    background: #7c7f80; }
+    .datetimepicker.is-grey-dark .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range:before, .datetimepicker.is-grey-dark .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range::before {
+      background: #7c7f80; }
+    .datetimepicker.is-grey-dark .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item {
+      background-color: #7c7f80;
+      color: #fff; }
+      .datetimepicker.is-grey-dark .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item.is-today {
+        border-color: #fff !important;
+        color: #fff !important; }
+    .datetimepicker.is-grey-dark .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-start .date-item, .datetimepicker.is-grey-dark .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-end .date-item {
+      background: #fff;
+      border-color: #7c7f80;
+      color: #7c7f80; }
+  .datetimepicker.is-grey .datetimepicker-header .datetimepicker-selection-day {
+    color: #7a7a7a; }
+  .datetimepicker.is-grey .datepicker-nav {
+    background: #7a7a7a;
+    color: #fff; }
+  .datetimepicker.is-grey .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-active {
+    background: #7a7a7a;
+    border-color: #7a7a7a; }
+  .datetimepicker.is-grey .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-today {
+    border-color: #7a7a7a;
+    color: #7a7a7a; }
+  .datetimepicker.is-grey .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item:hover {
+    border-color: #7a7a7a; }
+  .datetimepicker.is-grey .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range {
+    background: #7a7a7a; }
+    .datetimepicker.is-grey .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range:before, .datetimepicker.is-grey .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range::before {
+      background: #7a7a7a; }
+    .datetimepicker.is-grey .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item {
+      background-color: #7a7a7a;
+      color: #fff; }
+      .datetimepicker.is-grey .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item.is-today {
+        border-color: #fff !important;
+        color: #fff !important; }
+    .datetimepicker.is-grey .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-start .date-item, .datetimepicker.is-grey .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-end .date-item {
+      background: #fff;
+      border-color: #7a7a7a;
+      color: #7a7a7a; }
+  .datetimepicker.is-grey-light .datetimepicker-header .datetimepicker-selection-day {
+    color: #cdcccf; }
+  .datetimepicker.is-grey-light .datepicker-nav {
+    background: #cdcccf;
+    color: rgba(0, 0, 0, 0.7); }
+  .datetimepicker.is-grey-light .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-active {
+    background: #cdcccf;
+    border-color: #cdcccf; }
+  .datetimepicker.is-grey-light .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-today {
+    border-color: #cdcccf;
+    color: #cdcccf; }
+  .datetimepicker.is-grey-light .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item:hover {
+    border-color: #cdcccf; }
+  .datetimepicker.is-grey-light .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range {
+    background: #cdcccf; }
+    .datetimepicker.is-grey-light .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range:before, .datetimepicker.is-grey-light .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range::before {
+      background: #cdcccf; }
+    .datetimepicker.is-grey-light .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item {
+      background-color: #cdcccf;
+      color: rgba(0, 0, 0, 0.7); }
+      .datetimepicker.is-grey-light .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item.is-today {
+        border-color: rgba(0, 0, 0, 0.7) !important;
+        color: rgba(0, 0, 0, 0.7) !important; }
+    .datetimepicker.is-grey-light .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-start .date-item, .datetimepicker.is-grey-light .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-end .date-item {
+      background: rgba(0, 0, 0, 0.7);
+      border-color: #cdcccf;
+      color: #cdcccf; }
+  .datetimepicker.is-grey-lighter .datetimepicker-header .datetimepicker-selection-day {
+    color: #dbdbdb; }
+  .datetimepicker.is-grey-lighter .datepicker-nav {
+    background: #dbdbdb;
+    color: rgba(0, 0, 0, 0.7); }
+  .datetimepicker.is-grey-lighter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-active {
+    background: #dbdbdb;
+    border-color: #dbdbdb; }
+  .datetimepicker.is-grey-lighter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-today {
+    border-color: #dbdbdb;
+    color: #dbdbdb; }
+  .datetimepicker.is-grey-lighter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item:hover {
+    border-color: #dbdbdb; }
+  .datetimepicker.is-grey-lighter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range {
+    background: #dbdbdb; }
+    .datetimepicker.is-grey-lighter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range:before, .datetimepicker.is-grey-lighter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range::before {
+      background: #dbdbdb; }
+    .datetimepicker.is-grey-lighter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item {
+      background-color: #dbdbdb;
+      color: rgba(0, 0, 0, 0.7); }
+      .datetimepicker.is-grey-lighter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item.is-today {
+        border-color: rgba(0, 0, 0, 0.7) !important;
+        color: rgba(0, 0, 0, 0.7) !important; }
+    .datetimepicker.is-grey-lighter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-start .date-item, .datetimepicker.is-grey-lighter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-end .date-item {
+      background: rgba(0, 0, 0, 0.7);
+      border-color: #dbdbdb;
+      color: #dbdbdb; }
+  .datetimepicker.is-white-ter .datetimepicker-header .datetimepicker-selection-day {
+    color: whitesmoke; }
+  .datetimepicker.is-white-ter .datepicker-nav {
+    background: whitesmoke;
+    color: rgba(0, 0, 0, 0.7); }
+  .datetimepicker.is-white-ter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-active {
+    background: whitesmoke;
+    border-color: whitesmoke; }
+  .datetimepicker.is-white-ter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-today {
+    border-color: whitesmoke;
+    color: whitesmoke; }
+  .datetimepicker.is-white-ter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item:hover {
+    border-color: whitesmoke; }
+  .datetimepicker.is-white-ter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range {
+    background: whitesmoke; }
+    .datetimepicker.is-white-ter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range:before, .datetimepicker.is-white-ter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range::before {
+      background: whitesmoke; }
+    .datetimepicker.is-white-ter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item {
+      background-color: whitesmoke;
+      color: rgba(0, 0, 0, 0.7); }
+      .datetimepicker.is-white-ter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item.is-today {
+        border-color: rgba(0, 0, 0, 0.7) !important;
+        color: rgba(0, 0, 0, 0.7) !important; }
+    .datetimepicker.is-white-ter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-start .date-item, .datetimepicker.is-white-ter .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-end .date-item {
+      background: rgba(0, 0, 0, 0.7);
+      border-color: whitesmoke;
+      color: whitesmoke; }
+  .datetimepicker.is-white-bis .datetimepicker-header .datetimepicker-selection-day {
+    color: #fafafa; }
+  .datetimepicker.is-white-bis .datepicker-nav {
+    background: #fafafa;
+    color: rgba(0, 0, 0, 0.7); }
+  .datetimepicker.is-white-bis .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-active {
+    background: #fafafa;
+    border-color: #fafafa; }
+  .datetimepicker.is-white-bis .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item.is-today {
+    border-color: #fafafa;
+    color: #fafafa; }
+  .datetimepicker.is-white-bis .datepicker-body .datepicker-dates .datepicker-days .datepicker-date .date-item:hover {
+    border-color: #fafafa; }
+  .datetimepicker.is-white-bis .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range {
+    background: #fafafa; }
+    .datetimepicker.is-white-bis .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range:before, .datetimepicker.is-white-bis .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range::before {
+      background: #fafafa; }
+    .datetimepicker.is-white-bis .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item {
+      background-color: #fafafa;
+      color: rgba(0, 0, 0, 0.7); }
+      .datetimepicker.is-white-bis .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range .date-item.is-today {
+        border-color: rgba(0, 0, 0, 0.7) !important;
+        color: rgba(0, 0, 0, 0.7) !important; }
+    .datetimepicker.is-white-bis .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-start .date-item, .datetimepicker.is-white-bis .datepicker-body .datepicker-dates .datepicker-days .datepicker-date.datepicker-range.datepicker-range-end .date-item {
+      background: rgba(0, 0, 0, 0.7);
+      border-color: #fafafa;
+      color: #fafafa; }
+
+.datetimepicker-dummy {
   position: relative;
-  display: initial;
-  cursor: pointer;
-  vertical-align: middle;
-  margin: 0.5em;
-  padding: 0.2rem 0.5rem 0.2rem 0;
-  border-radius: 4px;
-}
-.is-checkradio[type=radio] + label:first-of-type,
-.is-checkradio[type=checkbox] + label:first-of-type {
-  margin-left: 0;
-}
-.is-checkradio[type=radio] + label:hover::before, .is-checkradio[type=radio] + label:hover:before,
-.is-checkradio[type=checkbox] + label:hover::before,
-.is-checkradio[type=checkbox] + label:hover:before {
-  animation-duration: 0.4s;
-  animation-fill-mode: both;
-  animation-name: hover-color;
-}
-.is-checkradio[type=radio] + label::before, .is-checkradio[type=radio] + label:before,
-.is-checkradio[type=checkbox] + label::before,
-.is-checkradio[type=checkbox] + label:before {
-  position: absolute;
-  left: 0;
-  top: 0rem;
-  content: "";
-  border: 0.1rem solid hsl(0, 0%, 86%);
-}
-.is-checkradio[type=radio] + label::after, .is-checkradio[type=radio] + label:after,
-.is-checkradio[type=checkbox] + label::after,
-.is-checkradio[type=checkbox] + label:after {
-  position: absolute;
-  display: none;
-  content: "";
-  top: 0rem;
-}
-.is-checkradio[type=radio].is-rtl + label,
-.is-checkradio[type=checkbox].is-rtl + label {
-  margin-right: 0rem;
-  margin-left: 0.5rem;
-}
-.is-checkradio[type=radio].is-rtl + label::before, .is-checkradio[type=radio].is-rtl + label:before,
-.is-checkradio[type=checkbox].is-rtl + label::before,
-.is-checkradio[type=checkbox].is-rtl + label:before {
-  left: auto;
-  right: 0;
-}
-.is-checkradio[type=radio]:focus + label::before, .is-checkradio[type=radio]:focus + label:before,
-.is-checkradio[type=checkbox]:focus + label::before,
-.is-checkradio[type=checkbox]:focus + label:before {
-  outline: 1px solid #cdcccf;
-}
-.is-checkradio[type=radio]:hover:not([disabled]) + label::before, .is-checkradio[type=radio]:hover:not([disabled]) + label:before,
-.is-checkradio[type=checkbox]:hover:not([disabled]) + label::before,
-.is-checkradio[type=checkbox]:hover:not([disabled]) + label:before {
-  border-color: #95404c !important;
-}
-.is-checkradio[type=radio]:checked + label::before, .is-checkradio[type=radio]:checked + label:before,
-.is-checkradio[type=checkbox]:checked + label::before,
-.is-checkradio[type=checkbox]:checked + label:before {
-  border: 0.1rem solid hsl(0, 0%, 86%);
-}
-.is-checkradio[type=radio]:checked[disabled],
-.is-checkradio[type=checkbox]:checked[disabled] {
-  cursor: not-allowed;
-}
-.is-checkradio[type=radio]:checked[disabled] + label,
-.is-checkradio[type=checkbox]:checked[disabled] + label {
-  opacity: 0.5;
-}
-.is-checkradio[type=radio]:checked + label::before, .is-checkradio[type=radio]:checked + label:before,
-.is-checkradio[type=checkbox]:checked + label::before,
-.is-checkradio[type=checkbox]:checked + label:before {
-  animation-name: none;
-}
-.is-checkradio[type=radio]:checked + label::after, .is-checkradio[type=radio]:checked + label:after,
-.is-checkradio[type=checkbox]:checked + label::after,
-.is-checkradio[type=checkbox]:checked + label:after {
-  display: inline-block;
-}
-.is-checkradio[type=radio][disabled],
-.is-checkradio[type=checkbox][disabled] {
-  cursor: not-allowed;
-}
-.is-checkradio[type=radio][disabled] + label,
-.is-checkradio[type=checkbox][disabled] + label {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-.is-checkradio[type=radio][disabled] + label:hover, .is-checkradio[type=radio][disabled] + label:before, .is-checkradio[type=radio][disabled] + label::before, .is-checkradio[type=radio][disabled] + label::after, .is-checkradio[type=radio][disabled] + label:after,
-.is-checkradio[type=checkbox][disabled] + label:hover,
-.is-checkradio[type=checkbox][disabled] + label:before,
-.is-checkradio[type=checkbox][disabled] + label::before,
-.is-checkradio[type=checkbox][disabled] + label::after,
-.is-checkradio[type=checkbox][disabled] + label:after {
-  cursor: not-allowed;
-}
-.is-checkradio[type=radio][disabled]:hover,
-.is-checkradio[type=checkbox][disabled]:hover {
-  cursor: not-allowed;
-}
-.is-checkradio[type=radio][disabled]:hover::before, .is-checkradio[type=radio][disabled]:hover:before,
-.is-checkradio[type=checkbox][disabled]:hover::before,
-.is-checkradio[type=checkbox][disabled]:hover:before {
-  animation-name: none;
-}
-.is-checkradio[type=radio][disabled]::before, .is-checkradio[type=radio][disabled]:before,
-.is-checkradio[type=checkbox][disabled]::before,
-.is-checkradio[type=checkbox][disabled]:before {
-  cursor: not-allowed;
-}
-.is-checkradio[type=radio][disabled]::after, .is-checkradio[type=radio][disabled]:after,
-.is-checkradio[type=checkbox][disabled]::after,
-.is-checkradio[type=checkbox][disabled]:after {
-  cursor: not-allowed;
-}
-.is-checkradio[type=radio].has-no-border + label::before, .is-checkradio[type=radio].has-no-border + label:before,
-.is-checkradio[type=checkbox].has-no-border + label::before,
-.is-checkradio[type=checkbox].has-no-border + label:before {
-  border: none !important;
-}
-.is-checkradio[type=radio].is-block,
-.is-checkradio[type=checkbox].is-block {
-  display: none !important;
-}
-.is-checkradio[type=radio].is-block + label,
-.is-checkradio[type=checkbox].is-block + label {
-  width: 100% !important;
-  background: hsl(0, 0%, 96%);
-  color: rgba(0, 0, 0, 0.7);
-  padding-right: 0.75em;
-}
-.is-checkradio[type=radio].is-block:hover:not([disabled]) + label,
-.is-checkradio[type=checkbox].is-block:hover:not([disabled]) + label {
-  background: #e8e8e8;
-}
+  display: flex;
+  width: 100%;
+  height: 2.5rem; }
+  .datetimepicker-dummy .datetimepicker-clear-button {
+    background: transparent;
+    border: 0;
+    color: #95404c;
+    cursor: pointer;
+    font-weight: 400;
+    outline: 0;
+    transform: rotate(45deg);
+    font-size: 1.5rem;
+    height: 0.5em;
+    margin: .4rem .2rem 0 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1.75rem; }
+  .datetimepicker-dummy .datetimepicker-dummy-wrapper {
+    background-color: white;
+    border-color: transparent;
+    border-radius: 4px;
+    color: #363636;
+    box-shadow: none;
+    cursor: pointer;
+    display: flex;
+    flex: 1 100%;
+    flex-wrap: nowrap;
+    height: 100%;
+    max-width: 100%; }
+    .datetimepicker-dummy .datetimepicker-dummy-wrapper::-moz-placeholder {
+      color: rgba(54, 54, 54, 0.3); }
+    .datetimepicker-dummy .datetimepicker-dummy-wrapper::-webkit-input-placeholder {
+      color: rgba(54, 54, 54, 0.3); }
+    .datetimepicker-dummy .datetimepicker-dummy-wrapper:-moz-placeholder {
+      color: rgba(54, 54, 54, 0.3); }
+    .datetimepicker-dummy .datetimepicker-dummy-wrapper:-ms-input-placeholder {
+      color: rgba(54, 54, 54, 0.3); }
+    .datetimepicker-dummy .datetimepicker-dummy-wrapper:hover, .datetimepicker-dummy .datetimepicker-dummy-wrapper.is-hovered {
+      border-color: #cdcccf; }
+    .datetimepicker-dummy .datetimepicker-dummy-wrapper:focus, .datetimepicker-dummy .datetimepicker-dummy-wrapper.is-focused, .datetimepicker-dummy .datetimepicker-dummy-wrapper:active, .datetimepicker-dummy .datetimepicker-dummy-wrapper.is-active {
+      border-color: #910106;
+      box-shadow: 0 0 0 0.125em rgba(145, 1, 6, 0.25); }
+    .datetimepicker-dummy .datetimepicker-dummy-wrapper[disabled],
+    fieldset[disabled] .datetimepicker-dummy .datetimepicker-dummy-wrapper {
+      background-color: whitesmoke;
+      border-color: whitesmoke;
+      box-shadow: none;
+      color: #7a7a7a; }
+      .datetimepicker-dummy .datetimepicker-dummy-wrapper[disabled]::-moz-placeholder,
+      fieldset[disabled] .datetimepicker-dummy .datetimepicker-dummy-wrapper::-moz-placeholder {
+        color: rgba(122, 122, 122, 0.3); }
+      .datetimepicker-dummy .datetimepicker-dummy-wrapper[disabled]::-webkit-input-placeholder,
+      fieldset[disabled] .datetimepicker-dummy .datetimepicker-dummy-wrapper::-webkit-input-placeholder {
+        color: rgba(122, 122, 122, 0.3); }
+      .datetimepicker-dummy .datetimepicker-dummy-wrapper[disabled]:-moz-placeholder,
+      fieldset[disabled] .datetimepicker-dummy .datetimepicker-dummy-wrapper:-moz-placeholder {
+        color: rgba(122, 122, 122, 0.3); }
+      .datetimepicker-dummy .datetimepicker-dummy-wrapper[disabled]:-ms-input-placeholder,
+      fieldset[disabled] .datetimepicker-dummy .datetimepicker-dummy-wrapper:-ms-input-placeholder {
+        color: rgba(122, 122, 122, 0.3); }
+    .datetimepicker-dummy .datetimepicker-dummy-wrapper[readonly] {
+      box-shadow: none; }
+    .datetimepicker-dummy .datetimepicker-dummy-wrapper:before, .datetimepicker-dummy .datetimepicker-dummy-wrapper::before {
+      content: '';
+      mask: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNjAgNjAiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxnPjxwYXRoIGZpbGw9ImN1cnJlbnRjb2xvciIgZD0iTTU3LDRoLTdWMWMwLTAuNTUzLTAuNDQ3LTEtMS0xaC03Yy0wLjU1MywwLTEsMC40NDctMSwxdjNIMTlWMWMwLTAuNTUzLTAuNDQ3LTEtMS0xaC03Yy0wLjU1MywwLTEsMC40NDctMSwxdjNIM0MyLjQ0Nyw0LDIsNC40NDcsMiw1djExdjQzYzAsMC41NTMsMC40NDcsMSwxLDFoNTRjMC41NTMsMCwxLTAuNDQ3LDEtMVYxNlY1QzU4LDQuNDQ3LDU3LjU1Myw0LDU3LDR6IE00MywyaDV2M3YzaC01VjVWMnogTTEyLDJoNXYzdjNoLTVWNVYyeiBNNCw2aDZ2M2MwLDAuNTUzLDAuNDQ3LDEsMSwxaDdjMC41NTMsMCwxLTAuNDQ3LDEtMVY2aDIydjNjMCwwLjU1MywwLjQ0NywxLDEsMWg3YzAuNTUzLDAsMS0wLjQ0NywxLTFWNmg2djlINFY2ek00LDU4VjE3aDUydjQxSDR6Ii8+PHBhdGggZmlsbD0iY3VycmVudGNvbG9yIiBkPSJNMzgsMjNoLTdoLTJoLTdoLTJoLTl2OXYydjd2MnY5aDloMmg3aDJoN2gyaDl2LTl2LTJ2LTd2LTJ2LTloLTlIMzh6TTMxLDI1aDd2N2gtN1YyNXpNMzgsNDFoLTd2LTdoN1Y0MXpNMjIsMzRoN3Y3aC03VjM0ek0yMiwyNWg3djdoLTdWMjV6TTEzLDI1aDd2N2gtN1YyNXpNMTMsMzRoN3Y3aC03VjM0ek0yMCw1MGgtN3YtN2g3VjUwek0yOSw1MGgtN3YtN2g3VjUweiBNMzgsNTBoLTd2LTdoN1Y1MHogTTQ3LDUwaC03di03aDdWNTB6IE00Nyw0MWgtN3YtN2g3VjQxek00NywyNXY3aC03di03SDQ3eiIvPjwvZz48L3N2Zz4=);
+      -webkit-mask: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNjAgNjAiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxnPjxwYXRoIGZpbGw9ImN1cnJlbnRjb2xvciIgZD0iTTU3LDRoLTdWMWMwLTAuNTUzLTAuNDQ3LTEtMS0xaC03Yy0wLjU1MywwLTEsMC40NDctMSwxdjNIMTlWMWMwLTAuNTUzLTAuNDQ3LTEtMS0xaC03Yy0wLjU1MywwLTEsMC40NDctMSwxdjNIM0MyLjQ0Nyw0LDIsNC40NDcsMiw1djExdjQzYzAsMC41NTMsMC40NDcsMSwxLDFoNTRjMC41NTMsMCwxLTAuNDQ3LDEtMVYxNlY1QzU4LDQuNDQ3LDU3LjU1Myw0LDU3LDR6IE00MywyaDV2M3YzaC01VjVWMnogTTEyLDJoNXYzdjNoLTVWNVYyeiBNNCw2aDZ2M2MwLDAuNTUzLDAuNDQ3LDEsMSwxaDdjMC41NTMsMCwxLTAuNDQ3LDEtMVY2aDIydjNjMCwwLjU1MywwLjQ0NywxLDEsMWg3YzAuNTUzLDAsMS0wLjQ0NywxLTFWNmg2djlINFY2ek00LDU4VjE3aDUydjQxSDR6Ii8+PHBhdGggZmlsbD0iY3VycmVudGNvbG9yIiBkPSJNMzgsMjNoLTdoLTJoLTdoLTJoLTl2OXYydjd2MnY5aDloMmg3aDJoN2gyaDl2LTl2LTJ2LTd2LTJ2LTloLTlIMzh6TTMxLDI1aDd2N2gtN1YyNXpNMzgsNDFoLTd2LTdoN1Y0MXpNMjIsMzRoN3Y3aC03VjM0ek0yMiwyNWg3djdoLTdWMjV6TTEzLDI1aDd2N2gtN1YyNXpNMTMsMzRoN3Y3aC03VjM0ek0yMCw1MGgtN3YtN2g3VjUwek0yOSw1MGgtN3YtN2g3VjUweiBNMzgsNTBoLTd2LTdoN1Y1MHogTTQ3LDUwaC03di03aDdWNTB6IE00Nyw0MWgtN3YtN2g3VjQxek00NywyNXY3aC03di03SDQ3eiIvPjwvZz48L3N2Zz4=);
+      position: absolute;
+      top: 0.5em;
+      left: .75rem;
+      width: 1.25rem;
+      height: 1.25rem; }
+    .datetimepicker-dummy .datetimepicker-dummy-wrapper .datetimepicker-dummy-input {
+      color: #000000;
+      font-size: 1rem;
+      text-align: left;
+      text-indent: 1rem;
+      flex: 1;
+      height: 100%; }
+      .datetimepicker-dummy .datetimepicker-dummy-wrapper .datetimepicker-dummy-input:first-child {
+        text-indent: 2.5rem; }
+      .datetimepicker-dummy .datetimepicker-dummy-wrapper .datetimepicker-dummy-input.is-datetimepicker-range {
+        background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjE4IiB2aWV3Qm94PSIwIDAgOCAxOCI+CiAgICA8cGF0aCBmaWxsPSIjOTU5OUFBIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik0uMTE5LjcxOGw3LjE1OCA3LjQwNy0uMDMzLS41NTEtNi43MzcgOC44ODlhLjQyNS40MjUgMCAwIDAgLjA4LjU5My40Mi40MiAwIDAgMCAuNTktLjA4bDYuNzM3LTguODg5YS40MjUuNDI1IDAgMCAwLS4wMzMtLjU1MUwuNzIzLjEyOEEuNDIuNDIgMCAwIDAgLjEyOC4xMmEuNDI1LjQyNSAwIDAgMC0uMDA5LjU5OHoiLz4KPC9zdmc+Cg==) no-repeat 100%/8px;
+        max-width: 50%; }
+    .datetimepicker-dummy .datetimepicker-dummy-wrapper input {
+      background: transparent;
+      outline: none;
+      word-spacing: .5rem;
+      border: 0; }
 
-.is-checkradio[type=checkbox] + label::before, .is-checkradio[type=checkbox] + label:before {
-  border-radius: 4px;
-}
-.is-checkradio[type=checkbox] + label::after, .is-checkradio[type=checkbox] + label:after {
-  box-sizing: border-box;
-  transform: translateY(0rem) rotate(45deg);
-  border-width: 0.1rem;
-  border-style: solid;
+.datetimepicker-dummy.is-white:before, .datetimepicker-dummy.is-white::before {
+  background-color: white; }
+
+.datetimepicker-dummy.is-white .datetimepicker-dummy-wrapper:before, .datetimepicker-dummy.is-white .datetimepicker-dummy-wrapper::before {
+  background-color: white; }
+
+.datetimepicker-dummy.is-white .datetimepicker-dummy-wrapper:focus, .datetimepicker-dummy.is-white .datetimepicker-dummy-wrapper.is-focused, .datetimepicker-dummy.is-white .datetimepicker-dummy-wrapper:active, .datetimepicker-dummy.is-white .datetimepicker-dummy-wrapper.is-active {
+  border-color: white;
+  box-shadow: 0 0 0 0.125em rgba(255, 255, 255, 0.25); }
+
+.datetimepicker-dummy.is-white .datetimepicker-clear-button {
+  color: white; }
+
+.datetimepicker-dummy.is-black:before, .datetimepicker-dummy.is-black::before {
+  background-color: #0a0a0a; }
+
+.datetimepicker-dummy.is-black .datetimepicker-dummy-wrapper:before, .datetimepicker-dummy.is-black .datetimepicker-dummy-wrapper::before {
+  background-color: #0a0a0a; }
+
+.datetimepicker-dummy.is-black .datetimepicker-dummy-wrapper:focus, .datetimepicker-dummy.is-black .datetimepicker-dummy-wrapper.is-focused, .datetimepicker-dummy.is-black .datetimepicker-dummy-wrapper:active, .datetimepicker-dummy.is-black .datetimepicker-dummy-wrapper.is-active {
+  border-color: #0a0a0a;
+  box-shadow: 0 0 0 0.125em rgba(10, 10, 10, 0.25); }
+
+.datetimepicker-dummy.is-black .datetimepicker-clear-button {
+  color: #0a0a0a; }
+
+.datetimepicker-dummy.is-light:before, .datetimepicker-dummy.is-light::before {
+  background-color: whitesmoke; }
+
+.datetimepicker-dummy.is-light .datetimepicker-dummy-wrapper:before, .datetimepicker-dummy.is-light .datetimepicker-dummy-wrapper::before {
+  background-color: whitesmoke; }
+
+.datetimepicker-dummy.is-light .datetimepicker-dummy-wrapper:focus, .datetimepicker-dummy.is-light .datetimepicker-dummy-wrapper.is-focused, .datetimepicker-dummy.is-light .datetimepicker-dummy-wrapper:active, .datetimepicker-dummy.is-light .datetimepicker-dummy-wrapper.is-active {
+  border-color: whitesmoke;
+  box-shadow: 0 0 0 0.125em rgba(245, 245, 245, 0.25); }
+
+.datetimepicker-dummy.is-light .datetimepicker-clear-button {
+  color: whitesmoke; }
+
+.datetimepicker-dummy.is-dark:before, .datetimepicker-dummy.is-dark::before {
+  background-color: #363636; }
+
+.datetimepicker-dummy.is-dark .datetimepicker-dummy-wrapper:before, .datetimepicker-dummy.is-dark .datetimepicker-dummy-wrapper::before {
+  background-color: #363636; }
+
+.datetimepicker-dummy.is-dark .datetimepicker-dummy-wrapper:focus, .datetimepicker-dummy.is-dark .datetimepicker-dummy-wrapper.is-focused, .datetimepicker-dummy.is-dark .datetimepicker-dummy-wrapper:active, .datetimepicker-dummy.is-dark .datetimepicker-dummy-wrapper.is-active {
+  border-color: #363636;
+  box-shadow: 0 0 0 0.125em rgba(54, 54, 54, 0.25); }
+
+.datetimepicker-dummy.is-dark .datetimepicker-clear-button {
+  color: #363636; }
+
+.datetimepicker-dummy.is-primary:before, .datetimepicker-dummy.is-primary::before {
+  background-color: #95404c; }
+
+.datetimepicker-dummy.is-primary .datetimepicker-dummy-wrapper:before, .datetimepicker-dummy.is-primary .datetimepicker-dummy-wrapper::before {
+  background-color: #95404c; }
+
+.datetimepicker-dummy.is-primary .datetimepicker-dummy-wrapper:focus, .datetimepicker-dummy.is-primary .datetimepicker-dummy-wrapper.is-focused, .datetimepicker-dummy.is-primary .datetimepicker-dummy-wrapper:active, .datetimepicker-dummy.is-primary .datetimepicker-dummy-wrapper.is-active {
   border-color: #95404c;
-  border-top: 0;
-  border-left: 0;
-}
-.is-checkradio[type=checkbox].is-circle + label::before, .is-checkradio[type=checkbox].is-circle + label:before {
-  border-radius: 50%;
-}
-.is-checkradio[type=checkbox] + label {
-  font-size: 1rem;
-  padding-left: 2rem;
-}
-.is-checkradio[type=checkbox] + label::before, .is-checkradio[type=checkbox] + label:before {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-.is-checkradio[type=checkbox] + label::after, .is-checkradio[type=checkbox] + label:after {
-  width: 0.375rem;
-  height: 0.6rem;
-  top: 0.405rem;
-  left: 0.6rem;
-}
-.is-checkradio[type=checkbox].is-block + label::before, .is-checkradio[type=checkbox].is-block + label:before {
-  width: 1.25rem;
-  height: 1.25rem;
-  left: 0.175rem;
-  top: 0.175rem;
-}
-.is-checkradio[type=checkbox].is-block + label::after, .is-checkradio[type=checkbox].is-block + label:after {
-  top: 0.325rem;
-  left: 0.65rem;
-}
-.is-checkradio[type=checkbox].is-rtl + label {
-  padding-left: 0;
-  padding-right: 2rem;
-}
-.is-checkradio[type=checkbox].is-rtl + label::after, .is-checkradio[type=checkbox].is-rtl + label:after {
-  left: auto;
-  right: 0.6rem;
-}
-.is-checkradio[type=checkbox].is-small + label {
-  font-size: 0.75rem;
-  padding-left: 1.5rem;
-}
-.is-checkradio[type=checkbox].is-small + label::before, .is-checkradio[type=checkbox].is-small + label:before {
-  width: 1.125rem;
-  height: 1.125rem;
-}
-.is-checkradio[type=checkbox].is-small + label::after, .is-checkradio[type=checkbox].is-small + label:after {
-  width: 0.28125rem;
-  height: 0.45rem;
-  top: 0.30375rem;
-  left: 0.45rem;
-}
-.is-checkradio[type=checkbox].is-small.is-block + label::before, .is-checkradio[type=checkbox].is-small.is-block + label:before {
-  width: 0.9375rem;
-  height: 0.9375rem;
-  left: 0.175rem;
-  top: 0.175rem;
-}
-.is-checkradio[type=checkbox].is-small.is-block + label::after, .is-checkradio[type=checkbox].is-small.is-block + label:after {
-  top: 0.29375rem;
-  left: 0.5375rem;
-}
-.is-checkradio[type=checkbox].is-small.is-rtl + label {
-  padding-left: 0;
-  padding-right: 1.5rem;
-}
-.is-checkradio[type=checkbox].is-small.is-rtl + label::after, .is-checkradio[type=checkbox].is-small.is-rtl + label:after {
-  left: auto;
-  right: 0.45rem;
-}
-.is-checkradio[type=checkbox].is-medium + label {
-  font-size: 1.25rem;
-  padding-left: 2.5rem;
-}
-.is-checkradio[type=checkbox].is-medium + label::before, .is-checkradio[type=checkbox].is-medium + label:before {
-  width: 1.875rem;
-  height: 1.875rem;
-}
-.is-checkradio[type=checkbox].is-medium + label::after, .is-checkradio[type=checkbox].is-medium + label:after {
-  width: 0.46875rem;
-  height: 0.75rem;
-  top: 0.50625rem;
-  left: 0.75rem;
-}
-.is-checkradio[type=checkbox].is-medium.is-block + label::before, .is-checkradio[type=checkbox].is-medium.is-block + label:before {
-  width: 1.5625rem;
-  height: 1.5625rem;
-  left: 0.175rem;
-  top: 0.175rem;
-}
-.is-checkradio[type=checkbox].is-medium.is-block + label::after, .is-checkradio[type=checkbox].is-medium.is-block + label:after {
-  top: 0.35625rem;
-  left: 0.7625rem;
-}
-.is-checkradio[type=checkbox].is-medium.is-rtl + label {
-  padding-left: 0;
-  padding-right: 2.5rem;
-}
-.is-checkradio[type=checkbox].is-medium.is-rtl + label::after, .is-checkradio[type=checkbox].is-medium.is-rtl + label:after {
-  left: auto;
-  right: 0.75rem;
-}
-.is-checkradio[type=checkbox].is-large + label {
-  font-size: 1.5rem;
-  padding-left: 3rem;
-}
-.is-checkradio[type=checkbox].is-large + label::before, .is-checkradio[type=checkbox].is-large + label:before {
-  width: 2.25rem;
-  height: 2.25rem;
-}
-.is-checkradio[type=checkbox].is-large + label::after, .is-checkradio[type=checkbox].is-large + label:after {
-  width: 0.5625rem;
-  height: 0.9rem;
-  top: 0.6075rem;
-  left: 0.9rem;
-}
-.is-checkradio[type=checkbox].is-large.is-block + label::before, .is-checkradio[type=checkbox].is-large.is-block + label:before {
-  width: 1.875rem;
-  height: 1.875rem;
-  left: 0.175rem;
-  top: 0.175rem;
-}
-.is-checkradio[type=checkbox].is-large.is-block + label::after, .is-checkradio[type=checkbox].is-large.is-block + label:after {
-  top: 0.3875rem;
-  left: 0.875rem;
-}
-.is-checkradio[type=checkbox].is-large.is-rtl + label {
-  padding-left: 0;
-  padding-right: 3rem;
-}
-.is-checkradio[type=checkbox].is-large.is-rtl + label::after, .is-checkradio[type=checkbox].is-large.is-rtl + label:after {
-  left: auto;
-  right: 0.9rem;
-}
-.is-checkradio[type=checkbox].is-white.has-background-color + label::before, .is-checkradio[type=checkbox].is-white.has-background-color + label:before {
-  border-color: transparent !important;
-  background-color: hsl(0, 0%, 100%) !important;
-}
-.is-checkradio[type=checkbox].is-white:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-white:hover:not([disabled]) + label:before {
-  border-color: hsl(0, 0%, 100%) !important;
-}
-.is-checkradio[type=checkbox].is-white:checked + label::after, .is-checkradio[type=checkbox].is-white:checked + label:after {
-  border-color: hsl(0, 0%, 100%) !important;
-}
-.is-checkradio[type=checkbox].is-white:checked.has-background-color + label::before, .is-checkradio[type=checkbox].is-white:checked.has-background-color + label:before {
-  border-color: transparent !important;
-  background-color: hsl(0, 0%, 100%) !important;
-}
-.is-checkradio[type=checkbox].is-white:checked.has-background-color + label::after, .is-checkradio[type=checkbox].is-white:checked.has-background-color + label:after {
-  border-color: hsl(0, 0%, 4%) !important;
-  background-color: hsl(0, 0%, 100%) !important;
-}
-.is-checkradio[type=checkbox].is-white.is-block:hover:not([disabled]) + label::after, .is-checkradio[type=checkbox].is-white.is-block:hover:not([disabled]) + label:after, .is-checkradio[type=checkbox].is-white.is-block:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-white.is-block:hover:not([disabled]) + label:before {
-  border-color: hsl(0, 0%, 100%) !important;
-}
-.is-checkradio[type=checkbox].is-white.is-block:checked + label {
-  color: hsl(0, 0%, 4%);
-  border-color: hsl(0, 0%, 100%) !important;
-  background: hsl(0, 0%, 100%);
-}
-.is-checkradio[type=checkbox].is-white.is-block:checked + label::after, .is-checkradio[type=checkbox].is-white.is-block:checked + label:after {
-  border-color: hsl(0, 0%, 4%) !important;
-}
-.is-checkradio[type=checkbox].is-white.is-block:checked:hover:not([disabled]) + label {
-  background: #f2f2f2;
-}
-.is-checkradio[type=checkbox].is-white.is-block:checked:hover:not([disabled]) + label::after, .is-checkradio[type=checkbox].is-white.is-block:checked:hover:not([disabled]) + label:after, .is-checkradio[type=checkbox].is-white.is-block:checked:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-white.is-block:checked:hover:not([disabled]) + label:before {
-  border-color: black !important;
-}
-.is-checkradio[type=checkbox].is-black.has-background-color + label::before, .is-checkradio[type=checkbox].is-black.has-background-color + label:before {
-  border-color: transparent !important;
-  background-color: hsl(0, 0%, 4%) !important;
-}
-.is-checkradio[type=checkbox].is-black:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-black:hover:not([disabled]) + label:before {
-  border-color: hsl(0, 0%, 4%) !important;
-}
-.is-checkradio[type=checkbox].is-black:checked + label::after, .is-checkradio[type=checkbox].is-black:checked + label:after {
-  border-color: hsl(0, 0%, 4%) !important;
-}
-.is-checkradio[type=checkbox].is-black:checked.has-background-color + label::before, .is-checkradio[type=checkbox].is-black:checked.has-background-color + label:before {
-  border-color: transparent !important;
-  background-color: hsl(0, 0%, 4%) !important;
-}
-.is-checkradio[type=checkbox].is-black:checked.has-background-color + label::after, .is-checkradio[type=checkbox].is-black:checked.has-background-color + label:after {
-  border-color: hsl(0, 0%, 100%) !important;
-  background-color: hsl(0, 0%, 4%) !important;
-}
-.is-checkradio[type=checkbox].is-black.is-block:hover:not([disabled]) + label::after, .is-checkradio[type=checkbox].is-black.is-block:hover:not([disabled]) + label:after, .is-checkradio[type=checkbox].is-black.is-block:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-black.is-block:hover:not([disabled]) + label:before {
-  border-color: hsl(0, 0%, 4%) !important;
-}
-.is-checkradio[type=checkbox].is-black.is-block:checked + label {
-  color: hsl(0, 0%, 100%);
-  border-color: hsl(0, 0%, 4%) !important;
-  background: hsl(0, 0%, 4%);
-}
-.is-checkradio[type=checkbox].is-black.is-block:checked + label::after, .is-checkradio[type=checkbox].is-black.is-block:checked + label:after {
-  border-color: hsl(0, 0%, 100%) !important;
-}
-.is-checkradio[type=checkbox].is-black.is-block:checked:hover:not([disabled]) + label {
-  background: black;
-}
-.is-checkradio[type=checkbox].is-black.is-block:checked:hover:not([disabled]) + label::after, .is-checkradio[type=checkbox].is-black.is-block:checked:hover:not([disabled]) + label:after, .is-checkradio[type=checkbox].is-black.is-block:checked:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-black.is-block:checked:hover:not([disabled]) + label:before {
-  border-color: #f2f2f2 !important;
-}
-.is-checkradio[type=checkbox].is-light.has-background-color + label::before, .is-checkradio[type=checkbox].is-light.has-background-color + label:before {
-  border-color: transparent !important;
-  background-color: hsl(0, 0%, 96%) !important;
-}
-.is-checkradio[type=checkbox].is-light:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-light:hover:not([disabled]) + label:before {
-  border-color: hsl(0, 0%, 96%) !important;
-}
-.is-checkradio[type=checkbox].is-light:checked + label::after, .is-checkradio[type=checkbox].is-light:checked + label:after {
-  border-color: hsl(0, 0%, 96%) !important;
-}
-.is-checkradio[type=checkbox].is-light:checked.has-background-color + label::before, .is-checkradio[type=checkbox].is-light:checked.has-background-color + label:before {
-  border-color: transparent !important;
-  background-color: hsl(0, 0%, 96%) !important;
-}
-.is-checkradio[type=checkbox].is-light:checked.has-background-color + label::after, .is-checkradio[type=checkbox].is-light:checked.has-background-color + label:after {
-  border-color: rgba(0, 0, 0, 0.7) !important;
-  background-color: hsl(0, 0%, 96%) !important;
-}
-.is-checkradio[type=checkbox].is-light.is-block:hover:not([disabled]) + label::after, .is-checkradio[type=checkbox].is-light.is-block:hover:not([disabled]) + label:after, .is-checkradio[type=checkbox].is-light.is-block:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-light.is-block:hover:not([disabled]) + label:before {
-  border-color: hsl(0, 0%, 96%) !important;
-}
-.is-checkradio[type=checkbox].is-light.is-block:checked + label {
-  color: rgba(0, 0, 0, 0.7);
-  border-color: hsl(0, 0%, 96%) !important;
-  background: hsl(0, 0%, 96%);
-}
-.is-checkradio[type=checkbox].is-light.is-block:checked + label::after, .is-checkradio[type=checkbox].is-light.is-block:checked + label:after {
-  border-color: rgba(0, 0, 0, 0.7) !important;
-}
-.is-checkradio[type=checkbox].is-light.is-block:checked:hover:not([disabled]) + label {
-  background: #e8e8e8;
-}
-.is-checkradio[type=checkbox].is-light.is-block:checked:hover:not([disabled]) + label::after, .is-checkradio[type=checkbox].is-light.is-block:checked:hover:not([disabled]) + label:after, .is-checkradio[type=checkbox].is-light.is-block:checked:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-light.is-block:checked:hover:not([disabled]) + label:before {
-  border-color: rgba(0, 0, 0, 0.7) !important;
-}
-.is-checkradio[type=checkbox].is-dark.has-background-color + label::before, .is-checkradio[type=checkbox].is-dark.has-background-color + label:before {
-  border-color: transparent !important;
-  background-color: hsl(0, 0%, 21%) !important;
-}
-.is-checkradio[type=checkbox].is-dark:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-dark:hover:not([disabled]) + label:before {
-  border-color: hsl(0, 0%, 21%) !important;
-}
-.is-checkradio[type=checkbox].is-dark:checked + label::after, .is-checkradio[type=checkbox].is-dark:checked + label:after {
-  border-color: hsl(0, 0%, 21%) !important;
-}
-.is-checkradio[type=checkbox].is-dark:checked.has-background-color + label::before, .is-checkradio[type=checkbox].is-dark:checked.has-background-color + label:before {
-  border-color: transparent !important;
-  background-color: hsl(0, 0%, 21%) !important;
-}
-.is-checkradio[type=checkbox].is-dark:checked.has-background-color + label::after, .is-checkradio[type=checkbox].is-dark:checked.has-background-color + label:after {
-  border-color: #fff !important;
-  background-color: hsl(0, 0%, 21%) !important;
-}
-.is-checkradio[type=checkbox].is-dark.is-block:hover:not([disabled]) + label::after, .is-checkradio[type=checkbox].is-dark.is-block:hover:not([disabled]) + label:after, .is-checkradio[type=checkbox].is-dark.is-block:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-dark.is-block:hover:not([disabled]) + label:before {
-  border-color: hsl(0, 0%, 21%) !important;
-}
-.is-checkradio[type=checkbox].is-dark.is-block:checked + label {
-  color: #fff;
-  border-color: hsl(0, 0%, 21%) !important;
-  background: hsl(0, 0%, 21%);
-}
-.is-checkradio[type=checkbox].is-dark.is-block:checked + label::after, .is-checkradio[type=checkbox].is-dark.is-block:checked + label:after {
-  border-color: #fff !important;
-}
-.is-checkradio[type=checkbox].is-dark.is-block:checked:hover:not([disabled]) + label {
-  background: #292929;
-}
-.is-checkradio[type=checkbox].is-dark.is-block:checked:hover:not([disabled]) + label::after, .is-checkradio[type=checkbox].is-dark.is-block:checked:hover:not([disabled]) + label:after, .is-checkradio[type=checkbox].is-dark.is-block:checked:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-dark.is-block:checked:hover:not([disabled]) + label:before {
-  border-color: #f2f2f2 !important;
-}
-.is-checkradio[type=checkbox].is-primary.has-background-color + label::before, .is-checkradio[type=checkbox].is-primary.has-background-color + label:before {
-  border-color: transparent !important;
-  background-color: #95404c !important;
-}
-.is-checkradio[type=checkbox].is-primary:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-primary:hover:not([disabled]) + label:before {
-  border-color: #95404c !important;
-}
-.is-checkradio[type=checkbox].is-primary:checked + label::after, .is-checkradio[type=checkbox].is-primary:checked + label:after {
-  border-color: #95404c !important;
-}
-.is-checkradio[type=checkbox].is-primary:checked.has-background-color + label::before, .is-checkradio[type=checkbox].is-primary:checked.has-background-color + label:before {
-  border-color: transparent !important;
-  background-color: #95404c !important;
-}
-.is-checkradio[type=checkbox].is-primary:checked.has-background-color + label::after, .is-checkradio[type=checkbox].is-primary:checked.has-background-color + label:after {
-  border-color: #fff !important;
-  background-color: #95404c !important;
-}
-.is-checkradio[type=checkbox].is-primary.is-block:hover:not([disabled]) + label::after, .is-checkradio[type=checkbox].is-primary.is-block:hover:not([disabled]) + label:after, .is-checkradio[type=checkbox].is-primary.is-block:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-primary.is-block:hover:not([disabled]) + label:before {
-  border-color: #95404c !important;
-}
-.is-checkradio[type=checkbox].is-primary.is-block:checked + label {
-  color: #fff;
-  border-color: #95404c !important;
-  background: #95404c;
-}
-.is-checkradio[type=checkbox].is-primary.is-block:checked + label::after, .is-checkradio[type=checkbox].is-primary.is-block:checked + label:after {
-  border-color: #fff !important;
-}
-.is-checkradio[type=checkbox].is-primary.is-block:checked:hover:not([disabled]) + label {
-  background: #833843;
-}
-.is-checkradio[type=checkbox].is-primary.is-block:checked:hover:not([disabled]) + label::after, .is-checkradio[type=checkbox].is-primary.is-block:checked:hover:not([disabled]) + label:after, .is-checkradio[type=checkbox].is-primary.is-block:checked:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-primary.is-block:checked:hover:not([disabled]) + label:before {
-  border-color: #f2f2f2 !important;
-}
-.is-checkradio[type=checkbox].is-link.has-background-color + label::before, .is-checkradio[type=checkbox].is-link.has-background-color + label:before {
-  border-color: transparent !important;
-  background-color: #910106 !important;
-}
-.is-checkradio[type=checkbox].is-link:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-link:hover:not([disabled]) + label:before {
-  border-color: #910106 !important;
-}
-.is-checkradio[type=checkbox].is-link:checked + label::after, .is-checkradio[type=checkbox].is-link:checked + label:after {
-  border-color: #910106 !important;
-}
-.is-checkradio[type=checkbox].is-link:checked.has-background-color + label::before, .is-checkradio[type=checkbox].is-link:checked.has-background-color + label:before {
-  border-color: transparent !important;
-  background-color: #910106 !important;
-}
-.is-checkradio[type=checkbox].is-link:checked.has-background-color + label::after, .is-checkradio[type=checkbox].is-link:checked.has-background-color + label:after {
-  border-color: #fff !important;
-  background-color: #910106 !important;
-}
-.is-checkradio[type=checkbox].is-link.is-block:hover:not([disabled]) + label::after, .is-checkradio[type=checkbox].is-link.is-block:hover:not([disabled]) + label:after, .is-checkradio[type=checkbox].is-link.is-block:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-link.is-block:hover:not([disabled]) + label:before {
-  border-color: #910106 !important;
-}
-.is-checkradio[type=checkbox].is-link.is-block:checked + label {
-  color: #fff;
-  border-color: #910106 !important;
-  background: #910106;
-}
-.is-checkradio[type=checkbox].is-link.is-block:checked + label::after, .is-checkradio[type=checkbox].is-link.is-block:checked + label:after {
-  border-color: #fff !important;
-}
-.is-checkradio[type=checkbox].is-link.is-block:checked:hover:not([disabled]) + label {
-  background: #780105;
-}
-.is-checkradio[type=checkbox].is-link.is-block:checked:hover:not([disabled]) + label::after, .is-checkradio[type=checkbox].is-link.is-block:checked:hover:not([disabled]) + label:after, .is-checkradio[type=checkbox].is-link.is-block:checked:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-link.is-block:checked:hover:not([disabled]) + label:before {
-  border-color: #f2f2f2 !important;
-}
-.is-checkradio[type=checkbox].is-info.has-background-color + label::before, .is-checkradio[type=checkbox].is-info.has-background-color + label:before {
-  border-color: transparent !important;
-  background-color: #5a6581 !important;
-}
-.is-checkradio[type=checkbox].is-info:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-info:hover:not([disabled]) + label:before {
-  border-color: #5a6581 !important;
-}
-.is-checkradio[type=checkbox].is-info:checked + label::after, .is-checkradio[type=checkbox].is-info:checked + label:after {
-  border-color: #5a6581 !important;
-}
-.is-checkradio[type=checkbox].is-info:checked.has-background-color + label::before, .is-checkradio[type=checkbox].is-info:checked.has-background-color + label:before {
-  border-color: transparent !important;
-  background-color: #5a6581 !important;
-}
-.is-checkradio[type=checkbox].is-info:checked.has-background-color + label::after, .is-checkradio[type=checkbox].is-info:checked.has-background-color + label:after {
-  border-color: #fff !important;
-  background-color: #5a6581 !important;
-}
-.is-checkradio[type=checkbox].is-info.is-block:hover:not([disabled]) + label::after, .is-checkradio[type=checkbox].is-info.is-block:hover:not([disabled]) + label:after, .is-checkradio[type=checkbox].is-info.is-block:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-info.is-block:hover:not([disabled]) + label:before {
-  border-color: #5a6581 !important;
-}
-.is-checkradio[type=checkbox].is-info.is-block:checked + label {
-  color: #fff;
-  border-color: #5a6581 !important;
-  background: #5a6581;
-}
-.is-checkradio[type=checkbox].is-info.is-block:checked + label::after, .is-checkradio[type=checkbox].is-info.is-block:checked + label:after {
-  border-color: #fff !important;
-}
-.is-checkradio[type=checkbox].is-info.is-block:checked:hover:not([disabled]) + label {
-  background: #505972;
-}
-.is-checkradio[type=checkbox].is-info.is-block:checked:hover:not([disabled]) + label::after, .is-checkradio[type=checkbox].is-info.is-block:checked:hover:not([disabled]) + label:after, .is-checkradio[type=checkbox].is-info.is-block:checked:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-info.is-block:checked:hover:not([disabled]) + label:before {
-  border-color: #f2f2f2 !important;
-}
-.is-checkradio[type=checkbox].is-success.has-background-color + label::before, .is-checkradio[type=checkbox].is-success.has-background-color + label:before {
-  border-color: transparent !important;
-  background-color: hsl(153, 53%, 53%) !important;
-}
-.is-checkradio[type=checkbox].is-success:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-success:hover:not([disabled]) + label:before {
-  border-color: hsl(153, 53%, 53%) !important;
-}
-.is-checkradio[type=checkbox].is-success:checked + label::after, .is-checkradio[type=checkbox].is-success:checked + label:after {
-  border-color: hsl(153, 53%, 53%) !important;
-}
-.is-checkradio[type=checkbox].is-success:checked.has-background-color + label::before, .is-checkradio[type=checkbox].is-success:checked.has-background-color + label:before {
-  border-color: transparent !important;
-  background-color: hsl(153, 53%, 53%) !important;
-}
-.is-checkradio[type=checkbox].is-success:checked.has-background-color + label::after, .is-checkradio[type=checkbox].is-success:checked.has-background-color + label:after {
-  border-color: #fff !important;
-  background-color: hsl(153, 53%, 53%) !important;
-}
-.is-checkradio[type=checkbox].is-success.is-block:hover:not([disabled]) + label::after, .is-checkradio[type=checkbox].is-success.is-block:hover:not([disabled]) + label:after, .is-checkradio[type=checkbox].is-success.is-block:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-success.is-block:hover:not([disabled]) + label:before {
-  border-color: hsl(153, 53%, 53%) !important;
-}
-.is-checkradio[type=checkbox].is-success.is-block:checked + label {
-  color: #fff;
-  border-color: hsl(153, 53%, 53%) !important;
-  background: hsl(153, 53%, 53%);
-}
-.is-checkradio[type=checkbox].is-success.is-block:checked + label::after, .is-checkradio[type=checkbox].is-success.is-block:checked + label:after {
-  border-color: #fff !important;
-}
-.is-checkradio[type=checkbox].is-success.is-block:checked:hover:not([disabled]) + label {
-  background: #3abb81;
-}
-.is-checkradio[type=checkbox].is-success.is-block:checked:hover:not([disabled]) + label::after, .is-checkradio[type=checkbox].is-success.is-block:checked:hover:not([disabled]) + label:after, .is-checkradio[type=checkbox].is-success.is-block:checked:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-success.is-block:checked:hover:not([disabled]) + label:before {
-  border-color: #f2f2f2 !important;
-}
-.is-checkradio[type=checkbox].is-warning.has-background-color + label::before, .is-checkradio[type=checkbox].is-warning.has-background-color + label:before {
-  border-color: transparent !important;
-  background-color: hsl(44, 100%, 77%) !important;
-}
-.is-checkradio[type=checkbox].is-warning:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-warning:hover:not([disabled]) + label:before {
-  border-color: hsl(44, 100%, 77%) !important;
-}
-.is-checkradio[type=checkbox].is-warning:checked + label::after, .is-checkradio[type=checkbox].is-warning:checked + label:after {
-  border-color: hsl(44, 100%, 77%) !important;
-}
-.is-checkradio[type=checkbox].is-warning:checked.has-background-color + label::before, .is-checkradio[type=checkbox].is-warning:checked.has-background-color + label:before {
-  border-color: transparent !important;
-  background-color: hsl(44, 100%, 77%) !important;
-}
-.is-checkradio[type=checkbox].is-warning:checked.has-background-color + label::after, .is-checkradio[type=checkbox].is-warning:checked.has-background-color + label:after {
-  border-color: rgba(0, 0, 0, 0.7) !important;
-  background-color: hsl(44, 100%, 77%) !important;
-}
-.is-checkradio[type=checkbox].is-warning.is-block:hover:not([disabled]) + label::after, .is-checkradio[type=checkbox].is-warning.is-block:hover:not([disabled]) + label:after, .is-checkradio[type=checkbox].is-warning.is-block:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-warning.is-block:hover:not([disabled]) + label:before {
-  border-color: hsl(44, 100%, 77%) !important;
-}
-.is-checkradio[type=checkbox].is-warning.is-block:checked + label {
-  color: rgba(0, 0, 0, 0.7);
-  border-color: hsl(44, 100%, 77%) !important;
-  background: hsl(44, 100%, 77%);
-}
-.is-checkradio[type=checkbox].is-warning.is-block:checked + label::after, .is-checkradio[type=checkbox].is-warning.is-block:checked + label:after {
-  border-color: rgba(0, 0, 0, 0.7) !important;
-}
-.is-checkradio[type=checkbox].is-warning.is-block:checked:hover:not([disabled]) + label {
-  background: #ffd970;
-}
-.is-checkradio[type=checkbox].is-warning.is-block:checked:hover:not([disabled]) + label::after, .is-checkradio[type=checkbox].is-warning.is-block:checked:hover:not([disabled]) + label:after, .is-checkradio[type=checkbox].is-warning.is-block:checked:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-warning.is-block:checked:hover:not([disabled]) + label:before {
-  border-color: rgba(0, 0, 0, 0.7) !important;
-}
-.is-checkradio[type=checkbox].is-danger.has-background-color + label::before, .is-checkradio[type=checkbox].is-danger.has-background-color + label:before {
-  border-color: transparent !important;
-  background-color: #95404c !important;
-}
-.is-checkradio[type=checkbox].is-danger:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-danger:hover:not([disabled]) + label:before {
-  border-color: #95404c !important;
-}
-.is-checkradio[type=checkbox].is-danger:checked + label::after, .is-checkradio[type=checkbox].is-danger:checked + label:after {
-  border-color: #95404c !important;
-}
-.is-checkradio[type=checkbox].is-danger:checked.has-background-color + label::before, .is-checkradio[type=checkbox].is-danger:checked.has-background-color + label:before {
-  border-color: transparent !important;
-  background-color: #95404c !important;
-}
-.is-checkradio[type=checkbox].is-danger:checked.has-background-color + label::after, .is-checkradio[type=checkbox].is-danger:checked.has-background-color + label:after {
-  border-color: #fff !important;
-  background-color: #95404c !important;
-}
-.is-checkradio[type=checkbox].is-danger.is-block:hover:not([disabled]) + label::after, .is-checkradio[type=checkbox].is-danger.is-block:hover:not([disabled]) + label:after, .is-checkradio[type=checkbox].is-danger.is-block:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-danger.is-block:hover:not([disabled]) + label:before {
-  border-color: #95404c !important;
-}
-.is-checkradio[type=checkbox].is-danger.is-block:checked + label {
-  color: #fff;
-  border-color: #95404c !important;
-  background: #95404c;
-}
-.is-checkradio[type=checkbox].is-danger.is-block:checked + label::after, .is-checkradio[type=checkbox].is-danger.is-block:checked + label:after {
-  border-color: #fff !important;
-}
-.is-checkradio[type=checkbox].is-danger.is-block:checked:hover:not([disabled]) + label {
-  background: #833843;
-}
-.is-checkradio[type=checkbox].is-danger.is-block:checked:hover:not([disabled]) + label::after, .is-checkradio[type=checkbox].is-danger.is-block:checked:hover:not([disabled]) + label:after, .is-checkradio[type=checkbox].is-danger.is-block:checked:hover:not([disabled]) + label::before, .is-checkradio[type=checkbox].is-danger.is-block:checked:hover:not([disabled]) + label:before {
-  border-color: #f2f2f2 !important;
-}
-.is-checkradio[type=checkbox]:indeterminate + label::after, .is-checkradio[type=checkbox]:indeterminate + label:after {
-  display: inline-block;
-  transform: rotate(90deg);
-  border-bottom: none;
-}
-.is-checkradio[type=checkbox]:indeterminate.is-white + label::after, .is-checkradio[type=checkbox]:indeterminate.is-white + label:after {
-  border-color: hsl(0, 0%, 100%);
-}
-.is-checkradio[type=checkbox]:indeterminate.is-black + label::after, .is-checkradio[type=checkbox]:indeterminate.is-black + label:after {
-  border-color: hsl(0, 0%, 4%);
-}
-.is-checkradio[type=checkbox]:indeterminate.is-light + label::after, .is-checkradio[type=checkbox]:indeterminate.is-light + label:after {
-  border-color: hsl(0, 0%, 96%);
-}
-.is-checkradio[type=checkbox]:indeterminate.is-dark + label::after, .is-checkradio[type=checkbox]:indeterminate.is-dark + label:after {
-  border-color: hsl(0, 0%, 21%);
-}
-.is-checkradio[type=checkbox]:indeterminate.is-primary + label::after, .is-checkradio[type=checkbox]:indeterminate.is-primary + label:after {
-  border-color: #95404c;
-}
-.is-checkradio[type=checkbox]:indeterminate.is-link + label::after, .is-checkradio[type=checkbox]:indeterminate.is-link + label:after {
+  box-shadow: 0 0 0 0.125em rgba(149, 64, 76, 0.25); }
+
+.datetimepicker-dummy.is-primary .datetimepicker-clear-button {
+  color: #95404c; }
+
+.datetimepicker-dummy.is-link:before, .datetimepicker-dummy.is-link::before {
+  background-color: #910106; }
+
+.datetimepicker-dummy.is-link .datetimepicker-dummy-wrapper:before, .datetimepicker-dummy.is-link .datetimepicker-dummy-wrapper::before {
+  background-color: #910106; }
+
+.datetimepicker-dummy.is-link .datetimepicker-dummy-wrapper:focus, .datetimepicker-dummy.is-link .datetimepicker-dummy-wrapper.is-focused, .datetimepicker-dummy.is-link .datetimepicker-dummy-wrapper:active, .datetimepicker-dummy.is-link .datetimepicker-dummy-wrapper.is-active {
   border-color: #910106;
-}
-.is-checkradio[type=checkbox]:indeterminate.is-info + label::after, .is-checkradio[type=checkbox]:indeterminate.is-info + label:after {
-  border-color: #5a6581;
-}
-.is-checkradio[type=checkbox]:indeterminate.is-success + label::after, .is-checkradio[type=checkbox]:indeterminate.is-success + label:after {
-  border-color: hsl(153, 53%, 53%);
-}
-.is-checkradio[type=checkbox]:indeterminate.is-warning + label::after, .is-checkradio[type=checkbox]:indeterminate.is-warning + label:after {
-  border-color: hsl(44, 100%, 77%);
-}
-.is-checkradio[type=checkbox]:indeterminate.is-danger + label::after, .is-checkradio[type=checkbox]:indeterminate.is-danger + label:after {
-  border-color: #95404c;
-}
+  box-shadow: 0 0 0 0.125em rgba(145, 1, 6, 0.25); }
 
-.is-checkradio[type=radio] + label::before, .is-checkradio[type=radio] + label:before {
-  border-radius: 50%;
-}
-.is-checkradio[type=radio] + label::after, .is-checkradio[type=radio] + label:after {
-  border-radius: 50%;
-  background: #95404c;
-  left: 0;
-  transform: scale(0.5);
-}
-.is-checkradio[type=radio]:checked.has-background-color + label::before, .is-checkradio[type=radio]:checked.has-background-color + label:before {
-  border-color: #7c7f80 !important;
-  background-color: #7c7f80 !important;
-}
-.is-checkradio[type=radio]:checked.has-background-color + label::after, .is-checkradio[type=radio]:checked.has-background-color + label:after {
-  border-color: #7c7f80 !important;
-  background-color: #7c7f80 !important;
-}
-.is-checkradio[type=radio].is-rtl + label {
-  padding-left: 0;
-}
-.is-checkradio[type=radio].is-rtl + label::after, .is-checkradio[type=radio].is-rtl + label:after {
-  left: auto;
-  right: 0;
-}
-.is-checkradio[type=radio] + label {
-  font-size: 1rem;
-  line-height: 1.5rem;
-  padding-left: 2rem;
-}
-.is-checkradio[type=radio] + label::before, .is-checkradio[type=radio] + label:before, .is-checkradio[type=radio] + label::after, .is-checkradio[type=radio] + label:after {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-.is-checkradio[type=radio].is-rtl + label {
-  padding-right: 2rem;
-}
-.is-checkradio[type=radio].is-small + label {
-  font-size: 0.75rem;
-  line-height: 1.125rem;
-  padding-left: 1.5rem;
-}
-.is-checkradio[type=radio].is-small + label::before, .is-checkradio[type=radio].is-small + label:before, .is-checkradio[type=radio].is-small + label::after, .is-checkradio[type=radio].is-small + label:after {
-  width: 1.125rem;
-  height: 1.125rem;
-}
-.is-checkradio[type=radio].is-small.is-rtl + label {
-  padding-right: 1.5rem;
-}
-.is-checkradio[type=radio].is-medium + label {
-  font-size: 1.25rem;
-  line-height: 1.875rem;
-  padding-left: 2.5rem;
-}
-.is-checkradio[type=radio].is-medium + label::before, .is-checkradio[type=radio].is-medium + label:before, .is-checkradio[type=radio].is-medium + label::after, .is-checkradio[type=radio].is-medium + label:after {
-  width: 1.875rem;
-  height: 1.875rem;
-}
-.is-checkradio[type=radio].is-medium.is-rtl + label {
-  padding-right: 2.5rem;
-}
-.is-checkradio[type=radio].is-large + label {
-  font-size: 1.5rem;
-  line-height: 2.25rem;
-  padding-left: 3rem;
-}
-.is-checkradio[type=radio].is-large + label::before, .is-checkradio[type=radio].is-large + label:before, .is-checkradio[type=radio].is-large + label::after, .is-checkradio[type=radio].is-large + label:after {
-  width: 2.25rem;
-  height: 2.25rem;
-}
-.is-checkradio[type=radio].is-large.is-rtl + label {
-  padding-right: 3rem;
-}
-.is-checkradio[type=radio].is-white.has-background-color + label::before, .is-checkradio[type=radio].is-white.has-background-color + label:before {
-  border-color: hsl(0, 0%, 100%) !important;
-  background-color: hsl(0, 0%, 100%) !important;
-}
-.is-checkradio[type=radio].is-white:hover:not([disabled]) + label::before, .is-checkradio[type=radio].is-white:hover:not([disabled]) + label:before {
-  border-color: hsl(0, 0%, 100%) !important;
-}
-.is-checkradio[type=radio].is-white:checked + label::after, .is-checkradio[type=radio].is-white:checked + label:after {
-  border-color: hsl(0, 0%, 100%) !important;
-  background-color: hsl(0, 0%, 100%) !important;
-}
-.is-checkradio[type=radio].is-white:checked.has-background-color + label::before, .is-checkradio[type=radio].is-white:checked.has-background-color + label:before {
-  border-color: hsl(0, 0%, 100%) !important;
-  background-color: hsl(0, 0%, 100%) !important;
-}
-.is-checkradio[type=radio].is-white:checked.has-background-color + label::after, .is-checkradio[type=radio].is-white:checked.has-background-color + label:after {
-  border-color: hsl(0, 0%, 4%) !important;
-  background-color: hsl(0, 0%, 4%) !important;
-}
-.is-checkradio[type=radio].is-black.has-background-color + label::before, .is-checkradio[type=radio].is-black.has-background-color + label:before {
-  border-color: hsl(0, 0%, 4%) !important;
-  background-color: hsl(0, 0%, 4%) !important;
-}
-.is-checkradio[type=radio].is-black:hover:not([disabled]) + label::before, .is-checkradio[type=radio].is-black:hover:not([disabled]) + label:before {
-  border-color: hsl(0, 0%, 4%) !important;
-}
-.is-checkradio[type=radio].is-black:checked + label::after, .is-checkradio[type=radio].is-black:checked + label:after {
-  border-color: hsl(0, 0%, 4%) !important;
-  background-color: hsl(0, 0%, 4%) !important;
-}
-.is-checkradio[type=radio].is-black:checked.has-background-color + label::before, .is-checkradio[type=radio].is-black:checked.has-background-color + label:before {
-  border-color: hsl(0, 0%, 4%) !important;
-  background-color: hsl(0, 0%, 4%) !important;
-}
-.is-checkradio[type=radio].is-black:checked.has-background-color + label::after, .is-checkradio[type=radio].is-black:checked.has-background-color + label:after {
-  border-color: hsl(0, 0%, 100%) !important;
-  background-color: hsl(0, 0%, 100%) !important;
-}
-.is-checkradio[type=radio].is-light.has-background-color + label::before, .is-checkradio[type=radio].is-light.has-background-color + label:before {
-  border-color: hsl(0, 0%, 96%) !important;
-  background-color: hsl(0, 0%, 96%) !important;
-}
-.is-checkradio[type=radio].is-light:hover:not([disabled]) + label::before, .is-checkradio[type=radio].is-light:hover:not([disabled]) + label:before {
-  border-color: hsl(0, 0%, 96%) !important;
-}
-.is-checkradio[type=radio].is-light:checked + label::after, .is-checkradio[type=radio].is-light:checked + label:after {
-  border-color: hsl(0, 0%, 96%) !important;
-  background-color: hsl(0, 0%, 96%) !important;
-}
-.is-checkradio[type=radio].is-light:checked.has-background-color + label::before, .is-checkradio[type=radio].is-light:checked.has-background-color + label:before {
-  border-color: hsl(0, 0%, 96%) !important;
-  background-color: hsl(0, 0%, 96%) !important;
-}
-.is-checkradio[type=radio].is-light:checked.has-background-color + label::after, .is-checkradio[type=radio].is-light:checked.has-background-color + label:after {
-  border-color: rgba(0, 0, 0, 0.7) !important;
-  background-color: rgba(0, 0, 0, 0.7) !important;
-}
-.is-checkradio[type=radio].is-dark.has-background-color + label::before, .is-checkradio[type=radio].is-dark.has-background-color + label:before {
-  border-color: hsl(0, 0%, 21%) !important;
-  background-color: hsl(0, 0%, 21%) !important;
-}
-.is-checkradio[type=radio].is-dark:hover:not([disabled]) + label::before, .is-checkradio[type=radio].is-dark:hover:not([disabled]) + label:before {
-  border-color: hsl(0, 0%, 21%) !important;
-}
-.is-checkradio[type=radio].is-dark:checked + label::after, .is-checkradio[type=radio].is-dark:checked + label:after {
-  border-color: hsl(0, 0%, 21%) !important;
-  background-color: hsl(0, 0%, 21%) !important;
-}
-.is-checkradio[type=radio].is-dark:checked.has-background-color + label::before, .is-checkradio[type=radio].is-dark:checked.has-background-color + label:before {
-  border-color: hsl(0, 0%, 21%) !important;
-  background-color: hsl(0, 0%, 21%) !important;
-}
-.is-checkradio[type=radio].is-dark:checked.has-background-color + label::after, .is-checkradio[type=radio].is-dark:checked.has-background-color + label:after {
-  border-color: #fff !important;
-  background-color: #fff !important;
-}
-.is-checkradio[type=radio].is-primary.has-background-color + label::before, .is-checkradio[type=radio].is-primary.has-background-color + label:before {
-  border-color: #95404c !important;
-  background-color: #95404c !important;
-}
-.is-checkradio[type=radio].is-primary:hover:not([disabled]) + label::before, .is-checkradio[type=radio].is-primary:hover:not([disabled]) + label:before {
-  border-color: #95404c !important;
-}
-.is-checkradio[type=radio].is-primary:checked + label::after, .is-checkradio[type=radio].is-primary:checked + label:after {
-  border-color: #95404c !important;
-  background-color: #95404c !important;
-}
-.is-checkradio[type=radio].is-primary:checked.has-background-color + label::before, .is-checkradio[type=radio].is-primary:checked.has-background-color + label:before {
-  border-color: #95404c !important;
-  background-color: #95404c !important;
-}
-.is-checkradio[type=radio].is-primary:checked.has-background-color + label::after, .is-checkradio[type=radio].is-primary:checked.has-background-color + label:after {
-  border-color: #fff !important;
-  background-color: #fff !important;
-}
-.is-checkradio[type=radio].is-link.has-background-color + label::before, .is-checkradio[type=radio].is-link.has-background-color + label:before {
-  border-color: #910106 !important;
-  background-color: #910106 !important;
-}
-.is-checkradio[type=radio].is-link:hover:not([disabled]) + label::before, .is-checkradio[type=radio].is-link:hover:not([disabled]) + label:before {
-  border-color: #910106 !important;
-}
-.is-checkradio[type=radio].is-link:checked + label::after, .is-checkradio[type=radio].is-link:checked + label:after {
-  border-color: #910106 !important;
-  background-color: #910106 !important;
-}
-.is-checkradio[type=radio].is-link:checked.has-background-color + label::before, .is-checkradio[type=radio].is-link:checked.has-background-color + label:before {
-  border-color: #910106 !important;
-  background-color: #910106 !important;
-}
-.is-checkradio[type=radio].is-link:checked.has-background-color + label::after, .is-checkradio[type=radio].is-link:checked.has-background-color + label:after {
-  border-color: #fff !important;
-  background-color: #fff !important;
-}
-.is-checkradio[type=radio].is-info.has-background-color + label::before, .is-checkradio[type=radio].is-info.has-background-color + label:before {
-  border-color: #5a6581 !important;
-  background-color: #5a6581 !important;
-}
-.is-checkradio[type=radio].is-info:hover:not([disabled]) + label::before, .is-checkradio[type=radio].is-info:hover:not([disabled]) + label:before {
-  border-color: #5a6581 !important;
-}
-.is-checkradio[type=radio].is-info:checked + label::after, .is-checkradio[type=radio].is-info:checked + label:after {
-  border-color: #5a6581 !important;
-  background-color: #5a6581 !important;
-}
-.is-checkradio[type=radio].is-info:checked.has-background-color + label::before, .is-checkradio[type=radio].is-info:checked.has-background-color + label:before {
-  border-color: #5a6581 !important;
-  background-color: #5a6581 !important;
-}
-.is-checkradio[type=radio].is-info:checked.has-background-color + label::after, .is-checkradio[type=radio].is-info:checked.has-background-color + label:after {
-  border-color: #fff !important;
-  background-color: #fff !important;
-}
-.is-checkradio[type=radio].is-success.has-background-color + label::before, .is-checkradio[type=radio].is-success.has-background-color + label:before {
-  border-color: hsl(153, 53%, 53%) !important;
-  background-color: hsl(153, 53%, 53%) !important;
-}
-.is-checkradio[type=radio].is-success:hover:not([disabled]) + label::before, .is-checkradio[type=radio].is-success:hover:not([disabled]) + label:before {
-  border-color: hsl(153, 53%, 53%) !important;
-}
-.is-checkradio[type=radio].is-success:checked + label::after, .is-checkradio[type=radio].is-success:checked + label:after {
-  border-color: hsl(153, 53%, 53%) !important;
-  background-color: hsl(153, 53%, 53%) !important;
-}
-.is-checkradio[type=radio].is-success:checked.has-background-color + label::before, .is-checkradio[type=radio].is-success:checked.has-background-color + label:before {
-  border-color: hsl(153, 53%, 53%) !important;
-  background-color: hsl(153, 53%, 53%) !important;
-}
-.is-checkradio[type=radio].is-success:checked.has-background-color + label::after, .is-checkradio[type=radio].is-success:checked.has-background-color + label:after {
-  border-color: #fff !important;
-  background-color: #fff !important;
-}
-.is-checkradio[type=radio].is-warning.has-background-color + label::before, .is-checkradio[type=radio].is-warning.has-background-color + label:before {
-  border-color: hsl(44, 100%, 77%) !important;
-  background-color: hsl(44, 100%, 77%) !important;
-}
-.is-checkradio[type=radio].is-warning:hover:not([disabled]) + label::before, .is-checkradio[type=radio].is-warning:hover:not([disabled]) + label:before {
-  border-color: hsl(44, 100%, 77%) !important;
-}
-.is-checkradio[type=radio].is-warning:checked + label::after, .is-checkradio[type=radio].is-warning:checked + label:after {
-  border-color: hsl(44, 100%, 77%) !important;
-  background-color: hsl(44, 100%, 77%) !important;
-}
-.is-checkradio[type=radio].is-warning:checked.has-background-color + label::before, .is-checkradio[type=radio].is-warning:checked.has-background-color + label:before {
-  border-color: hsl(44, 100%, 77%) !important;
-  background-color: hsl(44, 100%, 77%) !important;
-}
-.is-checkradio[type=radio].is-warning:checked.has-background-color + label::after, .is-checkradio[type=radio].is-warning:checked.has-background-color + label:after {
-  border-color: rgba(0, 0, 0, 0.7) !important;
-  background-color: rgba(0, 0, 0, 0.7) !important;
-}
-.is-checkradio[type=radio].is-danger.has-background-color + label::before, .is-checkradio[type=radio].is-danger.has-background-color + label:before {
-  border-color: #95404c !important;
-  background-color: #95404c !important;
-}
-.is-checkradio[type=radio].is-danger:hover:not([disabled]) + label::before, .is-checkradio[type=radio].is-danger:hover:not([disabled]) + label:before {
-  border-color: #95404c !important;
-}
-.is-checkradio[type=radio].is-danger:checked + label::after, .is-checkradio[type=radio].is-danger:checked + label:after {
-  border-color: #95404c !important;
-  background-color: #95404c !important;
-}
-.is-checkradio[type=radio].is-danger:checked.has-background-color + label::before, .is-checkradio[type=radio].is-danger:checked.has-background-color + label:before {
-  border-color: #95404c !important;
-  background-color: #95404c !important;
-}
-.is-checkradio[type=radio].is-danger:checked.has-background-color + label::after, .is-checkradio[type=radio].is-danger:checked.has-background-color + label:after {
-  border-color: #fff !important;
-  background-color: #fff !important;
-}
+.datetimepicker-dummy.is-link .datetimepicker-clear-button {
+  color: #910106; }
+
+.datetimepicker-dummy.is-info:before, .datetimepicker-dummy.is-info::before {
+  background-color: #3e8ed0; }
+
+.datetimepicker-dummy.is-info .datetimepicker-dummy-wrapper:before, .datetimepicker-dummy.is-info .datetimepicker-dummy-wrapper::before {
+  background-color: #3e8ed0; }
+
+.datetimepicker-dummy.is-info .datetimepicker-dummy-wrapper:focus, .datetimepicker-dummy.is-info .datetimepicker-dummy-wrapper.is-focused, .datetimepicker-dummy.is-info .datetimepicker-dummy-wrapper:active, .datetimepicker-dummy.is-info .datetimepicker-dummy-wrapper.is-active {
+  border-color: #3e8ed0;
+  box-shadow: 0 0 0 0.125em rgba(62, 142, 208, 0.25); }
+
+.datetimepicker-dummy.is-info .datetimepicker-clear-button {
+  color: #3e8ed0; }
+
+.datetimepicker-dummy.is-success:before, .datetimepicker-dummy.is-success::before {
+  background-color: #48c78e; }
+
+.datetimepicker-dummy.is-success .datetimepicker-dummy-wrapper:before, .datetimepicker-dummy.is-success .datetimepicker-dummy-wrapper::before {
+  background-color: #48c78e; }
+
+.datetimepicker-dummy.is-success .datetimepicker-dummy-wrapper:focus, .datetimepicker-dummy.is-success .datetimepicker-dummy-wrapper.is-focused, .datetimepicker-dummy.is-success .datetimepicker-dummy-wrapper:active, .datetimepicker-dummy.is-success .datetimepicker-dummy-wrapper.is-active {
+  border-color: #48c78e;
+  box-shadow: 0 0 0 0.125em rgba(72, 199, 142, 0.25); }
+
+.datetimepicker-dummy.is-success .datetimepicker-clear-button {
+  color: #48c78e; }
+
+.datetimepicker-dummy.is-warning:before, .datetimepicker-dummy.is-warning::before {
+  background-color: #ffe08a; }
+
+.datetimepicker-dummy.is-warning .datetimepicker-dummy-wrapper:before, .datetimepicker-dummy.is-warning .datetimepicker-dummy-wrapper::before {
+  background-color: #ffe08a; }
+
+.datetimepicker-dummy.is-warning .datetimepicker-dummy-wrapper:focus, .datetimepicker-dummy.is-warning .datetimepicker-dummy-wrapper.is-focused, .datetimepicker-dummy.is-warning .datetimepicker-dummy-wrapper:active, .datetimepicker-dummy.is-warning .datetimepicker-dummy-wrapper.is-active {
+  border-color: #ffe08a;
+  box-shadow: 0 0 0 0.125em rgba(255, 224, 138, 0.25); }
+
+.datetimepicker-dummy.is-warning .datetimepicker-clear-button {
+  color: #ffe08a; }
+
+.datetimepicker-dummy.is-danger:before, .datetimepicker-dummy.is-danger::before {
+  background-color: #95404c; }
+
+.datetimepicker-dummy.is-danger .datetimepicker-dummy-wrapper:before, .datetimepicker-dummy.is-danger .datetimepicker-dummy-wrapper::before {
+  background-color: #95404c; }
+
+.datetimepicker-dummy.is-danger .datetimepicker-dummy-wrapper:focus, .datetimepicker-dummy.is-danger .datetimepicker-dummy-wrapper.is-focused, .datetimepicker-dummy.is-danger .datetimepicker-dummy-wrapper:active, .datetimepicker-dummy.is-danger .datetimepicker-dummy-wrapper.is-active {
+  border-color: #95404c;
+  box-shadow: 0 0 0 0.125em rgba(149, 64, 76, 0.25); }
+
+.datetimepicker-dummy.is-danger .datetimepicker-clear-button {
+  color: #95404c; }
+
+.datetimepicker-dummy.is-black-bis:before, .datetimepicker-dummy.is-black-bis::before {
+  background-color: #121212; }
+
+.datetimepicker-dummy.is-black-bis .datetimepicker-clear-button {
+  color: #121212; }
+
+.datetimepicker-dummy.is-black-ter:before, .datetimepicker-dummy.is-black-ter::before {
+  background-color: #242424; }
+
+.datetimepicker-dummy.is-black-ter .datetimepicker-clear-button {
+  color: #242424; }
+
+.datetimepicker-dummy.is-grey-darker:before, .datetimepicker-dummy.is-grey-darker::before {
+  background-color: #363636; }
+
+.datetimepicker-dummy.is-grey-darker .datetimepicker-clear-button {
+  color: #363636; }
+
+.datetimepicker-dummy.is-grey-dark:before, .datetimepicker-dummy.is-grey-dark::before {
+  background-color: #7c7f80; }
+
+.datetimepicker-dummy.is-grey-dark .datetimepicker-clear-button {
+  color: #7c7f80; }
+
+.datetimepicker-dummy.is-grey:before, .datetimepicker-dummy.is-grey::before {
+  background-color: #7a7a7a; }
+
+.datetimepicker-dummy.is-grey .datetimepicker-clear-button {
+  color: #7a7a7a; }
+
+.datetimepicker-dummy.is-grey-light:before, .datetimepicker-dummy.is-grey-light::before {
+  background-color: #cdcccf; }
+
+.datetimepicker-dummy.is-grey-light .datetimepicker-clear-button {
+  color: #cdcccf; }
+
+.datetimepicker-dummy.is-grey-lighter:before, .datetimepicker-dummy.is-grey-lighter::before {
+  background-color: #dbdbdb; }
+
+.datetimepicker-dummy.is-grey-lighter .datetimepicker-clear-button {
+  color: #dbdbdb; }
+
+.datetimepicker-dummy.is-white-ter:before, .datetimepicker-dummy.is-white-ter::before {
+  background-color: whitesmoke; }
+
+.datetimepicker-dummy.is-white-ter .datetimepicker-clear-button {
+  color: whitesmoke; }
+
+.datetimepicker-dummy.is-white-bis:before, .datetimepicker-dummy.is-white-bis::before {
+  background-color: #fafafa; }
+
+.datetimepicker-dummy.is-white-bis .datetimepicker-clear-button {
+  color: #fafafa; }
+
+.datetimepicker-wrapper.modal .datetimepicker {
+  display: block;
+  max-height: 95vh;
+  width: 22rem;
+  max-width: 95vw;
+  overflow-y: auto; }
