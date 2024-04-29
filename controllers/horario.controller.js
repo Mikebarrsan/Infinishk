@@ -8,9 +8,6 @@ const PrecioCredito = require('../models/precio_credito.model');
 const Materia = require('../models/materia.model');
 const { getAllUsers, getAllCourses, getAllPeriods, getUserGroups } = require('../util/adminApiClient');
 const { request } = require('express');
-const sgMail = require('@sendgrid/mail');
-
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 exports.get_propuesta_horario = async (request, response, next) => {
 
