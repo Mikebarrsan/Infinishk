@@ -12,6 +12,7 @@ const { request } = require('express');
 
 exports.get_propuesta_horario = async (request, response, next) => {
 
+    const matricula = request.session.username;
     const conf = await Alumno.fetchHorarioConfirmado(request.session.username)
     const planes = await PlanPago.fetchAllActivePlans()
     const confirmacion = conf[0][0].horarioConfirmado
@@ -19,7 +20,6 @@ exports.get_propuesta_horario = async (request, response, next) => {
     var periodoExistente = 1;
 
     if (confirmacion === 0) {
-        const matricula = request.session.username;
         const periodo = await Periodo.fetchActivo();
         if (periodo[0].length === 0) {
             periodoExistente = 0;
