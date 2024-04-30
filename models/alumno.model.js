@@ -41,4 +41,8 @@ module.exports = class Alumno {
     static updateHorarioAccepted(matricula){
         return db.execute(`UPDATE Alumno SET horarioConfirmado = 1 WHERE Matricula = ?`, [matricula]);
     }
+
+    static fetchCredito(matricula){
+        return db.execute(`SELECT CAST(credito AS CHAR(20)) FROM alumno WHERE Matricula = ?`,[matricula]);
+    }
 }
