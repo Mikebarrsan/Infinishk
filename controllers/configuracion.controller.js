@@ -94,29 +94,11 @@ exports.post_registrar_usuario = async (request, response, next) => {
     const matricula = request.body.IDUsuario_NoAlumno;
     const correo = request.body.correoElectronico_NoAlumno;
 
-    const token_noAlumno = jwt.sign({
-        matricula: matricula
-    }, secretKey, {
-        expiresIn: '3d'
-    });
 
-    // Enlace con el token incluido
-    const setPasswordLinkNoAlumno = `http://localhost:4000/auth/set_password?token=${token_noAlumno}`;
+    if (rol === 'Administrador') {
 
-    const msg_noAlumno = {
-        to: correo,
-        from: {
-            name: 'VIA PAGO',
-            email: '27miguelb11@gmail.com',
-        },
-        subject: 'Bienvenido a VIA Pago',
-        html: `<p>Hola!</p><p>Haz clic en el siguiente enlace para establecer tu contraseña. Toma en cuenta que la liga tiene una validez de 3 días: <a href="${setPasswordLinkNoAlumno}">Establecer Contraseña</a></p>`
-    };
-
-     if (rol === 'Administrador') {
-        
         const [usuarioExistente, fieldData] = await Usuario.fetchOne(matricula);
-        if (usuarioExistente.length > 0) { 
+        if (usuarioExistente.length > 0) {
             return response.render('configuracion/registrar_usuario', {
                 roles_disponibles: roles_disponibles,
                 csrfToken: request.csrfToken(),
@@ -130,15 +112,34 @@ exports.post_registrar_usuario = async (request, response, next) => {
         await Usuario.saveUsuario(matricula, correo);
         await Posee.savePosee(matricula, 1);
 
+        const token_noAlumno = jwt.sign({
+            matricula: matricula
+        }, secretKey, {
+            expiresIn: '3d'
+        });
+
+        // Enlace con el token incluido
+        const setPasswordLinkNoAlumno = `http://localhost:4000/auth/set_password?token=${token_noAlumno}`;
+
+        const msg_noAlumno = {
+            to: correo,
+            from: {
+                name: 'VIA PAGO',
+                email: '27miguelb11@gmail.com',
+            },
+            subject: 'Bienvenido a VIA Pago',
+            html: `<p>Hola!</p><p>Haz clic en el siguiente enlace para establecer tu contraseña. Toma en cuenta que la liga tiene una validez de 3 días: <a href="${setPasswordLinkNoAlumno}">Establecer Contraseña</a></p>`
+        };
+
         try {
             await sgMail.send(msg_noAlumno);
             console.log('Correo electrónico enviado correctamente');
         } catch (error) {
             console.error('Error al enviar el correo electrónico:', error.toString());
         };
-     }
-     
-     if (rol === 'Visualizador') {
+    }
+
+    if (rol === 'Visualizador') {
 
         const [usuarioExistente, fieldData] = await Usuario.fetchOne(matricula);
         if (usuarioExistente.length > 0) {
@@ -155,6 +156,25 @@ exports.post_registrar_usuario = async (request, response, next) => {
         await Usuario.saveUsuario(matricula, correo);
         await Posee.savePosee(matricula, 2);
 
+        const token_noAlumno = jwt.sign({
+            matricula: matricula
+        }, secretKey, {
+            expiresIn: '3d'
+        });
+
+        // Enlace con el token incluido
+        const setPasswordLinkNoAlumno = `http://localhost:4000/auth/set_password?token=${token_noAlumno}`;
+
+        const msg_noAlumno = {
+            to: correo,
+            from: {
+                name: 'VIA PAGO',
+                email: '27miguelb11@gmail.com',
+            },
+            subject: 'Bienvenido a VIA Pago',
+            html: `<p>Hola!</p><p>Haz clic en el siguiente enlace para establecer tu contraseña. Toma en cuenta que la liga tiene una validez de 3 días: <a href="${setPasswordLinkNoAlumno}">Establecer Contraseña</a></p>`
+        };
+
         try {
             await sgMail.send(msg_noAlumno);
             console.log('Correo electrónico enviado correctamente');
@@ -162,65 +182,63 @@ exports.post_registrar_usuario = async (request, response, next) => {
             console.error('Error al enviar el correo electrónico:', error.toString());
         };
     }
-    
+
     if (rol === 'Alumno') {
 
-       const matricula_alumno = request.body.IDUsuario;
-       const correo_alumno = request.body.correoElectronico;
-       const nombre = request.body.nombre;
-       const apellidos = request.body.apellidos;
-       const referenciaBancaria = request.body.referenciaBancaria;
-       const fechaInscripcion = request.body.fechaInscripcion.split("/").reverse().join("-");
-       const fechaModificacion = fechaInscripcion + ' 08:00:00';
+        const matricula_alumno = request.body.IDUsuario;
+        const correo_alumno = request.body.correoElectronico;
+        const nombre = request.body.nombre;
+        const apellidos = request.body.apellidos;
+        const referenciaBancaria = request.body.referenciaBancaria;
+        const fechaInscripcion = request.body.fechaInscripcion.split("/").reverse().join("-");
+        const fechaModificacion = fechaInscripcion + ' 08:00:00';
 
-       console.log(correo_alumno);
+        const [usuarioExistente, fieldData] = await Usuario.fetchOne(matricula_alumno);
+        if (usuarioExistente.length > 0) {
+            return response.render('configuracion/registrar_usuario', {
+                roles_disponibles: roles_disponibles,
+                csrfToken: request.csrfToken(),
+                error: true,
+                username: request.session.username || '',
+                permisos: request.session.permisos || [],
+                rol: request.session.rol || "",
+            })
+        };
 
-       const [usuarioExistente, fieldData] = await Usuario.fetchOne(matricula_alumno);
-       if (usuarioExistente.length > 0) {
-           return response.render('configuracion/registrar_usuario', {
-               roles_disponibles: roles_disponibles,
-               csrfToken: request.csrfToken(),
-               error: true,
-               username: request.session.username || '',
-               permisos: request.session.permisos || [],
-               rol: request.session.rol || "",
-           })
-       };
+        // Registras al usuario y al alumno
+        await Usuario.saveUsuario(matricula_alumno, correo_alumno);
+        await Posee.savePosee(matricula_alumno, 3);
+        await Alumno.save_alumno(matricula_alumno, nombre, apellidos, referenciaBancaria);
 
-       // Registras al usuario y al alumno
-       await Usuario.saveUsuario(matricula_alumno, correo_alumno);
-       await Posee.savePosee(matricula_alumno, 3);
-       await Alumno.save_alumno(matricula_alumno, nombre, apellidos, referenciaBancaria);
+        // Registras al estudiante en diplomado
+        const estudiante = new estudianteDiplomado(matricula_alumno, fechaModificacion);
+        await estudiante.save();
 
-       // Registras al estudiante en diplomado
-       const estudiante = new estudianteDiplomado(matricula_alumno, fechaModificacion);
-       await estudiante.save();
+        const token_noAlumno = jwt.sign({
+            matricula: matricula
+        }, secretKey, {
+            expiresIn: '3d'
+        });
 
-       const token = jwt.sign({
-           matricula: matricula_alumno
-       }, secretKey, {
-           expiresIn: '3d'
-       });
+        // Enlace con el token incluido
+        const setPasswordLinkNoAlumno = `http://localhost:4000/auth/set_password?token=${token_noAlumno}`;
 
-       // Enlace con el token incluido
-       const setPasswordLink = `http://localhost:4000/auth/set_password?token=${token}`;
+        const msgAlumno = {
+            to: correo_alumno,
+            from: {
+                name: 'VIA PAGO',
+                email: '27miguelb11@gmail.com',
+            },
+            subject: 'Bienvenido a VIA Pago',
+            html: `<p>Hola!</p><p>Haz clic en el siguiente enlace para establecer tu contraseña. Toma en cuenta que la liga tiene una validez de 3 días: <a href="${setPasswordLinkNoAlumno}">Establecer Contraseña</a></p>`
+        };
 
-       const msgAlumno = {
-           to: correo,
-           from: {
-               name: 'VIA PAGO',
-               email: '27miguelb11@gmail.com',
-           },
-           subject: 'Bienvenido a VIA Pago',
-           html: `<p>Hola!</p><p>Haz clic en el siguiente enlace para establecer tu contraseña. Toma en cuenta que la liga tiene una validez de 3 días: <a href="${setPasswordLink}">Establecer Contraseña</a></p>`
-       };
-
-       try {
-           await sgMail.send(msgAlumno);
-           console.log('Correo electrónico enviado correctamente');
-       } catch (error) {
-           console.error('Error al enviar el correo electrónico:', error.toString());
-       }
+        try {
+            await sgMail.send(msgAlumno);
+            console.log('Correo electrónico enviado correctamente');
+        } catch (error) {
+            console.error('Error al enviar el correo electrónico:', error.toString());
+        }
     }
 
     response.redirect('/configuracion/consultar_usuario');
@@ -228,7 +246,7 @@ exports.post_registrar_usuario = async (request, response, next) => {
 
 exports.get_obtener_usuario = (request, response, next) => {
     response.render('configuracion/obtener_usuario', {
-        error:false,
+        error: false,
         errorMensaje: '',
         csrfToken: request.csrfToken(),
         username: request.session.username || '',
@@ -237,21 +255,21 @@ exports.get_obtener_usuario = (request, response, next) => {
     })
 }
 
-exports.post_getAdmins = async(request, response, next) => {
+exports.post_getAdmins = async (request, response, next) => {
     let input = request.body.input;
     try {
         const users = await getAllAdmins();
 
         let unregisteredAdmins = [];
         let registeredAdmins = [];
-    
+
         for (let count = 0; count < users.data.length; count++) {
             let admin_matricula = (users.data[count].ivd_id).toString()
             let [usuarioExistente, fieldData] = await Usuario.fetchOne(admin_matricula);
 
-            if (usuarioExistente.length == 0){
+            if (usuarioExistente.length == 0) {
                 unregisteredAdmins.push(admin_matricula)
-            } 
+            }
         }
 
         // Filtras dependiendo del user input
@@ -315,11 +333,11 @@ exports.post_activar_usuario = async (request, response, next) => {
     const correo = request.body.correo;
 
     if (rol === 'Administrador') {
-        await Usuario.saveUsuario(matricula,correo);
-        await Posee.savePosee(matricula,1);
+        await Usuario.saveUsuario(matricula, correo);
+        await Posee.savePosee(matricula, 1);
 
         const token = jwt.sign({ matricula: matricula }, secretKey, { expiresIn: '3d' });
-        
+
         // Enlace con el token incluido
         const setPasswordLink = `http://localhost:4000/auth/set_password?token=${token}`;
 
@@ -332,11 +350,11 @@ exports.post_activar_usuario = async (request, response, next) => {
             subject: 'Bienvenido a VIA Pago',
             html: `<p>Hola!</p><p>Haz clic en el siguiente enlace para establecer tu contraseña. Toma en cuenta que la liga tiene una validez de 3 días: <a href="${setPasswordLink}">Establecer Contraseña</a></p>`
         };
-    
+
         try {
             await sgMail.send(msg);
             console.log('Correo electrónico enviado correctamente');
-        } 
+        }
         catch (error) {
             console.error('Error al enviar el correo electrónico:', error.toString());
         }
@@ -346,11 +364,11 @@ exports.post_activar_usuario = async (request, response, next) => {
     }
 
     if (rol === 'Visualizador') {
-        await Usuario.saveUsuario(matricula,correo);
-        await Posee.savePosee(matricula,2); 
+        await Usuario.saveUsuario(matricula, correo);
+        await Posee.savePosee(matricula, 2);
 
         const token = jwt.sign({ matricula: matricula }, secretKey, { expiresIn: '3d' });
-        
+
         // Enlace con el token incluido
         const setPasswordLink = `http://localhost:4000/auth/set_password?token=${token}`;
 
@@ -363,11 +381,11 @@ exports.post_activar_usuario = async (request, response, next) => {
             subject: 'Bienvenido a VIA Pago',
             html: `<p>Hola!</p><p>Haz clic en el siguiente enlace para establecer tu contraseña. Toma en cuenta que la liga tiene una validez de 3 días: <a href="${setPasswordLink}">Establecer Contraseña</a></p>`
         };
-    
+
         try {
             await sgMail.send(msg);
             console.log('Correo electrónico enviado correctamente');
-        } 
+        }
         catch (error) {
             console.error('Error al enviar el correo electrónico:', error.toString());
         }
