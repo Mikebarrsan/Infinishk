@@ -211,10 +211,9 @@ exports.post_confirmar_horario = async (request, response, next) => {
         );
     }
 
-    // Acciones adicionales después de manejar cada grupo
-    await Alumno.updateHorarioAccepted(request.session.username);
-    await Colegiatura.createColegiaturasFichas(request.body.IDPlanPago, request.session.username);
-    await Usuario.fetchCorreo(request.session.username);
+     // Acciones adicionales después de manejar cada grupo
+     await Colegiatura.createColegiaturasFichas(request.body.IDPlanPago, request.session.username, precioActual);
+     await Alumno.updateHorarioAccepted(request.session.username);
 
     response.redirect('/horario/consultaHorario');
 }

@@ -29,7 +29,7 @@ module.exports = class Colegiatura{
         AND D.Matricula = ?`, [matricula]);
     }
     // Transacción para crear colegiatura y fichas al mismo tiempo on¿ nada en caso de algún error
-    static createColegiaturasFichas(IDPlanPago, matricula){
-        return db.execute(`CALL crear_colegiaturas_fichas(?,?)`, [IDPlanPago, matricula]);
+    static createColegiaturasFichas(IDPlanPago, matricula, precioCredito){
+        return db.execute(`CALL crear_colegiaturas_fichas(?,?,?)`, [IDPlanPago, matricula, precioCredito]);
     }
 };
