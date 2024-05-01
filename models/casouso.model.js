@@ -8,12 +8,12 @@ module.exports = class CasoUso {
     }
 
     static fetchAll() {
-        return db.execute('Select funcion from casouso');
+        return db.execute('SELECT IDCasoUso, funcion AS nombreCasoUso FROM casouso');
     }
 
     static findByNombre(nombre) {
     return db.execute('SELECT IDCasoUso FROM casouso WHERE funcion = ?', [nombre]);
-}
+    }
 
 }
 

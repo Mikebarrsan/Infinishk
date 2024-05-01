@@ -13,7 +13,6 @@ exports.get_configuracion = (request, response, next) => {
 exports.get_registrar_rol = (request, response, next) => {
     CasoUso.fetchAll()
         .then(([casosuso, fieldData]) => {
-            console.log(casosuso); 
             response.render('configuracion/registrar_rol', {
                 casouso: casosuso,
                 csrfToken: request.csrfToken(),
@@ -33,12 +32,28 @@ exports.get_registrar_rol = (request, response, next) => {
 
 exports.post_registrar_rol = (request, response, next) => {
     const nombreRol = request.body.nombreRol;
-    const casosUso = request.body.casosUso; // Array de nombres
+    const casosUso = request.body.casosUso; // Array de IDCasoUso
 
+    // Insertar el nuevo rol y obtener su ID
     Rol.create(nombreRol)
+        .then(([result]) => {
+
+            // Iniciar inserciones para cada caso de uso
+            const insertPromises = [];
+            let IDRol = Rol.getID(nombreRol);
+            for (let i = 0; i < casosUso.length; i++) {
+                insertPromises.push(Contiene.create(i, IDRol));
+            }
+
+            // Esperar a que todas las inserciones en 'Contiene' terminen
+            return Promise.all(insertPromises);
+        })
+        .then(() => {
+            response.redirect('/configuracion/registrar_rol');
+        })
         .catch(error => {
             console.log(error);
-            response.status(500).send("Error registrando el rol");
+            response.status(500).send("Error registrando el rol y los casos de uso");
         });
 };
 

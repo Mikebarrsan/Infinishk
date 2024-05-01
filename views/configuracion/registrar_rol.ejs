@@ -10,11 +10,11 @@
             </div>
             <div>
                 <label for="casosUso">Casos de Uso:</label>
-                <select name="casosUso" id="casosUso" multiple>
+                <select name="casosUso[]" id="casosUso" multiple>
                     <% casouso.forEach(function(caso) { %>
-                        <option value="<%= caso.funcion %>"><%= caso.funcion %></option>
+                        <option value="<%= caso.IDCasoUso %>"><%= caso.nombreCasoUso %></option>
                     <% }) %>
-                </select>
+                </select>             
                 <small>Mantén presionado "Ctrl" o "Cmd" para seleccionar múltiples opciones.</small>
             </div>
             <div>

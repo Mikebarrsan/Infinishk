@@ -10,4 +10,10 @@ module.exports = class Rol {
     static create(nombreRol) {
         return db.execute('INSERT INTO Rol (nombreRol) VALUES (?)', [nombreRol]);
     }
+
+    static getID(nombreRol) {
+        return db.execute('SELECT IDRol FROM rol WHERE nombreRol = ?', [nombreRol]);
+    }
+
+    
 }
