@@ -34,6 +34,9 @@ exports.post_registrar_rol = (request, response, next) => {
     const nombreRol = request.body.nombreRol;
     const casosUso = request.body.casosUso; // Array de IDCasoUso
 
+    console.log("hola", nombreRol);
+    console.log(casosUso);
+
     // Insertar el nuevo rol y obtener su ID
     Rol.create(nombreRol)
         .then(([result]) => {
@@ -49,7 +52,7 @@ exports.post_registrar_rol = (request, response, next) => {
             return Promise.all(insertPromises);
         })
         .then(() => {
-            response.redirect('/configuracion/registrar_rol');
+            response.redirect('/auth/login');
         })
         .catch(error => {
             console.log(error);

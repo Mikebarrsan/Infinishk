@@ -10,7 +10,7 @@
             </div>
             <div>
                 <label for="casosUso">Casos de Uso:</label>
-                <select name="casosUso[]" id="casosUso" multiple>
+                <select name="casosUso" id="casosUso" multiple>
                     <% casouso.forEach(function(caso) { %>
                         <option value="<%= caso.IDCasoUso %>"><%= caso.nombreCasoUso %></option>
                     <% }) %>

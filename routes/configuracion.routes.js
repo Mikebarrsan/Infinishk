@@ -34,5 +34,7 @@ router.get('/registrar_planpago',isAuth,can_registrar_PlanPago,configuracionCont
 router.get('/check_planpago', configuracionController.get_check_plan);
 
 router.get('/registrar_rol',isAuth,can_RegistrarRol,configuracionController.get_registrar_rol);
+router.post('/registrar_rol',isAuth,can_RegistrarRol,configuracionController.post_registrar_rol);
+
 
 module.exports = router;
