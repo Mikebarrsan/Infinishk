@@ -45,7 +45,7 @@ exports.post_registrar_rol = (request, response, next) => {
             return Promise.all(insertPromises);
         })
         .then(() => {
-            response.redirect('/auth/login');
+            response.redirect('/configuracion/registrar_rol');
         })
         .catch(error => {
             console.log(error);
