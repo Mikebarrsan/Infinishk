@@ -40,8 +40,11 @@ exports.post_registrar_rol = (request, response, next) => {
             return Rol.getID(nombreRol); // Espera a obtener el ID del rol
         })
         .then(([rows]) => {
-            const rolId = rows[0].IDRol; // Asume que la consulta devuelve al menos un resultado
-            const insertPromises = casosUso.map(casoUsoId => Contiene.create(casoUsoId, rolId)); // Corrige el argumento a pasar
+            const rolId = rows[0].IDRol;
+            const insertPromises = [];
+            for (let i = 0; i < casosUso; i++) {
+                insertPromises.push(Contiene.create(casosUso[i], rolId));
+            }
             return Promise.all(insertPromises);
         })
         .then(() => {
