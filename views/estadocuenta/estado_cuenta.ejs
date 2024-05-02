@@ -37,6 +37,8 @@
                     </a>
                 </li>
                 <% } %>
+
+                <% if(matricula[0] == '1') { %>
                 <li id="nav_extras" <% if(matricula[0] == '8') { %>class="is-active" <%  }%>>
                     <a onclick="extras()" >
                         <span class="icon is-small"><i class="fa-solid fa-list-ul"></i></span>
@@ -49,6 +51,20 @@
                         <span>Historial pagos</span>
                     </a>
                 </li>
+                <% } else if(matricula[0] == '8') { %>
+                    <li id="nav_pagos" class="is-active">
+                        <a onclick="pagos()">
+                            <span class="icon is-small"><i class="fa-solid fa-timeline"></i></span>
+                            <span>Historial pagos</span>
+                        </a>
+                    </li>
+                    <li id="nav_extras">
+                        <a onclick="extras()">
+                            <span class="icon is-small"><i class="fa-solid fa-list-ul"></i></span>
+                            <span>Cargos extras</span>
+                        </a>
+                    </li>
+                <% } %>
             </ul>
         </div>
 
@@ -82,13 +98,22 @@
                                 <% } %>
                                 <div class="column">
                                     <strong>Pendiente:</strong>
-                                    $<%= deuda[count].saldoPendiente.toLocaleString('mx'); %>
+                                    $<%= deuda[count].saldoPendiente.toLocaleString('mx', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    }) %>
                                     <br>
                                     <strong>Total: </strong>
-                                    $<%= deuda[count].montoAPagar.toLocaleString('mx') %>
+                                    $<%= deuda[count].montoAPagar.toLocaleString('mx', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    }) %>
                                     <br>
                                     <strong>Pagado:</strong>
-                                    $<%= deuda[count].montoPagado.toLocaleString('mx') %>
+                                    $<%= deuda[count].montoPagado.toLocaleString('mx', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    }) %>
                                 </div>
                                 <div class="column">
                                     <strong>Fecha Limite Pago:</strong>
@@ -121,13 +146,22 @@
                                 <% } %>
                                 <div class="column">
                                     <strong>Pendiente:</strong>
-                                    $<%= deuda[count].saldoPendiente.toLocaleString('mx'); %>
+                                    $<%= deuda[count].saldoPendiente.toLocaleString('mx', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    }) %>
                                     <br>
                                     <strong>Total: </strong>
-                                    $<%= deuda[count].montoAPagar.toLocaleString('mx') %>
+                                    $<%= deuda[count].montoAPagar.toLocaleString('mx', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    }) %>
                                     <br>
                                     <strong>Pagado:</strong>
-                                    $<%= deuda[count].montoPagado.toLocaleString('mx') %>
+                                    $<%= deuda[count].montoPagado.toLocaleString('mx', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    }) %>
                                 </div>
                                 <div class="column">
                                     <strong>Fecha Limite Pago:</strong>
@@ -158,13 +192,22 @@
                                 <% } %>
                                 <div class="column">
                                     <strong>Pendiente:</strong>
-                                    $<%= deuda[count + 1].saldoPendiente.toLocaleString('mx'); %>
+                                    $<%= deuda[count + 1].saldoPendiente.toLocaleString('mx', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    }) %>
                                     <br>
                                     <strong>Total: </strong>
-                                    $<%= deuda[count + 1].montoAPagar.toLocaleString('mx') %>
+                                    $<%= deuda[count + 1].montoAPagar.toLocaleString('mx', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    }) %>
                                     <br>
                                     <strong>Pagado:</strong>
-                                    $<%= deuda[count + 1].montoPagado.toLocaleString('mx') %>
+                                    $<%= deuda[count + 1].montoPagado.toLocaleString('mx', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    }) %>
                                 </div>
                                 <div class="column">
                                     <strong>Fecha Limite Pago:</strong>
@@ -181,6 +224,7 @@
         </div>
         <% } %>
         
+<<<<<<< HEAD
         <div <% if(matricula[0] == '1') { %>class="is-hidden" <% } %> id="extras">
             <% if(pagosExtra && pagosExtra.length > 0) { %>
             <% pagosExtra.forEach(pagosExtra => { %>
@@ -191,26 +235,95 @@
                         <p><strong>Monto a pagar:</strong> <%= pagosExtra.montoPagar.toFixed(2) %> </p>
                         <p><strong>Motivo:</strong> <%= pagosExtra.motivoPago %> </p>
                     </div>
+=======
+        <div class="is-hidden" id="extras">
+            <h4 class="title is-4">Solicitudes Pendientes</h4>
+            <% if (pagosExtra.length > 0) { %> 
+                <div class="notification" style="background-color: #5a6581; color:#ffffff;">
+                Estas son las solicitudes de pago que todavía no se liquidan:
                 </div>
-            </div>
+                <% for (let count = 0; count < pagosExtra.length; count = count + 2) { %> 
+                    <% if(pagosExtra[count].montoPagar !== 0) { %>
+                        <div class="columns">
+                    <% if (count + 1 == pagosExtra.length) { %>
+                        <div class="column is-full">
+                            <div class="box">
+                                <div class="columns is-vcentered">
+                                    <div class="column">
+                                        <p><strong>Monto a pagar:</strong>
+                                            $<%= pagosExtra[count].montoPagar.toLocaleString('mx', {
+                                                        minimumFractionDigits: 2,
+                                                        maximumFractionDigits: 2
+                                                    }) %> </p>
+                                        <p><strong>Motivo:</strong> <%= pagosExtra[count].motivoPago %> </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% } else {%>
+                            <div class="column is-6">
+                                <div class="box">
+                                    <div class="columns is-vcentered">
+                                        <div class="column">
+                                            <p><strong>Monto a pagar:</strong>
+                                                $<%= pagosExtra[count].montoPagar.toLocaleString('mx', {
+                                                        minimumFractionDigits: 2,
+                                                        maximumFractionDigits: 2
+                                                    }) %> </p>
+                                            <p><strong>Motivo:</strong> <%= pagosExtra[count].motivoPago %> </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-6">
+                                <div class="box">
+                                    <div class="columns is-vcentered">
+                                        <div class="column">
+                                            <p><strong>Monto a pagar:</strong>
+                                                $<%= pagosExtra[count + 1].montoPagar.toLocaleString('mx', {
+                                                        minimumFractionDigits: 2,
+                                                        maximumFractionDigits: 2
+                                                    }) %> </p>
+                                            <p><strong>Motivo:</strong> <%= pagosExtra[count + 1].motivoPago %> </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+                    <% } %>
+                <% } %>
+            <% } else {%>
+                <div class="notification" style="background-color: #5a6581; color:#ffffff;">
+                    Actualmente no cuentas con solicitudes de pagos pendientes. 
+                    Por favor contacta a dirección si quieres pagar un Pago Extra.
+>>>>>>> f8ac8e99bc9122fb69d31ab3adcaaa1793f2b7ad
+                </div>
             <% } %>
+<<<<<<< HEAD
             <% }); %>
             <% } else { %>
             <p>No hay cargos extras registrados.</p>
             <% } %>
+=======
+>>>>>>> f8ac8e99bc9122fb69d31ab3adcaaa1793f2b7ad
         </div>
 
-        <div class="is-hidden" id="pagos">
+        <div <% if(matricula[0] == '1') { %>class="is-hidden" <% } %> id="pagos">
             <div class="tabs is-boxed">
                 <ul>
                     <li class="is-active" id="nav_pagoscol">
                         <a onclick="pagoscol()">
-                            <span>Pagos de colegiatura</span>
+                            <% if(matricula[0] == '1') { %>
+                                <span>Pagos de colegiatura</span>
+                            <% } else { %>
+                                <span>Pagos de Diplomado</span>
+                            <% } %>
                         </a>
                     </li>
                     <li id="nav_pagosextra">
                         <a onclick="pagosextra()">
-                            <span>Pagos extras</span>
+                            <span>Otros Pagos</span>
                         </a>
                     </li>
 
@@ -226,7 +339,11 @@
                     <div class="box">
                         <div class="columns is-vcentered">
                             <div class="column">
-                                <p><strong>Monto Pagado:</strong> <%= pagos.montoPagado %> </p>
+                                <p><strong>Monto Pagado:</strong> $<%= pagos.montoPagado.toLocaleString('mx', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    }) %> 
+                                </p>
                                 <p><strong>Fecha de pago:</strong> <%= pagos.fechaPago %> </p>
                                 <p><strong>Motivo de pago:</strong> <%= pagos.motivo %> </p>
                                 <p><strong>Método:</strong> <%= pagos.metodoPago %> </p>
@@ -243,6 +360,7 @@
                     <% } %>
 
                     <% } else if(matricula[0] == '8') { %> 
+<<<<<<< HEAD
                         <% if(pagosDiplomado && pagosDiplomado.length > 0) { %>
                             <% pagosDiplomado.forEach(pagos => { %>
                                 <% if(pagos.montoPagado !== 0) { %>
@@ -257,15 +375,103 @@
                                             <% if(pagos.Nota !== '') { %>
                                             <p><strong>Nota:</strong> <%= pagos.Nota %> </p>
                                             <% } %>
+=======
+                        <% for (let count = 0; count < pagosDiplomado.length; count = count + 2) { %>
+                            <% if(pagosDiplomado[count].montoPagado !== 0) { %>
+                                <div class="columns">
+                                <% if (count + 1 == pagosDiplomado.length) { %>
+                                    <div class="column is-full">
+                                        <div class="box">
+                                            <div class="columns is-vcentered">
+                                                <div class="column">
+                                                    <p><strong>Monto Pagado:</strong>
+                                                        $<%= pagosDiplomado[count].montoPagado.toLocaleString('mx', {
+                                                         minimumFractionDigits: 2,
+                                                          maximumFractionDigits: 2
+                                                        }) %>
+                                                    </p>
+                                                    <p><strong>Nombre del diplomado:</strong>
+                                                        <%= pagosDiplomado[count].nombreDiplomado %> </p>
+                                                    <p><strong>Fecha de pago:</strong>
+                                                        <%= pagosDiplomado[count].fechaPago %>
+                                                    </p>
+                                                    <p><strong>Motivo de pago:</strong>
+                                                        <%= pagosDiplomado[count].Motivo %> </p>
+                                                    <p><strong>Método:</strong> <%= pagosDiplomado[count].metodoPago %>
+                                                    </p>
+                                                    <% if(pagosDiplomado[count].Nota !== '') { %>
+                                                    <p><strong>Nota:</strong> <%= pagosDiplomado[count].Nota %> </p>
+                                                    <% } %>
+                                                </div>
+                                            </div>
+>>>>>>> f8ac8e99bc9122fb69d31ab3adcaaa1793f2b7ad
                                         </div>
                                     </div>
+                                <% } else {%>
+                                    <div class="column is-6">
+                                        <div class="box">
+                                            <div class="columns is-vcentered">
+                                                <div class="column">
+                                                    <p><strong>Monto Pagado:</strong>
+                                                        $<%= pagosDiplomado[count].montoPagado.toLocaleString('mx', {
+                                                         minimumFractionDigits: 2,
+                                                          maximumFractionDigits: 2
+                                                        }) %> 
+                                                    </p>
+                                                    <p><strong>Nombre del diplomado:</strong>
+                                                        <%= pagosDiplomado[count].nombreDiplomado %> </p>
+                                                    <p><strong>Fecha de pago:</strong> <%= pagosDiplomado[count].fechaPago %>
+                                                    </p>
+                                                    <p><strong>Motivo de pago:</strong> <%= pagosDiplomado[count].Motivo %> </p>
+                                                    <p><strong>Método:</strong> <%= pagosDiplomado[count].metodoPago %> </p>
+                                                    <% if(pagosDiplomado[count].Nota !== '') { %>
+                                                    <p><strong>Nota:</strong> <%= pagosDiplomado[count].Nota %> </p>
+                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <div class="box">
+                                            <div class="columns is-vcentered">
+                                                <div class="column">
+                                                    <p><strong>Monto Pagado:</strong>
+                                                        $<%= pagosDiplomado[count + 1].montoPagado.toLocaleString('mx', {
+                                                         minimumFractionDigits: 2,
+                                                          maximumFractionDigits: 2
+                                                        }) %>
+                                                    </p>
+                                                    <p><strong>Nombre del diplomado:</strong>
+                                                        <%= pagosDiplomado[count + 1].nombreDiplomado %> </p>
+                                                    <p><strong>Fecha de pago:</strong>
+                                                        <%= pagosDiplomado[count + 1].fechaPago %>
+                                                    </p>
+                                                    <p><strong>Motivo de pago:</strong>
+                                                        <%= pagosDiplomado[count + 1].Motivo %> </p>
+                                                    <p><strong>Método:</strong>
+                                                        <%= pagosDiplomado[count + 1].metodoPago %>
+                                                    </p>
+                                                    <% if(pagosDiplomado[count + 1].Nota !== '') { %>
+                                                    <p><strong>Nota:</strong> <%= pagosDiplomado[count + 1].Nota %> </p>
+                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% } %>
                                 </div>
+<<<<<<< HEAD
                                 <% } %>
                                 <% }) %>
                                 <% } else { %>
                                     <p>No hay historial de pagos registrado.</p>
                                     <% } %>
                                 <% }; %>
+=======
+                            <% } %>
+                        <% } %>
+                        <% } %>
+>>>>>>> f8ac8e99bc9122fb69d31ab3adcaaa1793f2b7ad
                 </div>
 
             
@@ -276,7 +482,10 @@
                 <div class="box">
                     <div class="columns is-vcentered">
                         <div class="column">
-                            <p><strong>Monto Pagado:</strong> <%= pagadosExtra.montoPagar %> </p>
+                            <p><strong>Monto Pagado:</strong> $<%= pagadosExtra.montoPagar.toLocaleString('mx', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    }) %> </p>
                             <p><strong>Fecha de pago:</strong> <%= pagadosExtra.fechaPago %> </p>
                             <p><strong>Motivo de pago:</strong> <%= pagadosExtra.motivoPago %> </p>
                             <p><strong>Método:</strong> <%= pagadosExtra.metodoPago %> </p>

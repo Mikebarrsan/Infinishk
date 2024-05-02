@@ -6,31 +6,44 @@ const Periodo = require('../models/periodo.model');
 const EstudianteProfesional = require('../models/estudianteprofesional.model');
 const PagaDiplomado = require('../models/pagadiplomado.model');
 
-
+// Configuras a moment con el locale. 
+const moment = require('moment-timezone');
+moment.locale('es-mx');
 
 exports.get_estado_cuenta = async (request, response, next) => {
     try {
 
-        
         const matricula = request.session.username;
-        const [pagos] = await Pago.fetchOne(matricula);
         const [cargosExtra] = await PagoExtra.fetchSinPagar(matricula);
         const [pagosExtra] = await PagoExtra.fetchPagados(matricula);
-
-        if(matricula[0] == '1') {
         
+        // Formatear fechas
+        for (let count = 0; count < pagosExtra.length; count++) {
+            pagosExtra[count].fechaPago = moment(pagosExtra[count].fechaPago).tz('America/Mexico_City').format('LL');
+        }
+        
+        if(matricula[0] == '1') {
+            
             // Consultas para estudiante
             
+            const [pagos] = await Pago.fetchOne(matricula);
             const estudianteProfesional = await EstudianteProfesional.fetchOne(request.session.username); 
             const [deuda] = await Deuda.fetchDeuda(matricula);
-            const [estadoCuenta] = await Deuda.fetchEstadoDeCuenta(matricula);
+            
+            // Formatear fechas
+            for (let count = 0; count < deuda.length; count++){
+                deuda[count].fechaLimitePago = moment(deuda[count].fechaLimitePago).format('LL');
+            }
+
+            for (let count = 0; count < pagos.length; count++) {
+                pagos[count].fechaPago = moment(pagos[count].fechaPago).tz('America/Mexico_City').format('LL');
+            }
 
             response.render('estadocuenta/estado_cuenta', {
                 username: request.session.username || '',
                 permisos: request.session.permisos || [],
                 csrfToken: request.csrfToken(),
                 estudianteProfesional: estudianteProfesional[0][0],
-                estadoCuenta: estadoCuenta,
                 pagos: pagos,
                 deuda: deuda,
                 pagosExtra: cargosExtra,
@@ -41,20 +54,22 @@ exports.get_estado_cuenta = async (request, response, next) => {
             });
         } else if (matricula[0] == '8') {
 
-        //Consultas para diplomado
+        const [pagosDiplomado] = await PagaDiplomado.fetchPagosDiplomado(matricula);
 
-        const pagosDiplomado = await PagaDiplomado.fetchPagosDiplomado(matricula);
+        // Formatear fechas
+        for (let count = 0; count < pagosDiplomado.length; count++) {
+            pagosDiplomado[count].fechaPago = moment(pagosDiplomado[count].fechaPago).tz('America/Mexico_City').format('LL');
+        }
 
         response.render('estadocuenta/estado_cuenta', {
             username: request.session.username || '',
             permisos: request.session.permisos || [],
             csrfToken: request.csrfToken(),
-            pagos: pagos,
             pagosExtra: cargosExtra,
             pagadosExtra: pagosExtra,
             matricula: matricula,
             rol: request.session.rol || "",
-            pagosDiplomado: pagosDiplomado[0],
+            pagosDiplomado: pagosDiplomado,
             
         });
 
