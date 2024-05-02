@@ -20,7 +20,7 @@ module.exports = class pagoDiplomado {
 
     static save_tarjeta(matricula,id,fecha,monto,motivo,nota) {
         return db.execute(
-            `CALL insertarPagoDiplomado (?,?,?,?,?,?,'Tarjeta');`, 
+            `CALL insertarPagoDiplomado (?,?,?,?,?,?,'Web Tarjeta');`, 
                 [matricula,id,fecha,monto,motivo,nota]);
     }
         

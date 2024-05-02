@@ -33,12 +33,12 @@ module.exports = class Liquida {
     }
 
     static updateExitoso(nota,fecha,id){
-        return db.execute('UPDATE liquida SET Pagado = 1, metodoPago= "Tarjeta", fechaPago=?, Nota = ? WHERE IDLiquida = ?',
+        return db.execute('UPDATE liquida SET Pagado = 1, metodoPago= "Web Tarjeta", fechaPago=?, Nota = ? WHERE IDLiquida = ?',
         [fecha,nota, id]);
     }
 
     static updateDeclinado(nota,fecha,id){
-        return db.execute('UPDATE liquida SET Pagado = 0, metodoPago= "Tarjeta", fechaPago=?, Nota = ? WHERE IDLiquida = ?',
+        return db.execute('UPDATE liquida SET Pagado = 0, metodoPago= "Web Tarjeta", fechaPago=?, Nota = ? WHERE IDLiquida = ?',
         [fecha,nota, id]);
     }
 

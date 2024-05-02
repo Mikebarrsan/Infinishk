@@ -128,7 +128,7 @@ function pagar() {
         liquida_mandar = liquida.value;
     }
     const nota = document.getElementById('nota').value;
-    const test = 0;
+    const test = 2;
 
     fetch('/pagos/mandar_pago', {
         method: 'POST',
