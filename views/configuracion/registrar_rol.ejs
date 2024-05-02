@@ -1,26 +1,47 @@
 <%- include('../includes/head.ejs') %>
 
 <body>
-        <h1>Registrar Rol</h1>
-        <form action="/configuracion/registrar_rol" method="post">
-            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-            <div>
-                <label for="nombreRol">Nombre del Rol:</label>
-                <input type="text" id="nombreRol" name="nombreRol" required>
-            </div>
-            <div>
-                <label for="casosUso">Casos de Uso:</label>
-                <select name="casosUso" id="casosUso" multiple>
-                    <% casouso.forEach(function(caso) { %>
-                        <option value="<%= caso.IDCasoUso %>"><%= caso.nombreCasoUso %></option>
-                    <% }) %>
-                </select>             
-                <small>Mantén presionado "Ctrl" o "Cmd" para seleccionar múltiples opciones.</small>
-            </div>
-            <div>
-                <button type="submit">Registrar Rol</button>
-            </div>
-        </form>
-    </section>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Registrar Rol</h1>
+            <form action="/configuracion/registrar_rol" method="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
 
+                <div class="field">
+                    <label class="label" for="nombreRol">Nombre del Rol:</label>
+                    <div class="control has-icons-left">
+                        <input class="input" type="text" id="nombreRol" name="nombreRol" required>
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user-tag"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label" for="casosUso">Casos de Uso:</label>
+                    <div class="control">
+                        <div class="select is-multiple">
+                            <select name="casosUso[]" id="casosUso" multiple size="5">
+                                <% casouso.forEach(function(caso) { %>
+                                    <option value="<%= caso.IDCasoUso %>"><%= caso.nombreCasoUso %></option>
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    <p class="help">Mantén presionado "Ctrl" o "Cmd" para seleccionar múltiples opciones.</p>
+                </div>
+
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button type="submit" class="button is-primary">
+                            <span class="icon is-small">
+                                <i class="fas fa-check"></i>
+                            </span>
+                            <span>Registrar Rol</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
 </body>
