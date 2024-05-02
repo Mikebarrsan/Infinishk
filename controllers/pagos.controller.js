@@ -7,7 +7,7 @@ const Alumno = require('../models/alumno.model');
 const Cursa = require('../models/cursa.model');
 const Periodo = require('../models/periodo.model');
 const Colegiatura = require('../models/colegiatura.model');
-const Usuario = require('../models/usuario.model')
+const Usuario = require('../models/usuario.model');
 
 const csvParser = require('csv-parser');
 const fs = require('fs');
@@ -353,6 +353,7 @@ exports.get_autocomplete = (request, response, next) => {
         }
     }
 };
+<<<<<<< HEAD
 
 exports.get_pago_alumno = (request, response, next) => {
 
@@ -1027,3 +1028,5 @@ exports.post_recibir_pago = async (request, response, next) => {
     }
 
 }
+=======
+>>>>>>> 8aa99e70f0406e162e007c87cc22db6d356401f8

@@ -31,7 +31,6 @@ const can_ReportesIngresos = require('../util/privileges/admin/consultas/can_Rep
 const can_ReportesMetodoPago = require('../util/privileges/admin/consultas/can_ReporteMetodoPago');
 const can_RegistrarPagoExtra = require('../util/privileges/admin/registros/can_registrar_PagoExtra');
 const can_AdministrarPagoExtra = require('../util/privileges/admin/otros/can_administrar_PagoExtra');
-const can_RealizarPago = require('../util/privileges/alumno/can_realizar_pago');
 
 // Pagos Extra
 router.get('/registrar_pago_extra', isAuth, can_RegistrarPagoExtra, pagosController.get_registrar_pago_extra);
@@ -50,13 +49,6 @@ router.get('/fetch_alumno/autocomplete/', isAuth, pagosController.get_autocomple
 router.get('/registrar_solicitud', isAuth, can_RegistrarSolicitud, pagosController.get_registrar_solicitud);
 router.post('/fetch_registrar_solicitud', isAuth, can_RegistrarSolicitud, pagosController.post_fetch_registrar_solicitud);
 router.post('/registrar_solicitud', isAuth, can_RegistrarSolicitud, pagosController.post_registrar_solicitud);
-router.get('/pagar', isAuth, can_RealizarPago, pagosController.get_pago_alumno);
-router.post('/mandar_pago', isAuth, can_RealizarPago, pagosController.post_mandar_pago);
-
-router.get('/recibir_pago',pagosController.get_recibir_pago);
-router.post('/recibir_pago',pagosController.post_recibir_pago);
-
-router.post('/respuesta_pago', pagosController.post_respuesta_pago);
 
 router.get('/', isAuth, pagosController.get_pago);
 

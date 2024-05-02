@@ -130,7 +130,7 @@ function pagar() {
     const nota = document.getElementById('nota').value;
     const test = 2;
 
-    fetch('/pagos/mandar_pago', {
+    fetch('/estado_cuenta/mandar_pago', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -154,7 +154,7 @@ function pagar() {
         console.log(err);
     });
 
-    fetch('/pagos/recibir_pago', {
+    fetch('/estado_cuenta/recibir_pago', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -179,7 +179,7 @@ function pagar() {
     });
 
 
-    fetch('/pagos/respuesta_pago', {
+    fetch('/estado_cuenta/respuesta_pago', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
